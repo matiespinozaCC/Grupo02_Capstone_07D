@@ -1,2 +1,2 @@
-# planaway
-Proyecto Capstone
+# Proyecto Capstone PlanAway
+
