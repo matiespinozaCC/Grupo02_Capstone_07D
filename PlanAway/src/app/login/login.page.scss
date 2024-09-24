@@ -1,0 +1,34 @@
+.titulo {
+    color: black;
+    text-align: center;
+    margin-top: 10%;
+}
+
+.formulario {
+    margin-left: 20%;
+    margin-right: 20%;
+    color: black;
+}
+
+.botonlogin {
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+@media (max-width: 400px) {
+    .titulo {
+        margin-top: 40%;
+    }
+}
+
+@media (min-width: 400px) and (max-width: 1200px) {
+    .titulo {
+        margin-top: 40%;
+    }
+}
+
+@media (min-width: 1200px){
+    .titulo {
+        margin-top: 15%;
+    }
+}
