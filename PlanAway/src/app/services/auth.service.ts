@@ -1,6 +1,6 @@
 // src/app/services/auth.service.ts
 import { Injectable } from '@angular/core';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 import { app } from '../firebase-config'; // Ajusta la ruta según tu estructura
 
 @Injectable({
@@ -20,6 +20,15 @@ export class AuthService {
       .catch(error => {
         // Maneja errores aquí
         console.error('Error al iniciar sesión:', error);
+        throw error;
+      });
+  }
+
+  register(email: string, password: string) {
+    return createUserWithEmailAndPassword(this.auth, email, password)
+      .then(userCredential => userCredential.user)
+      .catch(error => {
+        console.error('Error al registrar:', error);
         throw error;
       });
   }
