@@ -23,7 +23,7 @@ export class LoginPage {
         // Limpiar los campos
         this.email = '';
         this.password = '';
-        this.router.navigate(['/tabs/tab1']); // Cambia '/home' a la ruta que necesites
+        this.router.navigate(['/perfil']); // Cambia '/home' a la ruta que necesites
       })
       .catch(error => {
         console.error('Error al iniciar sesión:', error);
