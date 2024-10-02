@@ -1,23 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio de Sesion
-    </title>
+    <title>Login</title>
+    <!-- Incluye los SDK de Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.js"></script>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+
 </head>
 <body>
-    <header>
-    <nav>
-        <a href="#inicio">Inicio</a>
-        <a href="#sobre">Sobre Nosotros</a>
-        <a href="#servicios">Servicios</a>
-        <a href="#contacto">Contacto</a>
-    </nav>
-    </header>
 
-    <footer>
-        <p>&copy; 2024 PlanAway. Todos los derechos reservados.</p>
-    </footer>
+
+        <div class="login-container">
+            <h2>Iniciar Sesión</h2>
+            <input type="email" id="email" placeholder="Correo electrónico" required>
+            <input type="password" id="password" placeholder="Contraseña" required>
+            <button id="login-btn">Iniciar Sesión</button>
+            <p class="error" id="error-message"></p>
+            <p>¿No tienes cuenta? <a href="#" id="signup-link">Regístrate aquí</a></p>
+        </div>
+    
+       
+    <script src="static/login.js"></script>
+    
 </body>
 </html>
