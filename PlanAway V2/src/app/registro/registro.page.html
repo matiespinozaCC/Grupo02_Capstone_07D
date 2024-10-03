@@ -1,0 +1,29 @@
+<!-- src/app/register/register.page.html -->
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Registrarse</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="titulo">
+    <h4>Registrarse</h4>
+  </div>
+
+  <div class="formulario">
+    <ion-input [(ngModel)]="email" placeholder="Correo electrónico" class="primary-input" type="email"></ion-input>
+    <ion-input [(ngModel)]="password" placeholder="Contraseña" class="primary-input" type="password"></ion-input>
+  </div>
+
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+  
+  <div class="ion-margin-top botonregister">
+    <ion-button expand="block" (click)="onRegister()">Registrarse</ion-button>
+  </div>
+
+  <div class="ion-margin-top ion-text-center">
+    <a routerLink="/login">Ya tengo una cuenta. Iniciar sesión</a>
+  </div>
+</ion-content>

@@ -1,0 +1,33 @@
+<!-- posts.page.html -->
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Publicaciones</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()">Cerrar sesión</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-searchbar [(ngModel)]="searchTerm" (ionInput)="filterPosts()" placeholder="Buscar por categoría"></ion-searchbar>
+
+  <ion-card *ngFor="let post of filteredPosts">
+    <ion-card-header>
+      <ion-card-title>{{ post.title }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{ post.description }}</p>
+      <p><strong>Publicado por: {{ post.author }}</strong></p>
+      <p>{{ post.createdAt.toDate().toLocaleString() }}</p>
+      <p><em>Categoría: {{ post.category }}</em></p> <!-- Muestra la categoría -->
+    </ion-card-content>
+  </ion-card>
+
+  <ion-footer>
+    <ion-toolbar color="primary" class="ion-text-center">
+      <ion-buttons expand="full">
+        <ion-button routerLink="/crear-post" expand="full">Agregar Post</ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-footer>
+</ion-content>

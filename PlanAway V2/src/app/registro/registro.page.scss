@@ -1,0 +1,39 @@
+.titulo {
+    color: black;
+    text-align: center;
+    margin-top: 10%;
+  }
+  
+  .formulario {
+    margin: 0 20%;
+    color: black;
+  }
+  
+  .botonregister {
+    margin: 0 20%;
+  }
+  
+  @media (max-width: 400px) {
+    .titulo {
+      margin-top: 40%;
+    }
+  }
+  
+  @media (min-width: 400px) and (max-width: 1200px) {
+    .titulo {
+      margin-top: 40%;
+    }
+  }
+  
+  @media (min-width: 1200px) {
+    .titulo {
+      margin-top: 15%;
+    }
+  }
+
+  .error-message {
+    color: red; // Puedes cambiar el color según tu diseño
+    text-align: center;
+    margin-top: 10px;
+  }
+  

@@ -1,0 +1,17 @@
+<!-- src/app/perfil/perfil.page.html -->
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="user">
+    <h2>{{ user.email }}</h2>
+    <p>ID: {{ user.uid }}</p>
+    <!-- Agrega más información o publicaciones del usuario aquí -->
+  </div>
+  <div *ngIf="!user">
+    <p>No has iniciado sesión.</p>
+  </div>
+</ion-content>
