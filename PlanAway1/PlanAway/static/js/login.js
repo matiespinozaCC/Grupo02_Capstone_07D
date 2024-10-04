@@ -15,3 +15,11 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+
+function ingresar(){
+  console.log('diste un click')
+}
+
+function registrar(){
+  console.log('registrate')
+}
