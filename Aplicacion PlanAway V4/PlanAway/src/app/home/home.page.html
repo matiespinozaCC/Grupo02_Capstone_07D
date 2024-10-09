@@ -1,0 +1,48 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Publicaciones</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()">Cerrar sesión</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-item>
+    <ion-label>Selecciona una categoría:</ion-label>
+    <ion-select [(ngModel)]="selectedCategory" (ionChange)="filterPosts()">
+      <ion-select-option value="">Todas</ion-select-option>
+      <ion-select-option *ngFor="let category of categories" [value]="category.name">{{ category.name }}</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <div *ngFor="let category of filteredCategories" class="categorias">
+    <h2 class="NombreCategoria">{{ category.name }}s disponibles</h2>
+    
+    <!-- Grid container -->
+    <div class="posts-grid">
+      <div *ngFor="let post of category.posts" class="post-item">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>{{ post.title }}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <p>{{ post.description }}</p>
+            <p><strong>Publicado por: {{ post.author }}</strong></p>
+            <p>{{ post.createdAt.toDate().toLocaleString() }}</p>
+            <p><em>Categoría: {{ post.category }}</em></p>
+            <ion-button [routerLink]="['/post-detail', post.id]" (click)="goToPostDetail(post.id)">Ver Detalles</ion-button>
+          </ion-card-content>
+        </ion-card>
+      </div>
+    </div>
+  </div>
+
+  <ion-footer>
+    <ion-toolbar color="primary" class="ion-text-center">
+      <ion-buttons expand="full">
+        <ion-button routerLink="/crearpost" expand="full">Agregar Post</ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-footer>
+</ion-content>
