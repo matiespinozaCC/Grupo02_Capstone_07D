@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="onBack()">
+        <ion-icon name="arrow-back"></ion-icon>
+        Volver
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{ post?.title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngIf="post">
+    <ion-card-header>
+      <ion-card-title>{{ post.title }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{ post.description }}</p>
+      <p><strong>Publicado por: {{ post.author }}</strong></p>
+      <p>Fecha de publicación: {{ post.createdAt.toDate().toLocaleString() }}</p>
+      <p>Categoría: {{ post.category }}</p>
+      <!-- Aquí puedes agregar más detalles como imágenes, precios, servicios disponibles, etc. -->
+    </ion-card-content>
+  </ion-card>
+</ion-content>
