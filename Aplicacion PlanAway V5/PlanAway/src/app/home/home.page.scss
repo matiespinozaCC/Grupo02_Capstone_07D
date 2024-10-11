@@ -15,7 +15,7 @@
 #container p {
   font-size: 16px;
   line-height: 22px;
-  color: #8c8c8c;
+  color: #3c413f;
   margin: 0;
 }
 
@@ -59,4 +59,35 @@ ion-card {
   .posts-grid {
     grid-template-columns: repeat(3, 1fr);
   }
+}
+
+.logo {
+  max-width: 100px; 
+  height: auto;
+  border-radius: 0px;
+  margin-right: 10px; /* Espacio entre el logo y el título */
+}
+
+.botondetalle{
+  --background: #0edb86;
+      --color: rgb(0, 0, 0);
+  
+      &:hover {
+        --background: #067547;
+        color: #ffffff;
+      }
+  
+      &:active {
+        --background: #e0e9e5;
+      }
+}
+
+.titulo {
+  color: #0edb86;
+  font-size: 1.5rem; /* Ajusta el tamaño de la fuente si es necesario */
+}
+
+.logo-container {
+  display: flex;
+  align-items: center; /* Alinea verticalmente el logo y el título */
 }

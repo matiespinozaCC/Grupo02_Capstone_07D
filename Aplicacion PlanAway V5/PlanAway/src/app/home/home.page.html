@@ -1,11 +1,35 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Publicaciones</ion-title>
+    <div class="logo-container">
+      <img src="/assets/IMG_2214.PNG" alt="logo planAway" class="logo">
+      <ion-title class="titulo">PlanAway</ion-title>
+    </div>
     <ion-buttons slot="end">
-      <ion-button (click)="logout()">Cerrar sesión</ion-button>
+      <ion-menu-button auto-hide="false"></ion-menu-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
+
+<ion-menu content-id="main-content" side="end">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Menú</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list>
+      <ion-item button routerLink="/perfil" >Perfil</ion-item>
+      <ion-item button (click)="logout()">Cerrar sesión</ion-item>
+      <ion-item button ></ion-item>
+      <!-- Puedes agregar más opciones aquí -->
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-router-outlet id="main-content"></ion-router-outlet>
+
+
 
 <ion-content [fullscreen]="true">
   <ion-item>
@@ -31,7 +55,7 @@
             <p><strong>Publicado por: {{ post.author }}</strong></p>
             <p>{{ post.createdAt.toDate().toLocaleString() }}</p>
             <p><em>Categoría: {{ post.category }}</em></p>
-            <ion-button [routerLink]="['/post-detail', post.id]" (click)="goToPostDetail(post.id)">Ver Detalles</ion-button>
+            <ion-button [routerLink]="['/post-detail', post.id]" (click)="goToPostDetail(post.id)" class="botondetalle">Ver Detalles</ion-button>
           </ion-card-content>
         </ion-card>
       </div>
