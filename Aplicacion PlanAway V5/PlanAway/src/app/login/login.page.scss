@@ -1,15 +1,16 @@
 .titulo {
     color: white;
     text-align: center;
-    margin-top: 10%;
+    margin-top: 0px; /* Ajusta el margen superior del título */
+    margin-bottom: 0; /* Elimina cualquier margen inferior */
 }
 
-.titulo h4{
+.titulo h4 {
     font-size: 30px;
 }
 
-.titulo strong{
-    color: rgb(14, 219, 134);
+.titulo strong {
+    color: #0edb86;
 }
 
 .formulario {
@@ -33,24 +34,7 @@
 
 .notengocuenta a strong {
     color: rgb(14, 219, 134);
-}
 
-@media (max-width: 400px) {
-    .titulo {
-        margin-top: 40%;
-    }
-}
-
-@media (min-width: 400px) and (max-width: 1200px) {
-    .titulo {
-        margin-top: 40%;
-    }
-}
-
-@media (min-width: 1200px) {
-    .titulo {
-        margin-top: 15%;
-    }
 }
 
 .error-message {
@@ -58,3 +42,49 @@
     text-align: center;
     margin-top: 10px;
 }
+.botonlogin {
+    .btninicio {
+      --background: #0edb86;
+      --color: rgb(0, 0, 0);
+  
+      &:hover {
+        --background: #067547;
+        color: #ffffff;
+      }
+  
+      &:active {
+        --background: #000000;
+      }
+    }
+  }
+
+  .divlogo {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0px; 
+}
+
+.logo {
+    max-width: 200px; 
+    height: auto;
+    border-radius: 12px;
+}
+
+#correo {
+    --background: #3c413f;
+    --color: white;   
+    padding: 10px;       
+    border-radius: 50px;   
+}
+
+#contrasena {
+    --background: #3c413f; 
+    --color: white;         
+    padding: 10px; 
+    border-radius: 50px; 
+}
+
+

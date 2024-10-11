@@ -1,20 +1,30 @@
-<ion-content [fullscreen]="true">
+<ion-content class="all" [fullscreen]="true">
+<div class="divlogo">
+  <img src="/assets/IMG_2214.PNG" alt="logo planAway"class="logo">
+</div>
+
 <div class="titulo">
   <h4>Bienvenido a <strong>PlanAway</strong></h4>
 </div>
 
+<br>
+
 <div class="formulario">
-  <ion-input [(ngModel)]="email" placeholder="Correo electrónico" class="primary-input" type="email"></ion-input>
-  <ion-input [(ngModel)]="contrasena" placeholder="Contraseña" class="primary-input" type="password"></ion-input>
+  <ion-input [(ngModel)]="email" placeholder=" Correo electrónico" class="primary-input" id="correo" type="email"></ion-input><br>
+  <ion-input [(ngModel)]="contrasena" placeholder=" Contraseña" class="primary-input" id="contrasena" type="password"></ion-input>
 </div>
+
+<br>
 
 <div *ngIf="errorMensaje" class="error-mensaje">
   {{ errorMensaje }}
 </div>
 
 <div class="ion-margin-top botonlogin">
-  <ion-button expand="block" (click)="onLogin()"> Iniciar Sesión</ion-button>
+  <ion-button expand="block" (click)="onLogin()" class="btninicio"> Iniciar Sesión</ion-button>
 </div>
+
+<br>
 
 <div class="ion-margin-top ion-text-center notengocuenta">
   <a routerLink="/registro">¿No tienes una cuenta? <strong>Regístrate.</strong></a>
