@@ -10,11 +10,10 @@
 <br>
 
 <div class="formulario">
-  <ion-input [(ngModel)]="email" placeholder=" Correo electrónico" class="primary-input" id="correo" type="email"></ion-input><br>
+  <ion-input [(ngModel)]="email" placeholder=" Correo electrónico" class="primary-input" id="correo" type="email"></ion-input>
   <ion-input [(ngModel)]="contrasena" placeholder=" Contraseña" class="primary-input" id="contrasena" type="password"></ion-input>
 </div>
 
-<br>
 
 <div *ngIf="errorMensaje" class="error-mensaje">
   {{ errorMensaje }}

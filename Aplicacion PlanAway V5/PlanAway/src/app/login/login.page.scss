@@ -20,6 +20,7 @@
 
 .botonlogin {
     margin: 0 20%;
+    margin-top: 1%;
 }
 
 .notengocuenta a {
@@ -30,6 +31,7 @@
 .error-mensaje{
     color: red;
     text-align: center;
+    margin-top: 10px;
 }
 
 .notengocuenta a strong {
@@ -75,16 +77,24 @@
 
 #correo {
     --background: #3c413f;
-    --color: white;   
-    padding: 10px;       
-    border-radius: 50px;   
+    --color: white;
+    margin-bottom: auto;
 }
 
 #contrasena {
-    --background: #3c413f; 
-    --color: white;         
-    padding: 10px; 
-    border-radius: 50px; 
+    --background: #3c413f;
+    --color: white;  
+    margin-top: 1%;
 }
+
+.toggle-password {
+    position: absolute;
+    right: 15px; /* Ajusta para que el ícono esté al final del campo */
+    cursor: pointer;
+    color: white;
+    font-size: 22px;
+}
+
+
 
 
