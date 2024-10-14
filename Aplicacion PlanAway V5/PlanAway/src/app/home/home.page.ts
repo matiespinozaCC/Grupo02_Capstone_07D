@@ -43,11 +43,18 @@ export class HomePage implements OnInit {
   filterPosts() {
     // Filtrar categorías según la categoría seleccionada
     if (this.selectedCategory) {
-      this.filteredCategories = this.categories.filter(category => category.name === this.selectedCategory);
+        this.filteredCategories = this.categories.filter(category => category.name === this.selectedCategory);
     } else {
-      this.filteredCategories = this.categories; // Si no hay categoría seleccionada, mostrar todas
+        this.filteredCategories = this.categories; // Si no hay categoría seleccionada, mostrar todas
     }
-  }
+
+    // Desplazarse hacia la sección de categorías
+    const categoriasSection = document.getElementById('categorias-section');
+    if (categoriasSection) {
+        categoriasSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+}
+
 
   goToPostDetail(postId: string) {
     console.log('Navigating to post with ID:', postId); // Log para verificar el ID
