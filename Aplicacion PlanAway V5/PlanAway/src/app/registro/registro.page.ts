@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthService } from '../servicios/auth.service';
 import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-registro',
@@ -8,27 +9,36 @@ import { Router } from '@angular/router';
   styleUrls: ['./registro.page.scss'],
 })
 export class RegistroPage {
-
   email: string = '';
   contrasena: string = '';
-  errorMensaje: string = '';
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private alertController: AlertController
+  ) {}
 
-  
-  onRegister(){
-    this.authService.register(this.email, this.contrasena)
-      .then(user => {
-        console.log('Usuario registrado: ', user)
-        //limpiar los campos
-        this.email = '';
-        this.contrasena = '';
-        this.router.navigate(['/login']);
-      })
-      .catch(error => {
-        console.error('Error al registrar: ', error);
-        this.errorMensaje = 'Error al registrar: ' + error.message
-      })
+  async onRegister() {
+    try {
+      const user = await this.authService.register(this.email, this.contrasena);
+      console.log('Usuario registrado:', user);
+      this.email = '';
+      this.contrasena = '';
+      this.router.navigate(['/login']);
+    } catch (error: any) {
+      console.error('Error al registrar:', error);
+      const errorMsg = error.message || 'Hubo un problema al registrarte.';
+      this.presentAlert(errorMsg);
+    }
   }
 
+
+  async presentAlert(message: string) {
+    const alert = await this.alertController.create({
+      header: 'Vaya, algo ha salido mal',
+      message: message,
+      buttons: ['OK'],
+    });
+    await alert.present();
+  }
 }

@@ -1,6 +1,6 @@
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="all">
   <div class="divlogo">
-    <img src="/assets/IMG_2214.PNG" alt="logo planAway"class="logo">
+    <img src="/assets/IMG_2214.PNG" alt="logo PlanAway" class="logo" />
   </div>
 
   <div class="titulo">
@@ -8,15 +8,14 @@
   </div>
 
   <div class="formulario">
-    <ion-input [(ngModel)]="email" placeholder=" Correo electrónico" class="primary-input" id="correo" type="email"></ion-input>
-    <ion-input [(ngModel)]="contrasena" placeholder=" Contraseña" class="primary-input" id="contrasena" type="password"></ion-input>
+    <ion-input [(ngModel)]="email" placeholder="Correo electrónico" class="primary-input" type="email" id="correo"></ion-input>
+    <ion-input [(ngModel)]="contrasena" placeholder="Contraseña" class="primary-input" type="password" id="contrasena"></ion-input>
   </div>
-  <div *ngIf="errorMensaje" class="error-message">
-    {{ errorMensaje }}
-  </div>
-  
+
   <div class="ion-margin-top botonregister">
-    <ion-button expand="block" (click)="onRegister()" class="botonregistro">Crear Cuenta</ion-button>
+    <ion-button expand="block" (click)="onRegister()" class="botonregistro">
+      Crear Cuenta
+    </ion-button>
   </div>
 
   <div class="ion-margin-top ion-text-center yatengocuenta">

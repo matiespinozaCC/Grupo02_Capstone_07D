@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthService } from '../servicios/auth.service';
 import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';  // Importamos AlertController
 
 @Component({
   selector: 'app-login',
@@ -8,12 +9,24 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage {
-
   email: string = '';
   contrasena: string = '';
-  errorMensaje: string = '';
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private alertController: AlertController  // Inyectamos el AlertController
+  ) {}
+
+  // Método para mostrar alerta de error
+  async showAlert(header: string, message: string) {
+    const alert = await this.alertController.create({
+      header: header,
+      message: message,
+      buttons: ['OK']
+    });
+    await alert.present();
+  }
 
   onLogin() {
     this.authService.login(this.email, this.contrasena)
@@ -24,11 +37,11 @@ export class LoginPage {
         this.router.navigate(['/home']);
       })
       .catch(error => {
-        console.error('Error al iniciar sesión:', error)
+        console.error('Error al iniciar sesión:', error);
         this.contrasena = '';
-        this.errorMensaje = 'Correo o contraseña incorrectos';
+
+        
+        this.showAlert('Vaya, algo ha salido mal', 'Correo o contraseña incorrectas');
       });
   }
 }
-
-
