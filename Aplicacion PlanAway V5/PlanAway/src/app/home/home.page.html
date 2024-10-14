@@ -1,4 +1,5 @@
 <ion-header [translucent]="true">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <ion-toolbar>
     <div class="logo-container">
       <img src="/assets/IMG_2214.PNG" alt="logo planAway" class="logo">
@@ -19,9 +20,9 @@
 
   <ion-content>
     <ion-list>
-      <ion-item button routerLink="/perfil">Perfil</ion-item>
-      <ion-item button (click)="logout()">Cerrar sesión</ion-item>
-      <ion-item button></ion-item>
+      <ion-item button routerLink="/perfil" class="sperfil">Perfil</ion-item>
+      <ion-item button (click)="logout()" class="slogout">Cerrar sesión</ion-item>
+      <ion-item button routerLink="/crearpost"> Agregar post</ion-item>
     </ion-list>
   </ion-content>
 </ion-menu>
@@ -31,6 +32,10 @@
 <ion-content [fullscreen]="true">
   <div class="imagen-container">
     <img src="/assets/fondologin.jpg" class="imagenhome" alt="Fondo">
+    
+    <!-- Título encima de la imagen -->
+    <h2 class="titulo-encima-imagen">¿Que estas Buscando?</h2>
+
     <div class="search-container">
       <ion-item>
         <ion-label>Selecciona una categoría:</ion-label>
@@ -66,12 +71,4 @@
       </div>
     </div>
   </div>
-
-  <ion-footer>
-    <ion-toolbar color="primary" class="ion-text-center">
-      <ion-buttons expand="full">
-        <ion-button routerLink="/crearpost" expand="full">Agregar Post</ion-button>
-      </ion-buttons>
-    </ion-toolbar>
-  </ion-footer>
 </ion-content>

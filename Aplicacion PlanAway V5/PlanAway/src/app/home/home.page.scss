@@ -1,6 +1,5 @@
 #container {
   text-align: center;
-
   left: 0;
   right: 0;
   top: 50%;
@@ -52,6 +51,9 @@ ion-card {
   .posts-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+  .titulo-encima-imagen {
+    font-size: 80px;                    /* Reduce el tamaño de la fuente */
+  }
 }
 
 /* 3 columnas para pantallas grandes (escritorios) */
@@ -83,7 +85,7 @@ ion-card {
 }
 
 .titulo {
-  color: #0edb86;
+  color: #ffffff;
   font-size: 1.5rem;
 }
 
@@ -120,10 +122,6 @@ ion-card {
   object-fit: cover;
 }
 
-.titulo {
-  font-size: 36px;
-  margin-bottom: 20px;
-}
 
 .selector-container {
   background-color: rgba(0, 0, 0, 0.5);
@@ -161,8 +159,48 @@ ion-card {
   text-align: center; /* Centrar el texto */
 }
 
-.titulo {
-  color: white; /* Color del título */
-  margin-bottom: 20px; /* Espaciado adicional */
+.sperfil{
+  --color: rgb(255, 255, 255);
+
+  &:hover {
+    --background: #067547;
+    color: #ffffff;
+  }
+
+  &:active {
+    --background: #002f1a;
+  }
 }
 
+.slogout{
+  --color: rgb(255, 255, 255);
+
+  &:hover {
+    --background: #067547;
+    color: #ffffff;
+  }
+
+  &:active {
+    --background: #002f1a;
+  }
+}
+
+.titulo-encima-imagen {
+  font-family: 'Montserrat', sans-serif;  /* Asegúrate de que la fuente esté aplicada */
+  font-size: 32px;                      /* Ajusta el tamaño según sea necesario */
+  color: white;                         /* Cambia el color según tu preferencia */
+  text-align: center;                   /* Centra el texto */
+  position: absolute;                   /* Para posicionar el título sobre la imagen */
+  top: 200px;                            /* Ajusta la distancia desde la parte superior */
+  left: 50%;                           /* Para centrar horizontalmente */
+  transform: translateX(-50%);          /* Ajuste para centrar */
+  z-index: 10;                          /* Asegúrate de que esté por encima de otros elementos */
+}
+
+
+@media (max-width: 425px) {
+  .titulo-encima-imagen {
+    font-size: 40px;
+    top: 100px;                    
+  }
+}
