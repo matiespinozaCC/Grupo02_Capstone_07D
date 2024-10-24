@@ -1,9 +1,17 @@
 .titulo {
-    color: white;
+    color: rgb(255, 255, 255);
     text-align: center;
-    margin-top: 0px; /* Ajusta el margen superior del título */
-    margin-bottom: 0; /* Elimina cualquier margen inferior */
+    margin-top: 0px;
+    margin-bottom: 0;
+    .dark{
+        color: #4b4bff;
+    }  
 }
+
+ion-content{
+    --ion-background-color: rgb(18, 1, 4);
+}
+  
 
 .titulo h4 {
     font-size: 30px;
@@ -81,6 +89,8 @@
     margin-bottom: auto;
 }
 
+
+
 #contrasena {
     --background: #3c413f;
     --color: white;  
@@ -89,12 +99,58 @@
 
 .toggle-password {
     position: absolute;
-    right: 15px; /* Ajusta para que el ícono esté al final del campo */
+    right: 15px;
     cursor: pointer;
     color: white;
     font-size: 22px;
 }
 
+
+  
+.switch-container {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    gap: 10px;
+  }
+  
+  .icon-wrapper {
+    position: relative;
+    width: 30px;
+    height: 30px;
+  }
+  
+  ion-icon {
+    font-size: 30px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+  }
+  
+  ion-icon.icon-sun {
+    color: #ffd700;
+  }
+  
+  ion-icon.icon-moon {
+    color: #4b4bff;
+  }
+  
+  ion-icon.active {
+    opacity: 1;
+  }
+  
+  .custom-switch {
+    --background: transparent;
+    --handle-background: #0edb86;
+  }
+  
+ 
+  
 
   
 
