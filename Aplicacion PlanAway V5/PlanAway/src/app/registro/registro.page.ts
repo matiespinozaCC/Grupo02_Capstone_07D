@@ -11,6 +11,10 @@ import { AlertController } from '@ionic/angular';
 export class RegistroPage {
   email: string = '';
   contrasena: string = '';
+  nombre: string = '';
+  telefono: string = '';
+  genero: string = '';
+  fechaNacimiento: string = '';
 
   constructor(
     private authService: AuthService,
@@ -20,10 +24,14 @@ export class RegistroPage {
 
   async onRegister() {
     try {
-      const user = await this.authService.register(this.email, this.contrasena);
+      const user = await this.authService.register(this.email, this.contrasena, this.nombre, this.telefono, this.genero, this.fechaNacimiento);
       console.log('Usuario registrado:', user);
       this.email = '';
       this.contrasena = '';
+      this.nombre = '';
+      this.telefono = '';
+      this.genero = '';
+      this.fechaNacimiento = '';
       this.router.navigate(['/login']);
     } catch (error: any) {
       console.error('Error al registrar:', error);
@@ -31,7 +39,6 @@ export class RegistroPage {
       this.presentAlert(errorMsg);
     }
   }
-
 
   async presentAlert(message: string) {
     const alert = await this.alertController.create({
