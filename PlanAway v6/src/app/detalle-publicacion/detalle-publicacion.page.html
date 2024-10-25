@@ -1,0 +1,16 @@
+<ion-content>
+  <ion-card *ngIf="post">
+    <ion-card-header>
+      <ion-card-title>{{ post.title }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>Descripción:</strong> {{ post.description }}</p>
+      <p><strong>Categoría:</strong> {{ post.category }}</p>
+      <p><strong>Autor:</strong> {{ post.author }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Botones de eliminar y modificar -->
+  <ion-button expand="block" color="danger" (click)="eliminarPost()">Eliminar</ion-button>
+  <ion-button expand="block" (click)="irModificar()">Modificar</ion-button>
+</ion-content>

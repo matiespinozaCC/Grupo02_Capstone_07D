@@ -1,0 +1,40 @@
+<ion-content [fullscreen]="true" class="all">
+  <div class="divlogo">
+    <img src="/assets/IMG_2214.PNG" alt="logo PlanAway" class="logo" />
+  </div>
+
+  <div class="titulo">
+    <h4>Crear cuenta en <strong>PlanAway</strong></h4>
+  </div>
+
+  <div class="formulario">
+    <ion-input [(ngModel)]="nombre" placeholder="Nombre completo" class="primary-input" type="text"
+      id="nombre"></ion-input>
+    <ion-input [(ngModel)]="email" placeholder="Correo electrónico" class="primary-input" type="email"
+      id="correo"></ion-input>
+    <ion-input [(ngModel)]="contrasena" placeholder="Contraseña" class="primary-input" type="password"
+      id="contrasena"></ion-input>
+    <ion-input [(ngModel)]="telefono" placeholder="Número telefónico" class="primary-input" type="tel"
+      id="telefono"></ion-input>
+    <ion-select [(ngModel)]="genero" placeholder="Género" class="primary-input" id="genero">
+      <ion-select-option value="masculino">Masculino</ion-select-option>
+      <ion-select-option value="femenino">Femenino</ion-select-option>
+      <ion-select-option value="otro">Otro</ion-select-option>
+    </ion-select>
+    <ion-input [(ngModel)]="fechaNacimiento" placeholder="Fecha de nacimiento" class="primary-input" type="date"
+      id="fecha-nacimiento"></ion-input>
+
+    <!-- Campo para cargar la foto de perfil -->
+    <input type="file" (change)="onFileSelected($event)" accept="image/*" />
+  </div>
+
+  <div class="ion-margin-top botonregister">
+    <ion-button expand="block" (click)="onRegister()" class="botonregistro">
+      Crear Cuenta
+    </ion-button>
+  </div>
+
+  <div class="ion-margin-top ion-text-center yatengocuenta">
+    <a routerLink="/login">Ya tengo una cuenta. <strong>Iniciar sesión</strong></a>
+  </div>
+</ion-content>
