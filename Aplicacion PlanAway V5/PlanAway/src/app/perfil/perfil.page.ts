@@ -2,6 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from '../servicios/post.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../servicios/auth.service';
 
 @Component({
   selector: 'app-perfil',
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
 export class PerfilPage implements OnInit {
   posts: any[] = []; // Aquí guardaremos los posts del usuario
 
-  constructor(private postService: PostService, private router: Router) { }
+  constructor(private postService: PostService, private router: Router, private authService: AuthService) { }
 
   ngOnInit() {
     this.loadUserPosts();
@@ -27,5 +28,15 @@ export class PerfilPage implements OnInit {
 
   verDetalles(postId: string) {
     this.router.navigate(['/detalle-publicacion', postId]);
+  }
+
+  goToPostDetail(postId: string) {
+    console.log('Navigating to post with ID:', postId); // Log para verificar el ID
+  }
+
+  logout() {
+    this.authService.logout().then(() => {
+      this.router.navigate(['/login']);
+    });
   }
 }

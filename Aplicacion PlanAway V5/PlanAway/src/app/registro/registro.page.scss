@@ -1,7 +1,6 @@
 .titulo {
     color: white;
     text-align: center;
-    margin-top: 10%;
 }
 
 .titulo h4 {
@@ -19,7 +18,24 @@
 
 .botonregister {
     margin: 0 20%;
+    margin-top: 1%;
 }
+
+.botonregister {
+    .botonregistro {
+      --background: #0edb86;
+      --color: rgb(0, 0, 0);
+  
+      &:hover {
+        --background: #067547;
+        color: #ffffff;
+      }
+  
+      &:active {
+        --background: #000000;
+      }
+    }
+  }
 
 .yatengocuenta a {
     color: white;
@@ -30,26 +46,35 @@
     color: rgb(14, 219, 134);
 }
 
-@media (max-width: 400px) {
-    .titulo {
-        margin-top: 40%;
-    }
-}
-
-@media (min-width: 400px) and (max-width: 1200px) {
-    .titulo {
-        margin-top: 40%;
-    }
-}
-
-@media (min-width: 1200px) {
-    .titulo {
-        margin-top: 15%;
-    }
-}
-
 .error-message {
-    color: red; // Puedes cambiar el color según tu diseño
+    color: red;
     text-align: center;
     margin-top: 10px;
+}
+
+#correo {
+    --background: #3c413f;
+    --color: white;
+    margin-bottom: auto;
+}
+
+#contrasena {
+    --background: #3c413f;
+    --color: white;  
+    margin-top: 1%;
+}
+
+.divlogo {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0px; 
+}
+
+.logo {
+    max-width: 200px; 
+    height: auto;
+    border-radius: 12px;
 }

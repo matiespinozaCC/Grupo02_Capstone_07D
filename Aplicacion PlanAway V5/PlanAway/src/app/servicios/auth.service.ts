@@ -44,7 +44,7 @@ export class AuthService {
     }
    }
 
-   async register(email: string, contrasena: string){
+   async register(email: string, contrasena: string, nombre: string, telefono: string, genero: string, fechaNacimiento: string){
     try{
       const userCredential = await createUserWithEmailAndPassword(this.auth, email, contrasena);
       this.currentUser = userCredential.user;
