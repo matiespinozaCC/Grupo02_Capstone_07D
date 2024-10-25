@@ -1,0 +1,158 @@
+.titulo {
+    color: rgb(255, 255, 255);
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 0;
+    .dark{
+        color: #4b4bff;
+    }  
+}
+
+ion-content{
+    --ion-background-color: rgba(0, 0, 0, 0.642);
+}
+  
+
+.titulo h4 {
+    font-size: 30px;
+}
+
+.titulo strong {
+    color: #0edb86;
+}
+
+.formulario {
+    margin: 0 20%;
+    color: white;
+}
+
+.botonlogin {
+    margin: 0 20%;
+    margin-top: 1%;
+}
+
+.notengocuenta a {
+    color: white;
+    font-size: 22px;
+}
+
+.error-mensaje{
+    color: red;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.notengocuenta a strong {
+    color: rgb(14, 219, 134);
+
+}
+
+.error-message {
+    color: red;
+    text-align: center;
+    margin-top: 10px;
+}
+.botonlogin {
+    .btninicio {
+      --background: #0edb86;
+      --color: rgb(0, 0, 0);
+  
+      &:hover {
+        --background: #067547;
+        color: #ffffff;
+      }
+  
+      &:active {
+        --background: #000000;
+      }
+    }
+  }
+
+  .divlogo {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0px; 
+}
+
+.logo {
+    max-width: 200px; 
+    height: auto;
+    border-radius: 12px;
+}
+
+#correo {
+    --background: #3c413f;
+    --color: white;
+    margin-bottom: auto;
+}
+
+
+
+#contrasena {
+    --background: #3c413f;
+    --color: white;  
+    margin-top: 1%;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 15px;
+    cursor: pointer;
+    color: white;
+    font-size: 22px;
+}
+
+
+  
+.switch-container {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    gap: 10px;
+  }
+  
+  .icon-wrapper {
+    position: relative;
+    width: 30px;
+    height: 30px;
+  }
+  
+  ion-icon {
+    font-size: 30px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+  }
+  
+  ion-icon.icon-sun {
+    color: #ffd700;
+  }
+  
+  ion-icon.icon-moon {
+    color: #4b4bff;
+  }
+  
+  ion-icon.active {
+    opacity: 1;
+  }
+  
+  .custom-switch {
+    --background: transparent;
+    --handle-background: #0edb86;
+  }
+  
+ 
+  
+
+  
+
+
+
