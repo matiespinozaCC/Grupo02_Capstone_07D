@@ -1,0 +1,19 @@
+<ion-content>
+  <ion-item>
+    <ion-label>Título</ion-label>
+    <ion-input [(ngModel)]="post.title"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Descripción</ion-label>
+    <ion-textarea [(ngModel)]="post.description"></ion-textarea>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Categoría</ion-label>
+    <ion-input [(ngModel)]="post.category"></ion-input>
+  </ion-item>
+
+  <!-- Botón para modificar la publicación -->
+  <ion-button expand="block" (click)="modificarPost()">Guardar cambios</ion-button>
+</ion-content>
