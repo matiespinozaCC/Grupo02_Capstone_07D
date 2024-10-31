@@ -220,3 +220,81 @@ ion-card {
   height: 100%;
   object-fit: cover;
 }
+
+.agregarpost{
+  --color: rgb(255, 255, 255);
+
+  &:hover {
+    --background: #067547;
+    --color: #ffffff;
+  }
+
+  &:active {
+    --background: #002f1a;
+  }
+
+}
+
+
+@media (prefers-color-scheme: light) {
+  
+  .titulo {
+    color: #000000;
+    font-size: 1.5rem;
+  }
+
+  .botondetalle{
+    --background: #0edb86;
+        --color: rgb(0, 0, 0);
+    
+        &:hover {
+          --background: #067547;
+          color: #ffffff;
+        }
+    
+        &:active {
+          --background: #e0e9e5;
+        }
+  }
+
+  .sperfil{
+    --color: rgb(0, 0, 0);
+  
+    &:hover {
+      --background: #067547;
+      --color: #ffffff;
+    }
+  
+    &:active {
+      --background: #002f1a;
+    }
+  }
+
+  .slogout{
+    --color: rgb(0, 0, 0);
+  
+    &:hover {
+      --background: #067547;
+      --color: #ffffff;
+    }
+  
+    &:active {
+      --background: #002f1a;
+    }
+  }
+
+  .agregarpost{
+    --color: rgb(0, 0, 0);
+  
+    &:hover {
+      --background: #067547;
+      --color: #ffffff;
+    }
+  
+    &:active {
+      --background: #002f1a;
+    }
+
+  }
+
+}

@@ -149,7 +149,20 @@ ion-content{
     --handle-background: #0edb86;
   }
   
- 
+  @media (prefers-color-scheme: light) {
+    ion-content{
+      --ion-background-color: rgb(255, 255, 255);
+    }
+    .titulo{
+      color: #000000;
+    }
+
+    .textoregistro{
+      color: #000000;
+    }
+
+  
+  }
   
 
   
