@@ -148,6 +148,9 @@ ion-content{
     --background: transparent;
     --handle-background: #0edb86;
   }
+  @media (prefers-color-scheme: dark) {
+
+  }
   
   @media (prefers-color-scheme: light) {
     ion-content{
@@ -156,10 +159,11 @@ ion-content{
     .titulo{
       color: #000000;
     }
-
-    .textoregistro{
-      color: #000000;
-    }
+    .notengocuenta a {
+      color: rgb(0, 0, 0);
+  
+  }
+    
 
   
   }
