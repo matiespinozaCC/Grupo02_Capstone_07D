@@ -235,6 +235,25 @@ ion-card {
 
 }
 
+//imagen de fondo de las publicaciones
+
+.card-background {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #ffffff;
+  position: relative;
+  padding: 16px;
+  min-height: 300px;
+}
+
+.card-background ion-card-content {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 8px;
+  border-radius: 5px;
+}
+
+
 
 @media (prefers-color-scheme: light) {
   

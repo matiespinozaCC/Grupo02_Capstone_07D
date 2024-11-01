@@ -34,45 +34,43 @@
     <img src="/assets/fondologin.jpg" class="imagenhome" alt="Fondo">
 
     <!-- Título encima de la imagen -->
-    <h2 class="titulo-encima-imagen">¿Que estas Buscando?</h2>
+    <h2 class="titulo-encima-imagen">¿Qué estás Buscando?</h2>
 
     <div class="search-container">
       <ion-item>
         <ion-label>Selecciona una categoría:</ion-label>
         <ion-select [(ngModel)]="selectedCategory" (ionChange)="filterPosts()">
           <ion-select-option value="">Todas</ion-select-option>
-          <ion-select-option *ngFor="let category of categories" [value]="category.name">{{ category.name
-            }}</ion-select-option>
+          <ion-select-option *ngFor="let category of categories" [value]="category.name">{{ category.name }}</ion-select-option>
         </ion-select>
       </ion-item>
     </div>
   </div>
 
-  <!-- Sección de categorías con ID para desplazamiento -->
+  <!-- Sección de categorías con desplazamiento horizontal -->
   <div id="categorias-section">
     <div *ngFor="let category of filteredCategories" class="categorias">
       <h2 class="NombreCategoria">{{ category.name }}s disponibles</h2>
 
-      <!-- Grid container -->
-      <div class="posts-grid">
-        <div *ngFor="let post of category.posts" class="post-item">
-          <ion-card>
-            <ion-card-header>
-              <ion-card-title>{{ post.title }}</ion-card-title>
-            </ion-card-header>
-            <ion-card-content>
-              <div class="author-image-container">
-                <img [src]="post.profileImageUrl" alt="Imagen de perfil del autor" class="author-image">
-              </div>
-              <p>{{ post.description }}</p>
-              <p><strong>Publicado por: {{ post.author }}</strong></p>
-              <p>{{ post.createdAt.toDate().toLocaleString() }}</p>
-              <p><em>Categoría: {{ post.category }}</em></p>
-              <p><em>Precio: {{ post.price }}</em></p>
-              <ion-button [routerLink]="['/post-detail', post.id]" (click)="goToPostDetail(post.id)"
-                class="botondetalle">Ver Detalles</ion-button>
-            </ion-card-content>
-          </ion-card>
+      <div class="scroll-container">
+        <div class="posts-grid">
+          <div *ngFor="let post of category.posts" class="post-item">
+            <ion-card [style.background-image]="'url(' + post.profileImageUrl + ')'" class="card-background">
+              <ion-card-header>
+                <ion-card-title>{{ post.title }}</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                <p>{{ post.description }}</p>
+                <p><strong>Publicado por: {{ post.author }}</strong></p>
+                <p>{{ post.createdAt.toDate().toLocaleString() }}</p>
+                <p><em>Categoría: {{ post.category }}</em></p>
+                <p><em>Precio: {{ post.price }}</em></p>
+                <ion-button [routerLink]="['/post-detail', post.id]" (click)="goToPostDetail(post.id)" class="botondetalle">
+                  Ver Detalles
+                </ion-button>
+              </ion-card-content>
+            </ion-card>
+          </div>
         </div>
       </div>
     </div>
