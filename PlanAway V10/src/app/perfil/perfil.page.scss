@@ -1,0 +1,86 @@
+#container {
+    text-align: center;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  #container strong {
+    font-size: 20px;
+    line-height: 26px;
+  }
+  
+  #container p {
+    font-size: 16px;
+    line-height: 22px;
+    color: #3c413f;
+    margin: 0;
+  }
+  
+  #container a {
+    text-decoration: none;
+  }
+  
+  
+  .post-item {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .NombreCategoria{
+    text-transform: capitalize;
+    text-align: center;
+    font-size: 32px;
+  }
+  
+  ion-card {
+    width: 100%;
+    text-align: center;
+  }
+  
+  /* 1 columna para pantallas pequeñas (teléfonos) */
+  .posts-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  /* 2 columnas para pantallas medianas (tabletas) */
+  @media (min-width: 600px) {
+    .posts-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  /* 3 columnas para pantallas grandes (escritorios) */
+  @media (min-width: 992px) {
+    .posts-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  .logo {
+    max-width: 70px; 
+    height: auto;
+    border-radius: 0px;
+    margin-right: 10px;
+  }
+
+  .titulo {
+    color: #0edb86;
+    font-size: 1.5rem;
+  }
+  
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .menu{
+    color: #0edb86;
+  }
+  
+  #main-content{
+    color: #0edb86;
+  }

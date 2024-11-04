@@ -1,0 +1,59 @@
+ion-header {
+    background-color: #0edb86; /* Color del encabezado */
+    color: white; /* Color del texto del encabezado */
+  }
+  
+  ion-toolbar {
+    --background: #0edb86; /* Color de fondo del toolbar */
+  }
+  
+  .post-card {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    margin: 16px;
+    max-width: 600px; /* Limitar el ancho de la tarjeta */
+    margin: auto; /* Centrar la tarjeta */
+  }
+  
+  .post-image {
+    width: 100%; /* Asegurarse de que la imagen ocupe todo el ancho del contenedor */
+    height: auto; /* Mantener la proporción de la imagen */
+    max-height: 300px; /* Limitar la altura máxima de la imagen */
+    object-fit: cover; /* Asegurarse de que la imagen cubra el contenedor sin distorsionarse */
+  }
+  
+  ion-card-header {
+    background-color: #f9f9f9; /* Fondo del encabezado de la tarjeta */
+    padding: 16px;
+    border-bottom: 1px solid #e0e0e0; /* Línea separadora */
+  }
+  
+  ion-card-title {
+    font-size: 1.5rem;
+    color: #333; /* Color del título */
+    margin-bottom: 4px;
+  }
+  
+  ion-card-subtitle {
+    font-size: 0.9rem;
+    color: #666; /* Color de los subtítulos */
+  }
+  
+  .reserve-button {
+    margin-top: 20px;
+    --background: #0edb86; /* Color del botón */
+    color: white; /* Color del texto del botón */
+    font-weight: bold;
+  }
+  
+  .reserve-button:hover {
+    background-color: #067547; /* Color del botón al pasar el mouse */
+  }
+  
+  .reservation-message {
+    margin-top: 10px;
+    color: #ff0000; /* Color del mensaje de reserva */
+    font-weight: bold;
+    text-align: center; /* Centrar el mensaje */
+  }

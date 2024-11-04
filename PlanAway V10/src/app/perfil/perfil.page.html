@@ -1,0 +1,34 @@
+  <ion-header [translucent]="true">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <ion-toolbar>
+    <div class="logo-container">
+      <ion-button routerLink="/home" fill="clear">
+        <ion-icon name="arrow-back"></ion-icon>
+        Volver
+      </ion-button>
+      <div class="logo" aria-label="Logo de PlanAway"></div>
+      <ion-title class="titulo">PlanAway</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="perfil-info">
+    <h2>Mis Publicaciones</h2>
+  </div>
+
+  <ion-list>
+    <ion-item *ngFor="let post of posts">
+      <ion-label>
+        <h3>{{ post.title }}</h3>
+        <p>{{ post.description }}</p>
+        <small>Categoría: {{ post.category }}</small>
+        <ion-button (click)="verDetalles(post.id)">Ver detalles</ion-button>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <div *ngIf="posts.length === 0" class="no-posts">
+    <p>No has realizado publicaciones aún.</p>
+  </div>
+</ion-content>

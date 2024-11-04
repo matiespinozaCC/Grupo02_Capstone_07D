@@ -1,0 +1,7 @@
+{
+  "name": "PlanAway",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
