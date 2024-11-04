@@ -1,3 +1,28 @@
+.all {
+  --background: url('/assets/fondoregistro.jpg') no-repeat center center / cover;
+  position: relative;
+}
+
+
+.background-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.786);
+  z-index: 1;
+}
+
+/*esto es para el fondo negro quede debajo y no afecte a las siguientes clases*/
+.divlogo, .titulo, .formulario, .botonlogin, .notengocuenta {
+  position: relative;
+  z-index: 2;
+}
+
+
+
+
 .titulo {
     color: rgb(255, 255, 255);
     text-align: center;
@@ -69,19 +94,18 @@ ion-content{
   }
 
   .divlogo {
-    width: 100%;
-    height: auto;
+    width: 300px;
+    height: 200px;
+    background-image: url('/assets/IMG_2214.PNG');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 0px; 
+    margin: 0 auto;
 }
 
-.logo {
-    max-width: 200px; 
-    height: auto;
-    border-radius: 12px;
-}
 
 #correo {
     --background: #3c413f;
@@ -153,15 +177,20 @@ ion-content{
   }
   
   @media (prefers-color-scheme: light) {
-    ion-content{
-      --ion-background-color: rgb(255, 255, 255);
-    }
     .titulo{
       color: #000000;
     }
     .notengocuenta a {
       color: rgb(0, 0, 0);
-  
+    }
+
+    .divlogo{
+      background-image: url('/assets/IMG_2215.PNG');
+    }
+
+    .background-overlay {
+      background-color: rgba(255, 255, 255, 0.786);
+      z-index: 1;
   }
     
 
