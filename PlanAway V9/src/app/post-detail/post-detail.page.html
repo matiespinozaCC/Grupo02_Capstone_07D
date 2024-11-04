@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="onBack()">
+        <ion-icon name="arrow-back"></ion-icon>
+        Volver
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{ post?.title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngIf="post">
+    <ion-card-header>
+      <ion-card-title>{{ post.title }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <img src="{{ post.imageUrl }}" alt="Imagen de publicación" class="post-image">
+      <p>{{ post.description }}</p>
+      <p><strong>Publicado por: {{ post.author }}</strong></p>
+      <p>Fecha de publicación: {{ post.createdAt.toDate().toLocaleString() }}</p>
+      <p>Categoría: {{ post.category }}</p>
+      <!-- Aquí puedes agregar más detalles como imágenes, precios, servicios disponibles, etc. -->
+
+      <ion-item>
+        <ion-label>Fecha de inicio</ion-label>
+        <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="fechaInicio"></ion-datetime>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Fecha de fin</ion-label>
+        <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="fechaFin"></ion-datetime>
+      </ion-item>
+
+      <ion-button expand="full" (click)="reservar()">Reservar</ion-button>
+      <div id="paypal-button-container"></div>
+      <div *ngIf="reservaMensaje">{{ reservaMensaje }}</div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

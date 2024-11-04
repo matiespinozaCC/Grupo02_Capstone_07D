@@ -1,0 +1,169 @@
+.all {
+    --background: url('/assets/fondoregistro.jpg') no-repeat center center / cover;
+  }
+  
+  .background-overlay {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .titulo {
+    color: white;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  .titulo h4 {
+    font-size: 2rem;
+    color: #ffffff;
+    margin: 0;
+  }
+  
+  .titulo strong {
+    color: #0edb86;
+  }
+  
+  .formulario {
+    margin: 0 10%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .primary-input {
+    --background: #ffffff10;
+    --color: white;
+    --placeholder-color: #ffffff99;
+    --padding-start: 15px;
+    border-radius: 8px;
+    margin-top: 1%;
+    font-size: 1rem;
+  }
+  
+  .file-input {
+    color: white;
+    font-size: 0.9rem;
+  }
+  
+  .botonregister {
+    margin: 0 10%;
+    margin-top: 2%;
+  }
+  
+  .botonregister .botonregistro {
+    --background: #0edb86;
+    --color: #000000;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 6px;
+  }
+  
+  .botonregister .botonregistro:hover {
+    --background: #067547;
+    --color: #ffffff;
+  }
+  
+  .botonregister .botonregistro:active {
+    --background: #000000;
+  }
+  
+  .yatengocuenta a {
+    color: #ffffffcc;
+    font-size: 1rem;
+    text-decoration: none;
+  }
+  
+  .yatengocuenta a strong {
+    color: #0edb86;
+  }
+  
+  .error-message {
+    color: red;
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+
+  
+  .logo {
+    max-width: 150px; 
+    height: auto;
+    border-radius: 10px;
+  }
+
+  @media (prefers-color-scheme: dark){
+    .background-overlay {
+      background-color: rgba(0, 0, 0, 0.786);
+    }
+
+    .divlogo {
+      width: 150px;
+      height: 150px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto;
+      background-image: url('/assets/IMG_2214.PNG');
+      background-size: cover;
+      background-position: center;
+      border-radius: 10px;
+  }
+  }
+  
+  @media (prefers-color-scheme: light) {
+    .background-overlay {
+      background-color: rgba(255, 255, 255, 0.786);
+    }
+
+    .divlogo {
+      width: 150px;
+      height: 150px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto;
+      background-image: url('/assets/IMG_2215.PNG');
+      background-size: cover;
+      background-position: center;
+      border-radius: 10px;
+  }
+
+    .titulo strong {
+      color: #0edb86;
+      -webkit-text-stroke: 1px black;
+      font-weight: bold;
+    }
+    
+  
+    .titulo h4 {
+      color: #000000;
+    }
+  
+    .primary-input {
+      --background: #f0f0f0;
+      --color: #000000;
+      --placeholder-color: #888888;
+    }
+  
+    .file-input {
+      color: #000000;
+    }
+  
+    .botonregister .botonregistro {
+      --background: #0edb86;
+      --color: #ffffff;
+    }
+  
+    .yatengocuenta a {
+      color: #000000;
+    }
+  
+    .yatengocuenta a strong {
+      color: #0edb86;
+    }
+
+  }
