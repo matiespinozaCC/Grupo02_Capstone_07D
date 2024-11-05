@@ -144,12 +144,6 @@ ion-card {
   text-align: center;
 }
 
-.sperfil,
-.slogout,
-.agregarpost {
-  --color: rgb(255, 255, 255);
-}
-
 .titulo-encima-imagen {
   font-family: 'Montserrat', sans-serif;
   font-size: 32px;
@@ -424,18 +418,19 @@ ion-card {
   .logo {
     background-image: url('/assets/IMG_2215.PNG');
   }
+
   .botondetalle{
-    --background: #0edb86;
-        --color: rgb(0, 0, 0);
-    
-        &:hover {
-          --background: #067547;
-          color: #ffffff;
-        }
-    
-        &:active {
-          --background: #e0e9e5;
-        }
+    --color: rgb(255, 255, 255);
+
+    &:hover {
+      --background: #067547;
+      --color: #000000;
+    }
+  
+    &:active {
+      --background: #002f1a;
+    }
+  
   }
 
   .sperfil{

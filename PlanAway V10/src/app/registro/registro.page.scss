@@ -1,5 +1,5 @@
 .all {
-    --background: url('/assets/fondoregistro.jpg') no-repeat center center / cover;
+    --background: url('/assets/fondoregistrodark.jpg') no-repeat center center / cover;
   }
   
   .background-overlay {
@@ -39,8 +39,7 @@
     --color: white;
     --placeholder-color: #ffffff99;
     --padding-start: 15px;
-    border-radius: 8px;
-    margin-top: 1%;
+    border-radius: 20px;
     font-size: 1rem;
   }
   
@@ -116,7 +115,7 @@
   
   @media (prefers-color-scheme: light) {
     .background-overlay {
-      background-color: rgba(255, 255, 255, 0.786);
+      background-color: rgba(0, 0, 0, 0.5);
     }
 
     .divlogo {
@@ -134,19 +133,43 @@
 
     .titulo strong {
       color: #0edb86;
-      -webkit-text-stroke: 1px black;
-      font-weight: bold;
+    }
+
+    .file-input {
+      opacity: 0; /* Oculta el input */
+      position: absolute;
+      z-index: -1; /* Lo coloca detrás para que no interfiera */
+  }
+  
+  .custom-file-label {
+      display: inline-block;
+      background-color: #007bff;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      text-align: center;
+  }
+  
+  .custom-file-label:hover {
+      background-color: #0056b3; /* Cambia el color al hacer hover */
+  }
+  
+
+    .all {
+      --background: url('/assets/fondoregistro.jpg') no-repeat center center / cover;
     }
     
-  
+
     .titulo h4 {
-      color: #000000;
+      color: #dfd8d8;
     }
   
     .primary-input {
-      --background: #f0f0f0;
+      --background: #c9c9c99a;
       --color: #000000;
-      --placeholder-color: #888888;
+      --placeholder-color: #000000;
     }
   
     .file-input {
@@ -159,7 +182,7 @@
     }
   
     .yatengocuenta a {
-      color: #000000;
+      color: #ffffff;
     }
   
     .yatengocuenta a strong {
@@ -167,3 +190,6 @@
     }
 
   }
+
+  // input estilo mensaje
+  

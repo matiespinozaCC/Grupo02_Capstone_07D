@@ -15,7 +15,8 @@ export class RegistroPage {
   telefono: string = '';
   genero: string = '';
   fechaNacimiento: string = '';
-  profileImage: File | null = null; // Nueva propiedad para almacenar la imagen seleccionada
+  profileImage: File | null = null;
+  step: number = 1;
 
   constructor(
     private authService: AuthService,
@@ -23,26 +24,50 @@ export class RegistroPage {
     private alertController: AlertController
   ) {}
 
+
   onFileSelected(event: any) {
     const file = event.target.files[0];
     this.profileImage = file ? file : null;
   }
 
+  nextStep() {
+    if (this.step < 7) this.step++;
+  }
+
+  prevStep() {
+    if (this.step > 1) this.step--;
+  }
+
+  ionViewWillEnter() {
+    this.resetStep();
+  }
+
+  resetStep() {
+    this.step = 1;
+    this.email = '';
+    this.contrasena = '';
+    this.nombre = '';
+    this.telefono = '';
+    this.genero = '';
+    this.fechaNacimiento = '';
+  }
+
   async onRegister() {
     try {
-      const user = await this.authService.register(this.email, this.contrasena, this.nombre, this.telefono, this.genero, this.fechaNacimiento, this.profileImage);
+      const user = await this.authService.register(
+        this.email,
+        this.contrasena,
+        this.nombre,
+        this.telefono,
+        this.genero,
+        this.fechaNacimiento,
+        this.profileImage
+      );
       console.log('Usuario registrado:', user);
-      this.email = '';
-      this.contrasena = '';
-      this.nombre = '';
-      this.telefono = '';
-      this.genero = '';
-      this.fechaNacimiento = '';
       this.router.navigate(['/login']);
     } catch (error: any) {
       console.error('Error al registrar:', error);
-      const errorMsg = error.message || 'Hubo un problema al registrarte.';
-      this.presentAlert(errorMsg);
+      this.presentAlert(error.message || 'Hubo un problema al registrarte.');
     }
   }
 
