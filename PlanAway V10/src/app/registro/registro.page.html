@@ -1,34 +1,62 @@
 <ion-content [fullscreen]="true" class="all">
   <div class="background-overlay">
-    <div class="divlogo"></div>
-
-    <div class="titulo">
-      <h4>Crear cuenta en <strong>PlanAway</strong></h4>
-    </div>
-
     <div class="formulario">
-      <!-- Nombre -->
+      <!-- Correo -->
       <div *ngIf="step === 1">
-        <ion-input [(ngModel)]="nombre" placeholder="Nombre completo" class="primary-input" type="text" id="nombre"></ion-input>
+        <div class="divlogo"></div>
+        <div class="titulo">
+          <h4>Crear tu cuenta con <strong>Nosotros</strong></h4>
+        </div>
+        <ion-input [(ngModel)]="email" placeholder="Correo electrónico" class="primary-input" type="email" id="email"></ion-input>
       </div>
 
-      <!-- Correo -->
+      <!-- Nombre -->
       <div *ngIf="step === 2">
-        <ion-input [(ngModel)]="email" placeholder="Correo electrónico" class="primary-input" type="email" id="email"></ion-input>
+        <div class="divlogo"></div>
+        <div class="titulo">
+          <h4>Crear tu cuenta con <strong>Nosotros</strong></h4>
+        </div>
+        <ion-input [(ngModel)]="nombre" placeholder="Nombre completo" class="primary-input" type="text" id="nombre"></ion-input>
       </div>
 
       <!-- Contraseña -->
       <div *ngIf="step === 3">
+        <div class="divlogo"></div>
+        <div class="titulo">
+          <h4>Crear tu cuenta con <strong>Nosotros</strong></h4>
+        </div>
         <ion-input [(ngModel)]="contrasena" placeholder="Contraseña" class="primary-input" type="password" id="contrasena"></ion-input>
       </div>
 
-      <!-- Teléfono -->
+      <!--Mensaje-->
       <div *ngIf="step === 4">
+        <div class="divlogo"></div>
+        <div class="titulo">
+          <h4>Bienvenido a <strong>PlanAway</strong></h4>
+          <h5>Comienza a buscar el mejor lugar para relajarte <strong>AHORA</strong></h5>
+        </div>
+        <div class="boton-centro">
+          <ion-button (click)="nextStep()" id="step4boton">Empezar</ion-button>
+        </div>
+      </div>
+
+      <!-- Teléfono -->
+      <div *ngIf="step === 5">
+        <div class="divlogo"></div>
+        <div class="titulo">
+          <h4><strong>¡Estamos casi listos!</strong></h4>
+          <h3>¿Nos compartes tu número para mantenernos en contacto?</h3>
+        </div>
         <ion-input [(ngModel)]="telefono" placeholder="Número telefónico" class="primary-input" type="tel" id="telefono"></ion-input>
       </div>
 
       <!-- Género -->
-      <div *ngIf="step === 5">
+      <div *ngIf="step === 6">
+        <div class="divlogo"></div>
+        <div class="titulo">
+          <h4><strong>Personaliza</strong> tu experiencia</h4>
+          <h3>¿Cómo te identificas?</h3>
+        </div>
         <ion-select [(ngModel)]="genero" placeholder="Género" class="primary-input" id="genero">
           <ion-select-option value="masculino">Masculino</ion-select-option>
           <ion-select-option value="femenino">Femenino</ion-select-option>
@@ -37,24 +65,35 @@
       </div>
 
       <!-- Campo de Fecha de Nacimiento -->
-      <div *ngIf="step === 6">
+      <div *ngIf="step === 7">
+        <div class="divlogo"></div>
+        <div class="titulo">
+          <h4>Para terminar, ¿cuál es tu <strong>fecha de nacimiento?</strong></h4>
+        </div>
         <ion-input [(ngModel)]="fechaNacimiento" placeholder="Fecha de nacimiento" class="primary-input" type="date" id="fechaNacimiento"></ion-input>
       </div>
 
       <!-- Campo de Foto de Perfil -->
-      <div *ngIf="step === 7">
-        <label class="custom-file-label">
-          Subir foto de perfil
-          <input type="file" (change)="onFileSelected($event)" accept="image/*" class="file-input" />
-        </label>
+      <div *ngIf="step === 8" class="foto-perfil-container">
+        <div class="divlogo"></div>
+        <div class="titulo">
+          <h4><strong>¡Estamos casi listos!</strong></h4>
+          <h3>Una foto para que podamos reconocerte</h3>
+        </div>
+        <div class="foto-circulo">
+          <label for="file-upload" class="upload-icon">
+            <input id="file-upload" type="file" (change)="onFileSelected($event)" accept="image/*" class="file-input" />
+            <ion-icon name="camera" class="camera-icon"></ion-icon> <!-- Icono de cámara -->
+          </label>
+        </div>
       </div>
     </div>
 
     <!-- Botones de navegación -->
     <div class="botonregister">
-      <ion-button *ngIf="step < 7" expand="block" (click)="nextStep()">Siguiente</ion-button>
-      <ion-button *ngIf="step > 1" expand="block" (click)="prevStep()">Anterior</ion-button>
-      <ion-button *ngIf="step === 7" expand="block" (click)="onRegister()" class="botonregistro">
+      <ion-button *ngIf="step > 1 && step !== 4" expand="block" (click)="prevStep()" class="botonregistro">Volver</ion-button>
+      <ion-button *ngIf="step < 8 && step !== 4" expand="block" (click)="nextStep()" class="botonregistro">Continuar</ion-button>
+      <ion-button *ngIf="step === 8" expand="block" (click)="onRegister()" class="botonregistro">
         Crear Cuenta
       </ion-button>
     </div>

@@ -14,12 +14,15 @@
     color: white;
     text-align: center;
     font-family: 'Montserrat', sans-serif;
+    top: 10px;
+    margin-top: -10px;
   }
   
   .titulo h4 {
     font-size: 2rem;
     color: #ffffff;
     margin: 0;
+    margin: 10px;
   }
   
   .titulo strong {
@@ -35,9 +38,9 @@
   }
   
   .primary-input {
-    --background: #ffffff10;
-    --color: white;
-    --placeholder-color: #ffffff99;
+    --background: #00000088;
+    --color: rgb(255, 255, 255);
+    --placeholder-color: #ffffff;
     --padding-start: 15px;
     border-radius: 20px;
     font-size: 1rem;
@@ -49,6 +52,9 @@
   }
   
   .botonregister {
+    display: flex;
+    justify-content: space-between; /* O usa gap para ajustar el espacio entre los botones */
+    gap: 10px;
     margin: 0 10%;
     margin-top: 2%;
   }
@@ -56,7 +62,7 @@
   .botonregister .botonregistro {
     --background: #0edb86;
     --color: #000000;
-    font-size: 1.2rem;
+    font-size: 1 rem;
     font-weight: bold;
     border-radius: 6px;
   }
@@ -85,6 +91,31 @@
     text-align: center;
     margin-top: 10px;
   }
+
+  .boton-centro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh; /* Centra el botón verticalmente en la mitad de la pantalla */
+  }
+  
+  .boton-centro #step4boton {
+    --background: #0edb86;
+    --color: #000000;
+    font-size: 1 rem;
+    font-weight: bold;
+    border-radius: 6px;
+  }
+
+  .boton-centro #step4boton:hover {
+    --background: #067547;
+    --color: #ffffff;
+  }
+
+  .boton-centro #step4boton:active {
+    --background: #000000;
+  }
+  
   
 
   
@@ -96,7 +127,7 @@
 
   @media (prefers-color-scheme: dark){
     .background-overlay {
-      background-color: rgba(0, 0, 0, 0.786);
+      background-color: rgba(0, 0, 0, 0.5);
     }
 
     .divlogo {
@@ -191,5 +222,126 @@
 
   }
 
-  // input estilo mensaje
+  // input estilo boton voler
+
+  .foto-perfil-container {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .divlogo img {
+    width: 150px; /* Ajusta el tamaño del logo */
+    margin-bottom: 20px;
+  }
+  
+  .titulo h3, .titulo h4 {
+    margin: 10px 0;
+    font-weight: normal;
+  }
+  
+  .foto-circulo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px 0;
+    position: relative;
+  }
+  
+  .upload-icon {
+    display: inline-block;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: 2px solid #ccc;
+    position: relative;
+  }
+  
+  .camera-icon {
+    font-size: 36px;
+    color: #555;
+  }
+  
+  input[type="file"] {
+    display: none;
+  }
+  
+  .botones {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .botonregistro {
+    --background: #0edb86;
+    --color: #000000;
+    font-weight: bold;
+    border-radius: 6px;
+  }
+  
+  .botonregistro:hover {
+    --background: #067547;
+    --color: #ffffff;
+  }
+  
+  .botonregistro:active {
+    --background: #000000;
+  }
+  
+  .boton-centro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+  }
+  
+  .boton-centro #step4boton {
+    --background: #0edb86;
+    --color: #000000;
+    font-size: 1 rem;
+    font-weight: bold;
+    border-radius: 6px;
+  }
+  
+  .boton-centro #step4boton:hover {
+    --background: #067547;
+    --color: #ffffff;
+  }
+  
+  .boton-centro #step4boton:active {
+    --background: #000000;
+  }
+  
+  .logo {
+    max-width: 150px;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  .upload-icon input {
+    opacity: 0;
+  }
+  
+  .all {
+    --background: url('/assets/fondoregistrodark.jpg') no-repeat center center / cover;
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    .background-overlay {
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+  }
+  
+  @media (prefers-color-scheme: light) {
+    .background-overlay {
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+  }
+  
+
   

@@ -134,19 +134,16 @@ ion-card {
   object-fit: cover;
 }
 
-/* Estilos de la barra de búsqueda */
+/*barra de búsqueda */
 .search-container {
   position: absolute;
   top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border-radius: 10px;
   padding: 20px;
   width: 80%;
   max-width: 800px;
   text-align: center;
-  background-color: rgba(255, 255, 255, 0.8);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .search-container input {

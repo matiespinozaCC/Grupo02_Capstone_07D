@@ -31,7 +31,7 @@ export class RegistroPage {
   }
 
   nextStep() {
-    if (this.step < 7) this.step++;
+    if (this.step < 8) this.step++;
   }
 
   prevStep() {
