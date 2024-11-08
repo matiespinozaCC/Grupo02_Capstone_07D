@@ -244,10 +244,10 @@ ion-card {
 
 .profile-image-container {
   position: absolute;
-  bottom: 50px; /* Posiciona la imagen de perfil justo encima del título */
+  bottom: 50px;
   left: 50%;
-  transform: translateX(-50%); /* Centra horizontalmente */
-  width: 70px; /* Tamaño de la imagen de perfil */
+  transform: translateX(-50%);
+  width: 70px;
   height: 70px;
   border-radius: 50%;
   overflow: hidden;
@@ -298,8 +298,7 @@ ion-card {
 }
 
 .sperfil,.slogout,.agregarpost {
-    --background: #ffffff;
-    --color: rgb(0, 0, 0);
+    --color: rgb(255, 255, 255);
 
     &:hover {
       --background: #067547;
@@ -326,11 +325,19 @@ ion-card {
     --color: rgb(0, 0, 0);
   }
 
-  .sperfil,
-  .slogout,
-  .agregarpost {
-  --color: rgb(0, 0, 0);
-}
+  .sperfil,.slogout,.agregarpost {
+    --background: #ffffff;
+    --color: rgb(0, 0, 0);
+
+    &:hover {
+      --background: #067547;
+      color: #ffffff;
+    }
+
+    &:active {
+      --background: #067547;
+    }
+  }
 
 .title-container {
   color: #ffffff;
