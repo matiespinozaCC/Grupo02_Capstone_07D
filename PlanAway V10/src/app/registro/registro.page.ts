@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 import { AuthService } from '../servicios/auth.service';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
@@ -9,7 +9,7 @@ import { ChangeDetectorRef } from '@angular/core';
   templateUrl: './registro.page.html',
   styleUrls: ['./registro.page.scss'],
 })
-export class RegistroPage {
+export class RegistroPage{
   email: string = '';
   contrasena: string = '';
   nombre: string = '';
@@ -27,17 +27,20 @@ export class RegistroPage {
   ) {}
 
 
+
+
+
   onFileSelected(event: any): void {
     const file = event.target.files[0];
     if (file) {
       const reader = new FileReader();
       reader.onload = (e: any) => {
-        this.profileImage = e.target.result; // Asigna la URL de la imagen seleccionada
-        console.log('Imagen seleccionada:', this.profileImage); // Verificar que se asigna correctamente
+        this.profileImage = e.target.result;
       };
       reader.readAsDataURL(file);
     }
   }
+  
   
 
   nextStep() {

@@ -1,6 +1,7 @@
 .all {
-    --background: url('/assets/fondoregistrodark.jpg') no-repeat center center / cover;
-  }
+  --background: url('/assets/fondoregistrodark.jpg') no-repeat center center / cover;
+  position: relative;
+}
   
   .background-overlay {
     height: 100%;
@@ -126,8 +127,9 @@
   }
 
   @media (prefers-color-scheme: dark){
-    .background-overlay {
-      background-color: rgba(0, 0, 0, 0.5);
+
+    .all {
+      background-image: url('/assets/fondoregistrodark.jpg');
     }
 
     .divlogo {
@@ -145,8 +147,10 @@
   }
   
   @media (prefers-color-scheme: light) {
-    .background-overlay {
-      background-color: rgba(0, 0, 0, 0.5);
+
+    .all {
+      --background: url('/assets/fondoregistro.jpg') no-repeat center center / cover;
+      position: relative;
     }
 
     .divlogo {
@@ -167,9 +171,9 @@
     }
 
     .file-input {
-      opacity: 0; /* Oculta el input */
+      opacity: 0; 
       position: absolute;
-      z-index: -1; /* Lo coloca detrás para que no interfiera */
+      z-index: -1;
   }
   
   .custom-file-label {
@@ -182,15 +186,6 @@
       font-size: 16px;
       text-align: center;
   }
-  
-  .custom-file-label:hover {
-      background-color: #0056b3; /* Cambia el color al hacer hover */
-  }
-  
-
-    .all {
-      --background: url('/assets/fondoregistro.jpg') no-repeat center center / cover;
-    }
     
 
     .titulo h4 {
@@ -361,22 +356,6 @@
   
   .upload-icon input {
     opacity: 0;
-  }
-  
-  .all {
-    --background: url('/assets/fondoregistrodark.jpg') no-repeat center center / cover;
-  }
-  
-  @media (prefers-color-scheme: dark) {
-    .background-overlay {
-      background-color: rgba(0, 0, 0, 0.5);
-    }
-  }
-  
-  @media (prefers-color-scheme: light) {
-    .background-overlay {
-      background-color: rgba(0, 0, 0, 0.5);
-    }
   }
   
 

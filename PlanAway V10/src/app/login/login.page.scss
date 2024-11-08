@@ -28,9 +28,6 @@
     text-align: center;
     margin-top: 0px;
     margin-bottom: 0;
-    .dark{
-        color: #4b4bff;
-    }  
 }
 
 ion-content{
@@ -146,22 +143,8 @@ ion-content{
     height: 30px;
   }
   
-  ion-icon {
-    font-size: 30px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    transition: opacity 0.3s ease;
-    opacity: 0;
-  }
+
   
-  ion-icon.icon-sun {
-    color: #ffd700;
-  }
-  
-  ion-icon.icon-moon {
-    color: #4b4bff;
-  }
   
   ion-icon.active {
     opacity: 1;
