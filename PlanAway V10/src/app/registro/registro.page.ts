@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AuthService } from '../servicios/auth.service';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-registro',
@@ -21,14 +22,23 @@ export class RegistroPage {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private cd: ChangeDetectorRef
   ) {}
 
 
-  onFileSelected(event: any) {
+  onFileSelected(event: any): void {
     const file = event.target.files[0];
-    this.profileImage = file ? file : null;
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.profileImage = e.target.result; // Asigna la URL de la imagen seleccionada
+        console.log('Imagen seleccionada:', this.profileImage); // Verificar que se asigna correctamente
+      };
+      reader.readAsDataURL(file);
+    }
   }
+  
 
   nextStep() {
     if (this.step < 8) this.step++;
