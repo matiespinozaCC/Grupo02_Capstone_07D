@@ -289,6 +289,20 @@ ion-card {
   margin-right: 10px;
 }
 
+.sperfil,.slogout,.agregarpost {
+    --background: #ffffff;
+    --color: rgb(0, 0, 0);
+
+    &:hover {
+      --background: #067547;
+      color: #ffffff;
+    }
+
+    &:active {
+      --background: #067547;
+    }
+  }
+
 @media (prefers-color-scheme: light) {
   .titulo {
     color: #000000;
@@ -303,4 +317,10 @@ ion-card {
     --background: #0edb86;
     --color: rgb(0, 0, 0);
   }
+
+  .sperfil,
+  .slogout,
+  .agregarpost {
+  --color: rgb(0, 0, 0);
+}
 }

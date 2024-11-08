@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../servicios/auth.service';
 import { Router } from '@angular/router';
-import { AlertController } from '@ionic/angular';  // Importamos AlertController
+import { AlertController } from '@ionic/angular';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -15,8 +16,19 @@ export class LoginPage {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private alertController: AlertController  // Inyectamos el AlertController
+    private alertController: AlertController,
+    private loadingController: LoadingController
   ) {}
+
+  // metodo para simular una carga
+  async presentLoading() {
+    const loading = await this.loadingController.create({
+      message: 'verificando...',
+      duration: 2000,
+      spinner: 'circles',
+    });
+    await loading.present();
+  }
 
   // Método para mostrar alerta de error
   async showAlert(header: string, message: string) {
@@ -34,6 +46,7 @@ export class LoginPage {
         console.log('Usuario:', user);
         this.email = '';
         this.contrasena = '';
+        this.presentLoading(); // aqui es para que se muestre la carga antes de authentificar
         this.router.navigate(['/home']);
       })
       .catch(error => {
