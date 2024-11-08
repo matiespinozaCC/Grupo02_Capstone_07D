@@ -24,36 +24,95 @@ ion-header {
   }
   
   ion-card-header {
-    background-color: #f9f9f9; /* Fondo del encabezado de la tarjeta */
+    background-color: #f9f9f9; 
     padding: 16px;
-    border-bottom: 1px solid #e0e0e0; /* Línea separadora */
+    border-bottom: 1px solid #e0e0e0; 
   }
   
   ion-card-title {
     font-size: 1.5rem;
-    color: #333; /* Color del título */
+    color: #333; 
     margin-bottom: 4px;
   }
   
   ion-card-subtitle {
     font-size: 0.9rem;
-    color: #666; /* Color de los subtítulos */
+    color: #666; 
   }
   
   .reserve-button {
     margin-top: 20px;
-    --background: #0edb86; /* Color del botón */
-    color: white; /* Color del texto del botón */
+    --background: #0edb86;
+    color: white; 
     font-weight: bold;
   }
   
   .reserve-button:hover {
-    background-color: #067547; /* Color del botón al pasar el mouse */
+    background-color: #067547; 
   }
   
   .reservation-message {
     margin-top: 10px;
-    color: #ff0000; /* Color del mensaje de reserva */
+    color: #ff0000;
     font-weight: bold;
-    text-align: center; /* Centrar el mensaje */
+    text-align: center;
   }
+
+  .post-card {
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+
+  .header-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 16px;
+    position: relative;
+  }
+  
+
+  .profile-image-large {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-left: auto;
+    margin-right: 16px;
+    border: 2px solid white;
+  }
+  
+  .profile-image-large img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  
+  .post-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  
+  .post-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-top: 16px;
+  }
+  
+ 
+  ion-card-content {
+    padding: 16px;
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .reserve-button {
+    margin-top: 16px;
+  }
+  

@@ -1,5 +1,8 @@
-<ion-content>
+<ion-content class="all">
   <ion-card *ngIf="post">
+    <div class="profile-image-container">
+      <img src="{{ post.profileImageUrl }}" alt="Imagen de perfil" class="profile-image">
+    </div>
     <ion-card-header>
       <ion-card-title>{{ post.title }}</ion-card-title>
     </ion-card-header>

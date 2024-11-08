@@ -12,14 +12,28 @@
 
 <ion-content>
   <ion-card *ngIf="post" class="post-card">
+    <!-- Contenedor superior para el perfil y el título -->
+    <div class="header-container">
+      <!-- Foto de perfil en la esquina superior derecha -->
+      <div class="profile-image-large">
+        <img src="{{ post.profileImageUrl }}" alt="Imagen de perfil" class="profile-image">
+      </div>
+      <!-- Título de la piscina al lado de la imagen de perfil -->
+      <ion-card-title class="post-title">{{ post.title }}</ion-card-title>
+    </div>
+
+    <!-- Imagen del lugar en el centro -->
     <img src="{{ post.imageUrl }}" alt="Imagen de publicación" class="post-image">
-    <ion-card-header>
-      <ion-card-title>{{ post.title }}</ion-card-title>
+
+    <!-- Sección de información -->
+    <ion-card-content>
       <ion-card-subtitle>Publicado por: {{ post.author }}</ion-card-subtitle>
       <ion-card-subtitle>Fecha: {{ post.createdAt.toDate().toLocaleString() }}</ion-card-subtitle>
       <ion-card-subtitle>Categoría: {{ post.category }}</ion-card-subtitle>
       <ion-card-subtitle>Descripción: {{ post.description }}</ion-card-subtitle>
-    </ion-card-header>
+    </ion-card-content>
+
+    <!-- Calendario de reserva -->
     <ion-card-content>
       <ion-item>
         <ion-label>Fecha de inicio</ion-label>
