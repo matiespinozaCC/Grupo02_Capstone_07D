@@ -55,7 +55,7 @@
 
       <div class="scroll-container">
         <div class="posts-grid">
-          <div *ngFor="let post of category.posts" class="post-item">
+          <div *ngFor="let post of category.posts" class="post-item" [routerLink]="['/post-detail', post.id]" (click)="goToPostDetail(post.id)">
             <ion-card class="card-background">
               <!-- Imagen de fondo de la publicación -->
               <img src="{{ post.imageUrl }}" alt="Imagen de fondo" class="post-background">
@@ -64,24 +64,14 @@
               <div class="profile-image-container">
                 <img src="{{ post.profileImageUrl }}" alt="Imagen de perfil" class="profile-image">
               </div>
-
-              <!-- Título de la publicación -->
+          
+              <!-- Título de la publicación (nombre del lugar) -->
               <div class="title-container">
                 <p>{{ post.title }}</p>
               </div>
-              
-              <ion-card-content>
-                <p>{{ post.description }}</p>
-                <p><strong>Publicado por: {{ post.author }}</strong></p>
-                <p>{{ post.createdAt.toDate().toLocaleString() }}</p>
-                <p><em>Categoría: {{ post.category }}</em></p>
-                <p><em>Precio: {{ post.price }}</em></p>
-                <ion-button [routerLink]="['/post-detail', post.id]" (click)="goToPostDetail(post.id)" class="botondetalle">
-                  Ver Detalles
-                </ion-button>
-              </ion-card-content>
             </ion-card>
           </div>
+          
         </div>
       </div>
     </div>
