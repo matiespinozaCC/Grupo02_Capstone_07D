@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Crear Post</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="onBack()">Volver</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="onCreatePost()">
+    <ion-item>
+      <ion-label position="floating">Título</ion-label>
+      <ion-input type="text" [(ngModel)]="title" name="title" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Descripción</ion-label>
+      <ion-input type="text" [(ngModel)]="description" name="description" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Categoría</ion-label>
+      <ion-select [(ngModel)]="category" name="category" required>
+        <ion-select-option *ngFor="let category of filteredCategories" [value]="category">{{ category }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Precio</ion-label>
+      <ion-input type="number" [(ngModel)]="price" name="price" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Capacidad</ion-label>
+      <ion-input type="number" [(ngModel)]="capacity" name="capacity" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Imagen de la propiedad</ion-label>
+      <input type="file" (change)="onImageSelected($event)" accept="image/*" />
+    </ion-item>
+    
+
+    <ion-button expand="full" type="submit">Crear Post</ion-button>
+
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+  </form>
+</ion-content>

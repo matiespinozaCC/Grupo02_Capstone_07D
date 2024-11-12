@@ -1,0 +1,362 @@
+.all {
+  --background: url('/assets/fondoregistrodark.jpg') no-repeat center center / cover;
+  position: relative;
+}
+  
+  .background-overlay {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .titulo {
+    color: white;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    top: 10px;
+    margin-top: -10px;
+  }
+  
+  .titulo h4 {
+    font-size: 2rem;
+    color: #ffffff;
+    margin: 0;
+    margin: 10px;
+  }
+  
+  .titulo strong {
+    color: #0edb86;
+  }
+  
+  .formulario {
+    margin: 0 10%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .primary-input {
+    --background: #00000088;
+    --color: rgb(255, 255, 255);
+    --placeholder-color: #ffffff;
+    --padding-start: 15px;
+    border-radius: 20px;
+    font-size: 1rem;
+  }
+  
+  .file-input {
+    color: white;
+    font-size: 0.9rem;
+  }
+  
+  .botonregister {
+    display: flex;
+    justify-content: space-between; /* O usa gap para ajustar el espacio entre los botones */
+    gap: 10px;
+    margin: 0 10%;
+    margin-top: 2%;
+  }
+  
+  .botonregister .botonregistro {
+    --background: #0edb86;
+    --color: #000000;
+    font-size: 1 rem;
+    font-weight: bold;
+    border-radius: 6px;
+  }
+  
+  .botonregister .botonregistro:hover {
+    --background: #067547;
+    --color: #ffffff;
+  }
+  
+  .botonregister .botonregistro:active {
+    --background: #000000;
+  }
+  
+  .yatengocuenta a {
+    color: #ffffffcc;
+    font-size: 1rem;
+    text-decoration: none;
+  }
+  
+  .yatengocuenta a strong {
+    color: #0edb86;
+  }
+  
+  .error-message {
+    color: red;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .boton-centro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh; /* Centra el botón verticalmente en la mitad de la pantalla */
+  }
+  
+  .boton-centro #step4boton {
+    --background: #0edb86;
+    --color: #000000;
+    font-size: 1 rem;
+    font-weight: bold;
+    border-radius: 6px;
+  }
+
+  .boton-centro #step4boton:hover {
+    --background: #067547;
+    --color: #ffffff;
+  }
+
+  .boton-centro #step4boton:active {
+    --background: #000000;
+  }
+  
+  
+
+  
+  .logo {
+    max-width: 150px; 
+    height: auto;
+    border-radius: 10px;
+  }
+
+  @media (prefers-color-scheme: dark){
+
+    .all {
+      background-image: url('/assets/fondoregistrodark.jpg');
+    }
+
+    .divlogo {
+      width: 150px;
+      height: 150px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto;
+      background-image: url('/assets/IMG_2214.PNG');
+      background-size: cover;
+      background-position: center;
+      border-radius: 10px;
+  }
+  }
+  
+  @media (prefers-color-scheme: light) {
+
+    .all {
+      --background: url('/assets/fondoregistro.jpg') no-repeat center center / cover;
+      position: relative;
+    }
+
+    .divlogo {
+      width: 150px;
+      height: 150px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto;
+      background-image: url('/assets/IMG_2215.PNG');
+      background-size: cover;
+      background-position: center;
+      border-radius: 10px;
+  }
+
+    .titulo strong {
+      color: #0edb86;
+    }
+
+    .file-input {
+      opacity: 0; 
+      position: absolute;
+      z-index: -1;
+  }
+  
+  .custom-file-label {
+      display: inline-block;
+      background-color: #007bff;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      text-align: center;
+  }
+    
+
+    .titulo h4 {
+      color: #dfd8d8;
+    }
+  
+    .primary-input {
+      --background: #c9c9c99a;
+      --color: #000000;
+      --placeholder-color: #000000;
+    }
+  
+    .file-input {
+      color: #000000;
+    }
+  
+    .botonregister .botonregistro {
+      --background: #0edb86;
+      --color: #ffffff;
+    }
+  
+    .yatengocuenta a {
+      color: #ffffff;
+    }
+  
+    .yatengocuenta a strong {
+      color: #0edb86;
+    }
+
+  }
+
+  // input estilo boton voler
+
+  .foto-perfil-container {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .divlogo img {
+    width: 150px; /* Ajusta el tamaño del logo */
+    margin-bottom: 20px;
+  }
+  
+  .titulo h3, .titulo h4 {
+    margin: 10px 0;
+    font-weight: normal;
+  }
+
+  .foto-perfil-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  
+  .foto-circulo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .foto-preview {
+    width: 150%;
+    height: 110%;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+  
+  .upload-icon {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    font-size: 24px;
+    color: #000;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 60%;
+  }
+  
+  .file-input {
+    display: none;
+  }
+  
+  
+  .upload-icon {
+    display: inline-block;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: 2px solid #ccc;
+    position: relative;
+  }
+  
+  .camera-icon {
+    font-size: 36px;
+    color: #555;
+  }
+  
+  input[type="file"] {
+    display: none;
+  }
+  
+  .botones {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .botonregistro {
+    --background: #0edb86;
+    --color: #000000;
+    font-weight: bold;
+    border-radius: 6px;
+  }
+  
+  .botonregistro:hover {
+    --background: #067547;
+    --color: #ffffff;
+  }
+  
+  .botonregistro:active {
+    --background: #000000;
+  }
+  
+  .boton-centro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+  }
+  
+  .boton-centro #step4boton {
+    --background: #0edb86;
+    --color: #000000;
+    font-size: 1 rem;
+    font-weight: bold;
+    border-radius: 6px;
+  }
+  
+  .boton-centro #step4boton:hover {
+    --background: #067547;
+    --color: #ffffff;
+  }
+  
+  .boton-centro #step4boton:active {
+    --background: #000000;
+  }
+  
+  .logo {
+    max-width: 150px;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  .upload-icon input {
+    opacity: 0;
+  }
+  
+
+  

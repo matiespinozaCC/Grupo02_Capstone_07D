@@ -1,0 +1,56 @@
+<ion-content [fullscreen]="true">
+  <ion-header [translucent]="true">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <ion-toolbar>
+    <div class="logo-container">
+      <div class="logo" aria-label="Logo de PlanAway"></div>
+      <ion-title class="titulo">PlanAway</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+
+  <div class="imagen-container">
+    <img src="/assets/fondologin.jpg" class="imagenhome" alt="Fondo">
+
+    
+    <h2 class="titulo-encima-imagen">¿Qué estás Buscando?</h2>
+
+    <div class="search-container">
+      <ion-item>
+        <ion-label>Buscar categoría:</ion-label>
+        <ion-searchbar [(ngModel)]="searchTerm" (ionInput)="filterPosts()" placeholder="Escribe para buscar..."></ion-searchbar>
+      </ion-item>
+    </div>
+  </div>
+
+  
+
+  <div id="categorias-section">
+    <div *ngFor="let category of filteredCategories" class="categorias">
+      <h2 class="NombreCategoria">{{ category.name }}s disponibles</h2>
+
+      <div class="scroll-container">
+        <div class="posts-grid">
+          <div *ngFor="let post of category.posts" class="post-item" [routerLink]="['/tabs/post-detail', post.id]" (click)="goToPostDetail(post.id)">
+            <ion-card class="card-background">
+              <!-- Imagen de fondo de la publicacion -->
+              <img src="{{ post.imageUrl }}" alt="Imagen de fondo" class="post-background">
+              
+              <!-- Imagen de perfil dentro de un circulo -->
+              <div class="profile-image-container">
+                <img src="{{ post.profileImageUrl }}" alt="Imagen de perfil" class="profile-image">
+              </div>
+          
+              <!-- Título de la publicación (nombre del lugar) -->
+              <div class="title-container">
+                <p>{{ post.title }}</p>
+              </div>
+            </ion-card>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

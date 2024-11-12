@@ -1,0 +1,31 @@
+.custom-tab-bar {
+    --background: #0a0b0b; /* Fondo blanco */
+    --color: #ffffff; /* Color de iconos y texto */
+    --color-selected: #0edb86; /* Color para el tab seleccionado */
+  }
+  
+  .custom-tab-bar ion-tab-button {
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  .custom-tab-bar ion-tab-button ion-label {
+    font-size: 0.8em; /* Tamaño de la fuente para el texto */
+  }
+  
+  .custom-tab-bar ion-tab-button[aria-selected="true"] {
+    color: var(--color-selected); /* Color al seleccionar una opción */
+  }
+
+@media (prefers-color-scheme: light) {
+  .custom-tab-bar {
+    --background: #ffffff;
+    --color: #000000;
+    --color-selected: #0edb86;
+  }
+
+  .titulo {
+    color: #000000;
+    font-size: 1.5rem;
+  }
+}
+

@@ -1,0 +1,223 @@
+:root {
+  --ion-font-family: 'Montserrat', sans-serif;
+}
+
+.perfil-content {
+  padding: 1rem;
+}
+
+.perfil-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-top: 10px;
+}
+
+.foto-circulo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #0edb86;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.foto-perfil {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.informacion-usuario {
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+.informacion-usuario h2 {
+  margin: 0;
+  font-size: 1.3em;
+  font-weight: 600;
+  color:  #0edb86;
+}
+
+.telefono {
+  font-size: 0.9em;
+  color: #666;
+}
+
+.descripcion {
+  font-size: 0.8em;
+  color: #888;
+  margin-top: 0.3rem;
+}
+
+.opciones-favoritas {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.opcion {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f7f7f7;
+  border-radius: 10px;
+  padding: 0.5rem;
+}
+
+.opcion-icon {
+  font-size: 1.5em;
+  color: #555;
+}
+
+.botones-acceso {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.boton-publicacion,
+.boton-mis-sitios,
+.boton-cerrar-sesion {
+  font-weight: bold;
+}
+
+.boton-cerrar-sesion {
+  --background: #e74c3c;
+  --background-hover: #c0392b;
+}
+
+.telefono {
+  font-size: 0.9em;
+  color: #666;
+  text-decoration: none; /* Eliminar subrayado */
+  cursor: pointer;
+}
+
+.telefono:hover {
+  color: #0edb86; /* Cambia el color al pasar el cursor */
+}
+
+  
+// publicaciones
+
+  // seccion publicaciones|
+
+  .publicacion-item {
+    --background: #FFFFFF; /* Fondo blanco para la tarjeta */
+    --ion-item-background: #FFFFFF;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  ion-thumbnail img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
+  ion-label h3 {
+    font-size: 1.1rem;
+    color: #0edb86; /* Color corporativo para el título */
+    margin: 0;
+  }
+  
+  ion-label p {
+    font-size: 0.9rem;
+    color: #666666; /* Gris oscuro para el texto de la descripción */
+    margin: 0.2rem 0;
+  }
+  
+  ion-label small {
+    font-size: 0.8rem;
+    color: #888888; /* Gris medio para el texto de la categoría */
+  }
+  
+  ion-button {
+    --background: #0edb86; /* Color corporativo en el fondo del botón */
+    --background-hover: #0ccf79; /* Tonalidad ligeramente más oscura para el hover */
+    --border-radius: 8px;
+    color: #ffffff; /* Texto blanco para buen contraste */
+    font-weight: bold;
+  }
+  
+
+///
+
+
+
+///
+
+
+@media (prefers-color-scheme: dark) {
+  .telefono {
+    font-size: 0.9em;
+    color: #0edb86;
+    text-decoration: none; /* Eliminar subrayado */
+    cursor: pointer;
+  }
+  
+  .telefono:hover {
+    color: #0edb86; /* Cambia el color al pasar el cursor */
+  }
+
+  .publicacion-item {
+    --background: #2b2b2b;
+    --ion-item-background: #2b2b2b;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
+  }
+  
+  .publicacion-item:hover {
+    transform: scale(1.02);
+  }
+  
+  ion-thumbnail img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
+  ion-label {
+    color: #ffffff;
+    font-size: 0.9rem;
+  }
+  
+  ion-label h3 {
+    font-size: 1.1rem;
+    color: #0edb86;
+    margin: 0;
+  }
+  
+  ion-label p {
+    font-size: 0.9rem;
+    color: #cccccc;
+    margin: 0.2rem 0;
+  }
+  
+  ion-label small {
+    font-size: 0.8rem;
+    color: #888888;
+  }
+  
+  ion-button {
+    --border-radius: 8px;
+    --background: #0edb86;
+    --background-hover: #0ccf79;
+    font-weight: bold;
+    color: #000000;
+  }
+  
+
+}

@@ -1,0 +1,37 @@
+<ion-content class="all">
+  <ion-card *ngIf="post">
+    <div class="profile-image-container">
+      <img src="{{ post.imageUrl }}" alt="Imagen de perfil" class="profile-image">
+    </div>
+    <ion-card-header>
+      <ion-card-title>{{ post.title }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>Descripción:</strong> {{ post.description }}</p>
+      <p><strong>Categoría:</strong> {{ post.category }}</p>
+      <p><strong>Autor:</strong> {{ post.author }}</p>
+      <p><strong>Precio:</strong> {{ post.price }}</p>
+      <p><strong>Capacidad:</strong> {{ post.capacity }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Botones de eliminar y modificar -->
+  <ion-button expand="block" color="danger" (click)="eliminarPost()">Eliminar</ion-button>
+  <ion-button expand="block" (click)="irModificar()">Modificar</ion-button>
+
+  <!-- Sección de reservas -->
+  <div class="reservas-section">
+    <h3>Reservas realizadas</h3>
+    <ion-list>
+      <ion-item *ngFor="let reserva of reservas">
+        <ion-label>
+          <h3>Reserva desde {{ reserva.fechaInicio.toDate().toLocaleString() }} hasta {{ reserva.fechaFin.toDate().toLocaleString() }}</h3>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+
+    <div *ngIf="reservas.length === 0" class="no-reservas">
+      <p>No hay reservas para esta publicación.</p>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,56 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Revisión de Publicaciones</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()">Cerrar sesión</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list *ngIf="pendingPosts.length > 0; else noPosts">
+    <ion-item-group>
+      <ion-item-divider>
+        <ion-label>Publicaciones Pendientes</ion-label>
+      </ion-item-divider>
+
+      <ion-item *ngFor="let post of pendingPosts">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>{{ post.title }}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <p>{{ post.description }}</p>
+            <p><strong>Publicado por: {{ post.author }}</strong></p>
+            <p>{{ post.createdAt.toDate().toLocaleString() }}</p>
+            <p><em>Categoría: {{ post.category }}</em></p>
+          </ion-card-content>
+
+          <ion-footer>
+            <ion-toolbar>
+              <!-- Botones de aceptar y eliminar -->
+              <ion-buttons slot="start">
+                <ion-button color="success" (click)="approvePost(post.id)">Aceptar</ion-button>
+                <ion-button color="danger" (click)="deletePost(post.id)">Eliminar</ion-button>
+              </ion-buttons>
+            </ion-toolbar>
+          </ion-footer>
+        </ion-card>
+      </ion-item>
+    </ion-item-group>
+  </ion-list>
+
+  <ng-template #noPosts>
+    <ion-item>
+      <ion-label>No hay publicaciones pendientes de revisión.</ion-label>
+    </ion-item>
+  </ng-template>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button routerLink="/tabs/home">Volver a Home</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
