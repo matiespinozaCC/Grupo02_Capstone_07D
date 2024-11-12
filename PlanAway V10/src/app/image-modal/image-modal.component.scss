@@ -1,0 +1,33 @@
+.image-modal-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.6); // Fondo semitransparente
+
+  .image-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%; // Imagen redonda
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white; // Fondo blanco detrás de la imagen
+
+    .full-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      cursor: pointer;
+    }
+  }
+
+  .close-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 10;
+    color: white;
+  }
+}

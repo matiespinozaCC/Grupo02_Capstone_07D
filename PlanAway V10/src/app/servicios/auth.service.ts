@@ -112,4 +112,23 @@ export class AuthService {
       throw error;
     }
   }
+
+  async uploadProfileImage(file: File): Promise<string> {
+    if (!this.currentUser) throw new Error('No hay un usuario autenticado');
+    const userId = this.currentUser.uid;
+    const imageRef = ref(this.storage, `profileImages/${userId}`);
+    
+    // Subir la imagen a Firebase Storage
+    await uploadBytes(imageRef, file);
+    
+    // Obtener la URL de descarga de la imagen subida
+    const profileImageUrl = await getDownloadURL(imageRef);
+  
+    // Actualizar la URL de la imagen en Firestore
+    const userDocRef = doc(this.firestore, 'usuarios', userId);
+    await updateDoc(userDocRef, { profileImageUrl });
+  
+    return profileImageUrl; // Retorna la URL actualizada de la imagen
+  }
+  
 }

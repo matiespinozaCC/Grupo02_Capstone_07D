@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { PostService } from '../servicios/post.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../servicios/auth.service';
+import { ModalController } from '@ionic/angular';
+import { ImageModalComponent } from '../image-modal/image-modal.component';
 
 @Component({
   selector: 'app-perfil',
@@ -21,14 +23,15 @@ export class PerfilPage implements OnInit {
   ];
 
   constructor(
-    private postService: PostService, 
-    private router: Router, 
-    private authService: AuthService
+    private postService: PostService,
+    private router: Router,
+    private authService: AuthService,
+    private modalController: ModalController // Importa el ModalController
   ) {}
 
   ngOnInit() {
     this.loadUserPosts();
-    this.loadUserProfile();  // Cargar el perfil del usuario
+    this.loadUserProfile();
   }
 
   async loadUserPosts() {
@@ -52,6 +55,27 @@ export class PerfilPage implements OnInit {
     }
   }
 
+  // Método para abrir el modal con la imagen ampliada
+  async openImageModal() {
+    const modal = await this.modalController.create({
+      component: ImageModalComponent,
+      componentProps: {
+        imageSrc: this.profileImage // Pasa la URL de la imagen al modal
+      },
+      cssClass: 'image-modal'
+    });
+  
+    modal.onDidDismiss().then((data) => {
+      const newImageUrl = data.data;
+      if (newImageUrl) {
+        this.profileImage = newImageUrl; // Actualiza la imagen de perfil en la vista de perfil
+      }
+    });
+  
+    await modal.present();
+  }
+  
+
   verDetalles(postId: string) {
     this.router.navigate(['/detalle-publicacion', postId]);
   }
@@ -61,4 +85,6 @@ export class PerfilPage implements OnInit {
       this.router.navigate(['/login']);
     });
   }
+
+  
 }

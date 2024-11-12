@@ -1,0 +1,7 @@
+<ion-content class="image-modal-content">
+  <div class="image-container">
+    <img [src]="imageSrc" alt="Foto de perfil ampliada" class="full-image" (click)="selectImageInput.click()" />
+    <input type="file" #selectImageInput (change)="changeProfileImage($event)" hidden />
+  </div>
+  <ion-button fill="clear" color="light" (click)="closeModal()" class="close-button">Cerrar</ion-button>
+</ion-content>

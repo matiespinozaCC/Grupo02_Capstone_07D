@@ -1,19 +1,12 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title class="perfil-titulo">Perfil</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true" class="perfil-content">
   <!-- Foto de perfil e información básica -->
   <div class="perfil-header">
-    <div class="foto-circulo">
+    <div class="foto-circulo" (click)="openImageModal()">
       <img [src]="profileImage" alt="Foto de perfil" class="foto-perfil" />
     </div>
     <div class="informacion-usuario">
       <h2>{{ nombre }}</h2>
-      <p class="telefono">{{ telefono }}</p>
-      <p class="descripcion">Opciones que te gustaron</p>
+      <p class="telefono">+56{{ telefono }}</p>
     </div>
   </div>
 
