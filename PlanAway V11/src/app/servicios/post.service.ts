@@ -5,16 +5,40 @@ import { app } from '../firebase-config'; // Configuración de Firebase
 import { AuthService } from './auth.service';
 import { doc, updateDoc, deleteDoc } from 'firebase/firestore';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { Storage } from '@ionic/storage-angular';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class PostService {
-  private db = getFirestore(app); // Usa getFirestore() en lugar de new Firestore()
+  private db = getFirestore(app);
   private storage = getStorage(app);
+  private readonly FAVORITES_KEY = 'favorite_posts';
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService) {}
+
+  // Alternar el estado de favorito
+  toggleFavorite(postId: string): void {
+    const favorites = JSON.parse(localStorage.getItem(this.FAVORITES_KEY) || '[]');
+    const index = favorites.indexOf(postId);
+
+    if (index > -1) {
+      // Si está en favoritos, lo removemos
+      favorites.splice(index, 1);
+    } else {
+      // Si no está en favoritos, lo añadimos
+      favorites.push(postId);
+    }
+
+    localStorage.setItem(this.FAVORITES_KEY, JSON.stringify(favorites));
+  }
+
+  // Obtener lista de IDs de favoritos
+  getFavoritePostIds(): string[] {
+    return JSON.parse(localStorage.getItem(this.FAVORITES_KEY) || '[]');
+  }
+
 
   // Crear un post
   async createPost(title: string, description: string, category: string, price: number, capacity: number,

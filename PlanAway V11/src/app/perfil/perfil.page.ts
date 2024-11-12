@@ -15,17 +15,18 @@ export class PerfilPage implements OnInit {
   nombre: string = '';
   telefono: string = '';
   profileImage: string = '';
+  favoritePostIds: string[] = [];
+  showFavoritesOnly = false;
 
   constructor(
     private postService: PostService,
     private router: Router,
     private authService: AuthService,
-    private modalController: ModalController // Importa el ModalController
+    private modalController: ModalController
   ) {}
 
-  ngOnInit() {
-    this.loadUserPosts();
-    this.loadUserProfile();
+  async ngOnInit() {
+    this.loadFavoritePostIds();
   }
 
   async loadUserPosts() {
@@ -34,6 +35,25 @@ export class PerfilPage implements OnInit {
     } catch (error) {
       console.error('Error al cargar las publicaciones del usuario:', error);
     }
+  }
+  
+  loadFavoritePostIds() {
+    this.favoritePostIds = this.postService.getFavoritePostIds();
+  }
+
+  toggleFavorite(postId: string) {
+    this.postService.toggleFavorite(postId);
+    this.loadFavoritePostIds(); // Actualiza los IDs de favoritos
+  }
+
+  isFavorite(postId: string): boolean {
+    return this.favoritePostIds.includes(postId);
+  }
+
+  get filteredPosts() {
+    return this.showFavoritesOnly
+      ? this.posts.filter(post => this.isFavorite(post.id))
+      : this.posts;
   }
 
   async loadUserProfile() {
@@ -49,26 +69,22 @@ export class PerfilPage implements OnInit {
     }
   }
 
-  // Metodo para abrir el modal con la imagen ampliada
   async openImageModal() {
     const modal = await this.modalController.create({
       component: ImageModalComponent,
-      componentProps: {
-        imageSrc: this.profileImage
-      },
+      componentProps: { imageSrc: this.profileImage },
       cssClass: 'image-modal'
     });
-  
+
     modal.onDidDismiss().then((data) => {
       const newImageUrl = data.data;
       if (newImageUrl) {
-        this.profileImage = newImageUrl; // Actualiza la imagen de perfil en la vista de perfil
+        this.profileImage = newImageUrl;
       }
     });
-  
+
     await modal.present();
   }
-  
 
   verDetalles(postId: string) {
     this.router.navigate(['/detalle-publicacion', postId]);
@@ -79,6 +95,4 @@ export class PerfilPage implements OnInit {
       this.router.navigate(['/login']);
     });
   }
-
-  
 }
