@@ -66,14 +66,6 @@ const routes: Routes = [
     loadChildren: () => import('./modificar-publicacion/modificar-publicacion.module').then( m => m.ModificarPublicacionPageModule),
     canActivate: [AuthGuard]
   },
-  {
-    path: 'tabs',
-    loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule)
-  },
-
-
-
-
 ];
 
 @NgModule({
