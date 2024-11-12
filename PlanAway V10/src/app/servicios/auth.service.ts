@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged, browserLocalPersistence, setPersistence, User } from 'firebase/auth';
-import { Firestore, getFirestore, doc, setDoc, updateDoc, increment } from 'firebase/firestore';
+import { Firestore, getFirestore, doc, setDoc, updateDoc, increment, getDoc } from 'firebase/firestore';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { app } from '../firebase-config'; // Importa tu instancia de Firebase
 
@@ -90,5 +90,26 @@ export class AuthService {
     return this.auth.signOut().then(() => {
       this.currentUser = null; // Limpiar el usuario actual al cerrar sesión
     });
+  }
+
+  // Método para obtener el perfil del usuario actual desde Firestore
+  async getUserProfile(): Promise<any> {
+    try {
+      if (this.currentUser) {
+        const userDoc = await getDoc(doc(this.firestore, 'usuarios', this.currentUser.uid));
+        if (userDoc.exists()) {
+          return userDoc.data(); // Retorna los datos del usuario
+        } else {
+          console.error('No se encontró el perfil del usuario');
+          return null;
+        }
+      } else {
+        console.error('No hay usuario autenticado');
+        return null;
+      }
+    } catch (error) {
+      console.error('Error al obtener el perfil del usuario:', error);
+      throw error;
+    }
   }
 }

@@ -36,7 +36,7 @@
   <div class="imagen-container">
     <img src="/assets/fondologin.jpg" class="imagenhome" alt="Fondo">
 
-    <!-- Título encima de la imagen -->
+    
     <h2 class="titulo-encima-imagen">¿Qué estás Buscando?</h2>
 
     <div class="search-container">
@@ -57,10 +57,10 @@
         <div class="posts-grid">
           <div *ngFor="let post of category.posts" class="post-item" [routerLink]="['/post-detail', post.id]" (click)="goToPostDetail(post.id)">
             <ion-card class="card-background">
-              <!-- Imagen de fondo de la publicación -->
+              <!-- Imagen de fondo de la publicacion -->
               <img src="{{ post.imageUrl }}" alt="Imagen de fondo" class="post-background">
               
-              <!-- Imagen de perfil dentro de un círculo -->
+              <!-- Imagen de perfil dentro de un circulo -->
               <div class="profile-image-container">
                 <img src="{{ post.profileImageUrl }}" alt="Imagen de perfil" class="profile-image">
               </div>

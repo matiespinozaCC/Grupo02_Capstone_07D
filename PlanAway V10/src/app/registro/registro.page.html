@@ -40,7 +40,7 @@
         </div>
       </div>
 
-      <!-- Teléfono -->
+      <!-- Telefono -->
       <div *ngIf="step === 5">
         <div class="divlogo"></div>
         <div class="titulo">
@@ -50,7 +50,7 @@
         <ion-input [(ngModel)]="telefono" placeholder="Número telefónico" class="primary-input" type="tel" id="telefono"></ion-input>
       </div>
 
-      <!-- Género -->
+      <!-- Genero -->
       <div *ngIf="step === 6">
         <div class="divlogo"></div>
         <div class="titulo">
@@ -88,7 +88,7 @@
           <label for="file-upload" class="upload-icon">
             <input id="file-upload" type="file" (change)="onFileSelected($event)" accept="image/*" class="file-input" />
             <img *ngIf="profileImage" [src]="profileImage" class="foto-preview" alt="Foto de perfil seleccionada" />
-            <ion-icon name="camera" class="camera-icon"></ion-icon> <!-- Icono de cámara -->
+            <ion-icon name="camera" class="camera-icon"></ion-icon>
           </label>
         </div>
       </div>

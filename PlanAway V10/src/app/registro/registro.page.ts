@@ -63,6 +63,7 @@ export class RegistroPage{
     this.telefono = '';
     this.genero = '';
     this.fechaNacimiento = '';
+    this.profileImage = null;
   }
 
   async onRegister() {

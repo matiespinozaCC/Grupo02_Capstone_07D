@@ -1,4 +1,3 @@
-// perfil.page.ts
 import { Component, OnInit } from '@angular/core';
 import { PostService } from '../servicios/post.service';
 import { Router } from '@angular/router';
@@ -10,28 +9,51 @@ import { AuthService } from '../servicios/auth.service';
   styleUrls: ['./perfil.page.scss'],
 })
 export class PerfilPage implements OnInit {
-  posts: any[] = []; // Aquí guardaremos los posts del usuario
+  posts: any[] = [];
+  nombre: string = '';
+  telefono: string = '';
+  profileImage: string = '';
+  opciones = [
+    { icon: 'sunny' },
+    { icon: 'water' },
+    { icon: 'leaf' },
+    { icon: 'trail-sign' },
+  ];
 
-  constructor(private postService: PostService, private router: Router, private authService: AuthService) { }
+  constructor(
+    private postService: PostService, 
+    private router: Router, 
+    private authService: AuthService
+  ) {}
 
   ngOnInit() {
     this.loadUserPosts();
+    this.loadUserProfile();  // Cargar el perfil del usuario
   }
 
   async loadUserPosts() {
     try {
-      this.posts = await this.postService.getPostsByUser(); // Cargar posts del usuario
+      this.posts = await this.postService.getPostsByUser();
     } catch (error) {
       console.error('Error al cargar las publicaciones del usuario:', error);
     }
   }
 
-  verDetalles(postId: string) {
-    this.router.navigate(['/detalle-publicacion', postId]);
+  async loadUserProfile() {
+    try {
+      const profile = await this.authService.getUserProfile();
+      if (profile) {
+        this.nombre = profile.nombre || 'Nombre no especificado';
+        this.telefono = profile.telefono || 'Teléfono no especificado';
+        this.profileImage = profile.profileImageUrl || 'ruta/por/defecto/de/imagen.png';
+      }
+    } catch (error) {
+      console.error('Error al cargar el perfil del usuario:', error);
+    }
   }
 
-  goToPostDetail(postId: string) {
-    console.log('Navigating to post with ID:', postId); // Log para verificar el ID
+  verDetalles(postId: string) {
+    this.router.navigate(['/detalle-publicacion', postId]);
   }
 
   logout() {

@@ -1,34 +1,46 @@
-  <ion-header [translucent]="true">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+<ion-header [translucent]="true">
   <ion-toolbar>
-    <div class="logo-container">
-      <ion-button routerLink="/home" fill="clear">
-        <ion-icon name="arrow-back"></ion-icon>
-        Volver
-      </ion-button>
-      <div class="logo" aria-label="Logo de PlanAway"></div>
-      <ion-title class="titulo">PlanAway</ion-title>
-    </div>
+    <ion-title class="perfil-titulo">Perfil</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <div class="perfil-info">
-    <h2>Mis Publicaciones</h2>
+<ion-content [fullscreen]="true" class="perfil-content">
+  <!-- Foto de perfil e información básica -->
+  <div class="perfil-header">
+    <div class="foto-circulo">
+      <img [src]="profileImage" alt="Foto de perfil" class="foto-perfil" />
+    </div>
+    <div class="informacion-usuario">
+      <h2>{{ nombre }}</h2>
+      <p class="telefono">{{ telefono }}</p>
+      <p class="descripcion">Opciones que te gustaron</p>
+    </div>
   </div>
 
-  <ion-list>
-    <ion-item *ngFor="let post of posts">
-      <ion-label>
-        <h3>{{ post.title }}</h3>
-        <p>{{ post.description }}</p>
-        <small>Categoría: {{ post.category }}</small>
-        <ion-button (click)="verDetalles(post.id)">Ver detalles</ion-button>
-      </ion-label>
-    </ion-item>
-  </ion-list>
+  <!-- Sección de opciones favoritas -->
+  <div class="opciones-favoritas">
+    <div class="opcion" *ngFor="let opcion of opciones">
+      <ion-icon [name]="opcion.icon" class="opcion-icon"></ion-icon>
+    </div>
+  </div>
 
-  <div *ngIf="posts.length === 0" class="no-posts">
-    <p>No has realizado publicaciones aún.</p>
+  <!-- Botones de acceso rápido -->
+  <div class="botones-acceso">
+    <ion-button expand="block" class="boton-publicacion">Sube una Publicación</ion-button>
+    <ion-button expand="block" class="boton-mis-sitios">Mis Sitios</ion-button>
+
+    <!-- Publicaciones -->
+    <ion-list>
+      <ion-item *ngFor="let post of posts">
+        <ion-label>
+          <h3>{{ post.title }}</h3>
+          <p>{{ post.description }}</p>
+          <small>Categoría: {{ post.category }}</small>
+          <ion-button (click)="verDetalles(post.id)">Ver detalles</ion-button>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+
+    <ion-button expand="block" color="danger" (click)="logout()" class="boton-cerrar-sesion">Cerrar Sesión</ion-button>
   </div>
 </ion-content>
