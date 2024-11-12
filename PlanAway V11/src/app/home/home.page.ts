@@ -61,7 +61,7 @@ export class HomePage implements OnInit {
 
   logout() {
     this.authService.logout().then(() => {
-      this.router.navigate(['tabs/login']);
+      this.router.navigate(['/login']);
     });
   }
 }

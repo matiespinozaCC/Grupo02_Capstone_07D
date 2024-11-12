@@ -104,53 +104,6 @@
   color: #0edb86; /* Cambia el color al pasar el cursor */
 }
 
-// publicaciones
-
-  // seccion publicaciones|
-
-  .publicacion-item {
-    --background: #FFFFFF; /* Fondo blanco para la tarjeta */
-    --ion-item-background: #FFFFFF;
-    border-radius: 12px;
-    margin-bottom: 1rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  ion-thumbnail img {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    border-radius: 8px;
-  }
-  
-  ion-label h3 {
-    font-size: 1.1rem;
-    color: #0edb86; /* Color corporativo para el título */
-    margin: 0;
-  }
-  
-  ion-label p {
-    font-size: 0.9rem;
-    color: #666666; /* Gris oscuro para el texto de la descripción */
-    margin: 0.2rem 0;
-  }
-  
-  ion-label small {
-    font-size: 0.8rem;
-    color: #888888; /* Gris medio para el texto de la categoría */
-  }
-  
-  ion-button {
-    --background: #0edb86; /* Color corporativo en el fondo del botón */
-    --background-hover: #0ccf79; /* Tonalidad ligeramente más oscura para el hover */
-    --border-radius: 8px;
-    color: #ffffff; /* Texto blanco para buen contraste */
-    font-weight: bold;
-  }
-  
-
-///
-
 @media (prefers-color-scheme: dark) {
   .telefono {
     font-size: 0.9em;
@@ -162,60 +115,6 @@
   .telefono:hover {
     color: #0edb86; /* Cambia el color al pasar el cursor */
   }
-
-  .publicacion-item {
-    --background: #2b2b2b;
-    --ion-item-background: #2b2b2b;
-    border-radius: 12px;
-    margin-bottom: 1rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.2s;
-  }
   
-  .publicacion-item:hover {
-    transform: scale(1.02);
-  }
-  
-  ion-thumbnail img {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    border-radius: 8px;
-  }
-  
-  ion-label {
-    color: #ffffff;
-    font-size: 0.9rem;
-  }
-  
-  ion-label h3 {
-    font-size: 1.1rem;
-    color: #0edb86;
-    margin: 0;
-  }
-  
-  ion-label p {
-    font-size: 0.9rem;
-    color: #cccccc;
-    margin: 0.2rem 0;
-  }
-  
-  ion-label small {
-    font-size: 0.8rem;
-    color: #888888;
-  }
-  
-  ion-button {
-    --border-radius: 8px;
-    --background: #0edb86;
-    --background-hover: #0ccf79;
-    font-weight: bold;
-    color: #000000;
-  }
-  
-
-}
-
-@media (prefers-color-scheme: claro){
 
 }

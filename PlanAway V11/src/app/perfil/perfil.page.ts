@@ -15,8 +15,6 @@ export class PerfilPage implements OnInit {
   nombre: string = '';
   telefono: string = '';
   profileImage: string = '';
-  favoritePostIds: string[] = [];
-  showFavoritesOnly = false;
 
   constructor(
     private postService: PostService,
@@ -69,10 +67,14 @@ export class PerfilPage implements OnInit {
     }
   }
 
+
+  // Método para abrir el modal con la imagen ampliada
   async openImageModal() {
     const modal = await this.modalController.create({
       component: ImageModalComponent,
-      componentProps: { imageSrc: this.profileImage },
+      componentProps: {
+        imageSrc: this.profileImage // Pasa la URL de la imagen al modal
+      },
       cssClass: 'image-modal'
     });
 

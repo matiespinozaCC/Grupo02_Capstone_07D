@@ -47,7 +47,7 @@ export class LoginPage {
         this.email = '';
         this.contrasena = '';
         this.presentLoading(); // aqui es para que se muestre la carga antes de authentificar
-        this.router.navigate(['tabs/home']);
+        this.router.navigate(['/home']);
       })
       .catch(error => {
         console.error('Error al iniciar sesión:', error);
