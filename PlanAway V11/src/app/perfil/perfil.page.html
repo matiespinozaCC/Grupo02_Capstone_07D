@@ -1,0 +1,39 @@
+<ion-content [fullscreen]="true" class="perfil-content">
+  <!-- Foto de perfil e información básica -->
+  <div class="perfil-header">
+    <div class="foto-circulo" (click)="openImageModal()">
+      <img [src]="profileImage" alt="Foto de perfil" class="foto-perfil" />
+    </div>
+    <div class="informacion-usuario">
+      <h2>{{ nombre }}</h2>
+      <a [href]="'tel:+56' + telefono" class="telefono">+56{{ telefono }}</a>
+    </div>
+  </div>
+
+  <!-- Sección de opciones favoritas -->
+  <div class="opciones-favoritas">
+    <div class="opcion" *ngFor="let opcion of opciones">
+      <ion-icon [name]="opcion.icon" class="opcion-icon"></ion-icon>
+    </div>
+  </div>
+
+  <!-- Botones de acceso rápido -->
+  <div class="botones-acceso">
+    <ion-button expand="block" class="boton-publicacion">Sube una Publicación</ion-button>
+    <ion-button expand="block" class="boton-mis-sitios">Mis Sitios</ion-button>
+
+    <!-- Publicaciones -->
+    <ion-list>
+      <ion-item *ngFor="let post of posts">
+        <ion-label>
+          <h3>{{ post.title }}</h3>
+          <p>{{ post.description }}</p>
+          <small>Categoría: {{ post.category }}</small>
+          <ion-button (click)="verDetalles(post.id)">Ver detalles</ion-button>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+
+    <ion-button expand="block" color="danger" (click)="logout()" class="boton-cerrar-sesion">Cerrar Sesión</ion-button>
+  </div>
+</ion-content>

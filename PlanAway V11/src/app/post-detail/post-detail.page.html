@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-buttons slot="start">
+      <ion-button (click)="onBack()" fill="clear">
+        <ion-icon name="arrow-back"></ion-icon>
+        Volver
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{ post?.title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngIf="post" class="post-card">
+    <!-- Contenedor superior para el perfil y el título -->
+    <div class="header-container">
+      <!-- Foto de perfil en la esquina superior derecha -->
+      <div class="profile-image-large">
+        <img src="{{ post.profileImageUrl }}" alt="Imagen de perfil" class="profile-image">
+      </div>
+      <!-- Título de la piscina al lado de la imagen de perfil -->
+      <ion-card-title class="post-title">{{ post.title }}</ion-card-title>
+    </div>
+
+    <!-- Imagen del lugar en el centro -->
+    <img src="{{ post.imageUrl }}" alt="Imagen de publicación" class="post-image">
+
+    <!-- Sección de información -->
+    <ion-card-content>
+      <ion-card-subtitle>Publicado por: {{ post.author }}</ion-card-subtitle>
+      <ion-card-subtitle>Fecha: {{ post.createdAt.toDate().toLocaleString() }}</ion-card-subtitle>
+      <ion-card-subtitle>Categoría: {{ post.category }}</ion-card-subtitle>
+      <ion-card-subtitle>Descripción: {{ post.description }}</ion-card-subtitle>
+    </ion-card-content>
+
+    <!-- Calendario de reserva -->
+    <ion-card-content>
+      <ion-item>
+        <ion-label>Fecha de inicio</ion-label>
+        <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="fechaInicio"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label>Fecha de fin</ion-label>
+        <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="fechaFin"></ion-datetime>
+      </ion-item>
+      <ion-button expand="full" (click)="reservar()" class="reserve-button">Reservar</ion-button>
+      <div id="paypal-button-container"></div>
+      <div *ngIf="reservaMensaje" class="reservation-message">{{ reservaMensaje }}</div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
