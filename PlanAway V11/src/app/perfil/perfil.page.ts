@@ -15,12 +15,6 @@ export class PerfilPage implements OnInit {
   nombre: string = '';
   telefono: string = '';
   profileImage: string = '';
-  opciones = [
-    { icon: 'sunny' },
-    { icon: 'water' },
-    { icon: 'leaf' },
-    { icon: 'trail-sign' },
-  ];
 
   constructor(
     private postService: PostService,
@@ -55,12 +49,12 @@ export class PerfilPage implements OnInit {
     }
   }
 
-  // Método para abrir el modal con la imagen ampliada
+  // Metodo para abrir el modal con la imagen ampliada
   async openImageModal() {
     const modal = await this.modalController.create({
       component: ImageModalComponent,
       componentProps: {
-        imageSrc: this.profileImage // Pasa la URL de la imagen al modal
+        imageSrc: this.profileImage
       },
       cssClass: 'image-modal'
     });

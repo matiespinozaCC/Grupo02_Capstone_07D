@@ -57,15 +57,23 @@ export class CrearpostPage {
       this.errorMessage = 'Todos los campos son obligatorios';
       return;
     }
-
+  
     if (this.price === null || this.price <= 0) {
       this.errorMessage = 'El precio debe ser un valor positivo';
       return;
     }
-
+  
     try {
-      await this.postService.createPost(this.title, this.description, this.category, this.price, this.capacity, this.imageFile);
-      this.router.navigate(['/home']); // Redirigir a la lista de posts
+      // Llamada al servicio con isFavorite configurado como false por defecto
+      await this.postService.createPost(
+        this.title,
+        this.description,
+        this.category,
+        this.price,
+        this.capacity,
+        this.imageFile,
+      );
+      this.router.navigate(['tabs/home']); // Redirigir a la lista de posts
     } catch (error: unknown) {
       if (error instanceof Error) {
         this.errorMessage = 'Error al crear el post: ' + error.message;
@@ -74,4 +82,4 @@ export class CrearpostPage {
       }
     }
   }
-}
+ }

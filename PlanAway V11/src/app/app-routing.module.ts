@@ -16,13 +16,13 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    loadChildren: () => import('./login/login.module').then(m => m.LoginPageModule),
-    canActivate: [AuthReverseGuard]
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule),
+    canActivate: [AuthReverseGuard] // Impedir acceso si ya está autenticado
   },
   {
     path: 'registro',
-    loadChildren: () => import('./registro/registro.module').then(m => m.RegistroPageModule),
-    canActivate: [AuthReverseGuard]
+    loadChildren: () => import('./registro/registro.module').then( m => m.RegistroPageModule),
+    canActivate: [AuthReverseGuard] // Impedir acceso si ya está autenticado
   },
   {
     path: 'crearpost',
