@@ -2,13 +2,6 @@
   --ion-font-family: 'Montserrat', sans-serif;
 }
 
-.perfil-titulo {
-  font-weight: bold;
-  font-size: 1.5em;
-  text-align: center;
-  color: #333;
-}
-
 .perfil-content {
   padding: 1rem;
 }
@@ -18,6 +11,7 @@
   flex-direction: column;
   align-items: center;
   margin-bottom: 1.5rem;
+  padding-top: 10px;
 }
 
 .foto-circulo {
@@ -25,7 +19,7 @@
   height: 120px;
   border-radius: 50%;
   overflow: hidden;
-  border: 2px solid #ddd;
+  border: 2px solid #0edb86;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -46,7 +40,7 @@
   margin: 0;
   font-size: 1.3em;
   font-weight: 600;
-  color: #222;
+  color:  #0edb86;
 }
 
 .telefono {
@@ -99,4 +93,28 @@
   --background-hover: #c0392b;
 }
 
+.telefono {
+  font-size: 0.9em;
+  color: #666;
+  text-decoration: none; /* Eliminar subrayado */
+  cursor: pointer;
+}
 
+.telefono:hover {
+  color: #0edb86; /* Cambia el color al pasar el cursor */
+}
+
+@media (prefers-color-scheme: dark) {
+  .telefono {
+    font-size: 0.9em;
+    color: #0edb86;
+    text-decoration: none; /* Eliminar subrayado */
+    cursor: pointer;
+  }
+  
+  .telefono:hover {
+    color: #0edb86; /* Cambia el color al pasar el cursor */
+  }
+  
+
+}

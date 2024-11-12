@@ -6,7 +6,7 @@
     </div>
     <div class="informacion-usuario">
       <h2>{{ nombre }}</h2>
-      <p class="telefono">+56{{ telefono }}</p>
+      <a [href]="'tel:+56' + telefono" class="telefono">+56{{ telefono }}</a>
     </div>
   </div>
 
