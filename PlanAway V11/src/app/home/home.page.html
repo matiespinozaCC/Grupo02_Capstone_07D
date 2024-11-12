@@ -32,7 +32,7 @@
 
       <div class="scroll-container">
         <div class="posts-grid">
-          <div *ngFor="let post of category.posts" class="post-item" [routerLink]="['/post-detail', post.id]" (click)="goToPostDetail(post.id)">
+          <div *ngFor="let post of category.posts" class="post-item" [routerLink]="['/tabs/post-detail', post.id]" (click)="goToPostDetail(post.id)">
             <ion-card class="card-background">
               <!-- Imagen de fondo de la publicacion -->
               <img src="{{ post.imageUrl }}" alt="Imagen de fondo" class="post-background">

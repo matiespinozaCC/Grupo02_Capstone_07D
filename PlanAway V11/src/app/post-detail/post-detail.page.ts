@@ -97,6 +97,6 @@ export class PostDetailPage implements OnInit {
   }
 
   onBack() {
-    this.router.navigate(['/home']); // Ajusta la ruta según sea necesario
+    this.router.navigate(['tabs/home']); // Ajusta la ruta según sea necesario
   }
 }

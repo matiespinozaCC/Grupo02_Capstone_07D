@@ -30,7 +30,7 @@ export class CrearpostPage {
   constructor(private postService: PostService, private router: Router) {}
 
   onBack() {
-    this.router.navigate(['/home']); // Ajusta la ruta según sea necesario
+    this.router.navigate(['tabs/home']); // Ajusta la ruta según sea necesario
   }
 
   // Método para filtrar categorías
