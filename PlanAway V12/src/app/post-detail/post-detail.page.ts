@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PostService } from '../servicios/post.service';
 import { Router } from '@angular/router';
-import { AuthService } from '../servicios/auth.service'; // Asegúrate de importar tu AuthService
-import { PayPalService } from '../servicios/paypal.service'; // Importa tu servicio de PayPal
+import { AuthService } from '../servicios/auth.service';
+import { PayPalService } from '../servicios/paypal.service';
 
 @Component({
   selector: 'app-post-detail',
@@ -11,18 +11,18 @@ import { PayPalService } from '../servicios/paypal.service'; // Importa tu servi
   styleUrls: ['./post-detail.page.scss'],
 })
 export class PostDetailPage implements OnInit {
-  post: any; // Propiedad para almacenar el post
-  loading: boolean = true; // Estado de carga
-  fechaInicio: string | undefined; // Fecha de inicio de la reserva
-  fechaFin: string | undefined; // Fecha de fin de la reserva
-  reservaMensaje: string = ''; // Mensaje de estado de reserva
+  post: any;
+  loading: boolean = true;
+  fechaInicio: string | undefined;
+  fechaFin: string | undefined;
+  reservaMensaje: string = '';
 
   constructor(
     private route: ActivatedRoute,
     private postService: PostService,
     private router: Router,
-    private authService: AuthService, // Inyectar AuthService
-    private paypalService: PayPalService // Inyecta tu servicio de PayPal
+    private authService: AuthService,
+    private paypalService: PayPalService
   ) { }
 
   async ngOnInit() {

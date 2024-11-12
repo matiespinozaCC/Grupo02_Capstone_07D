@@ -1,118 +1,227 @@
-ion-header {
-    background-color: #0edb86; /* Color del encabezado */
-    color: white; /* Color del texto del encabezado */
-  }
-  
-  ion-toolbar {
-    --background: #0edb86; /* Color de fondo del toolbar */
-  }
-  
-  .post-card {
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    margin: 16px;
-    max-width: 600px; /* Limitar el ancho de la tarjeta */
-    margin: auto; /* Centrar la tarjeta */
-  }
-  
-  .post-image {
-    width: 100%; /* Asegurarse de que la imagen ocupe todo el ancho del contenedor */
-    height: auto; /* Mantener la proporción de la imagen */
-    max-height: 300px; /* Limitar la altura máxima de la imagen */
-    object-fit: cover; /* Asegurarse de que la imagen cubra el contenedor sin distorsionarse */
-  }
-  
-  ion-card-header {
-    background-color: #f9f9f9; 
-    padding: 16px;
-    border-bottom: 1px solid #e0e0e0; 
-  }
-  
-  ion-card-title {
-    font-size: 1.5rem;
-    color: #333; 
-    margin-bottom: 4px;
-  }
-  
-  ion-card-subtitle {
-    font-size: 0.9rem;
-    color: #666; 
-  }
-  
-  .reserve-button {
-    margin-top: 20px;
-    --background: #0edb86;
-    color: white; 
-    font-weight: bold;
-  }
-  
-  .reserve-button:hover {
-    background-color: #067547; 
-  }
-  
-  .reservation-message {
-    margin-top: 10px;
-    color: #ff0000;
-    font-weight: bold;
-    text-align: center;
-  }
+.post-card {
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
 
-  .post-card {
-    border-radius: 8px;
-    overflow: hidden;
-  }
-  
+.post-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
 
-  .header-container {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 16px;
-    position: relative;
-  }
-  
+.post-title {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #0edb86;
+  margin: 0.5rem 0;
+}
 
-  .profile-image-large {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    overflow: hidden;
-    margin-left: auto;
-    margin-right: 16px;
-    border: 2px solid white;
-  }
-  
-  .profile-image-large img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  
-  .post-title {
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
-    font-family: 'Montserrat', sans-serif;
-  }
-  
-  
-  .post-image {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin-top: 16px;
-  }
-  
- 
-  ion-card-content {
-    padding: 16px;
-    font-size: 14px;
-    color: #555;
-  }
-  
-  .reserve-button {
-    margin-top: 16px;
-  }
-  
+.post-location,
+.post-details {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0.2rem 0;
+}
+
+.ratings {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  color: #666;
+}
+
+.rating-icon {
+  color: #ff385c;
+  margin-right: 0.2rem;
+}
+
+.rating-score {
+  font-weight: bold;
+  color: #333;
+}
+
+.rating-count {
+  color: #666;
+  margin-left: 0.5rem;
+}
+
+.reservation-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-top: 1px solid #eaeaea;
+  background-color: #fff;
+}
+
+.price-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.price {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.reserve-button {
+  background-color: #ff385c;
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+  margin-top: 0.5rem;
+}
+
+.capacity-icon {
+  margin-right: 4px;
+  vertical-align: middle;
+  color: #666;
+  font-size: 1rem; /* Ajusta el tamaño según tus preferencias */
+}
+
+//iconos de categoria
+
+.capacity-icon {
+  margin-right: 4px;
+  vertical-align: middle;
+  color: #666;
+  font-size: 1rem;
+}
+
+.category-icon {
+  margin-left: 6px;
+  vertical-align: middle;
+  color: #666;
+  font-size: 1.2rem; /* Ajusta el tamaño según tus preferencias */
+}
+
+//// diseño della descripcion
+
+.description-container {
+  padding: 0;
+  margin-top: 1rem;
+}
+
+.description-box {
+  background-color: #f8f9fa; /* Fondo suave para resaltar */
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  font-size: 1rem;
+  color: #555;
+}
+
+.description-text {
+  margin: 0;
+  line-height: 1.5;
+}
+
+
+//perfil huesped
+
+.host-info-container {
+  padding: 1rem;
+  margin-top: 1rem;
+  border-top: 1px solid #eaeaea;
+}
+
+.host-profile {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.host-profile-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.host-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.host-name {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+}
+
+.host-contact {
+  font-size: 0.9rem;
+  color: #555;
+  margin: 0.2rem 0;
+}
+
+.host-role {
+  font-size: 0.85rem;
+  color: #777;
+}
+
+.ratings-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.rating-stars {
+  display: flex;
+  gap: 0.2rem;
+}
+
+.rating-icon {
+  color: #ffd700;
+  font-size: 1.2rem;
+}
+
+.image-gallery {
+  margin-top: 1rem;
+}
+
+.thumbnail-gallery {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  margin-top: 0.5rem;
+}
+
+.thumbnail-gallery ion-thumbnail {
+  width: 60px;
+  height: 60px;
+  border-radius: 4px;
+}
+
+.comments-section .comment-item {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.comment-rating ion-icon {
+  color: #ffd700;
+  font-size: 1rem;
+}
+
+.hours-section, .location-section {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 8px;
+  background-color: #f8f9fa;
+  border: 1px solid #e0e0e0;
+}
+
+.location-section #map-container img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+
+
+

@@ -3,43 +3,121 @@
     <ion-buttons slot="start">
       <ion-button (click)="onBack()" fill="clear">
         <ion-icon name="arrow-back"></ion-icon>
-        Volver
       </ion-button>
     </ion-buttons>
-    <ion-title>{{ post?.title }}</ion-title>
+    <ion-title>Detalles del lugar</ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear">
+        <ion-icon name="share-social-outline"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear">
+        <ion-icon name="heart-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-card *ngIf="post" class="post-card">
-    <!-- Contenedor superior para el perfil y el título -->
-    <div class="header-container">
-      <!-- Foto de perfil en la esquina superior derecha -->
-      <div class="profile-image-large">
-        <img src="{{ post.profileImageUrl }}" alt="Imagen de perfil" class="profile-image">
-      </div>
-      <!-- Título de la piscina al lado de la imagen de perfil -->
-      <ion-card-title class="post-title">{{ post.title }}</ion-card-title>
-    </div>
-
-    <!-- Imagen del lugar en el centro -->
+    <!-- Imagen principal -->
     <img src="{{ post.imageUrl }}" alt="Imagen de publicación" class="post-image">
 
-    <!-- Sección de información -->
+    <!-- Información del lugar -->
     <ion-card-content>
-      <ion-card-subtitle>Publicado por: {{ post.author }}</ion-card-subtitle>
-      <ion-card-subtitle>Fecha: {{ post.createdAt.toDate().toLocaleString() }}</ion-card-subtitle>
-      <ion-card-subtitle>Categoría: {{ post.category }}</ion-card-subtitle>
-      <ion-card-subtitle>Descripción: {{ post.description }}</ion-card-subtitle>
+      <ion-card-title class="post-title">{{ post.title }}</ion-card-title>
+      <p class="post-location">{{ post.location }}</p>
+      <p class="post-details">
+        {{ post.capacity }}
+        <ion-icon name="people-outline" class="capacity-icon"></ion-icon>
+    
+        <span [ngSwitch]="post.category">
+          <ion-icon *ngSwitchCase="'piscina'" name="water-outline" class="category-icon"></ion-icon>
+          <ion-icon *ngSwitchCase="'terraza'" name="sunny-outline" class="category-icon"></ion-icon>
+          <ion-icon *ngSwitchCase="'quincho'" name="barbecue-outline" class="category-icon"></ion-icon>
+          <ion-icon *ngSwitchCase="'cabaña'" name="home-outline" class="category-icon"></ion-icon>
+        </span>
+        {{ post.category }}
+      </p>
+    </ion-card-content>
+
+    <!-- Sección de Calificación -->
+    <ion-card-content class="ratings-section">
+      <div class="rating-stars">
+        <ion-icon name="star" class="rating-icon"></ion-icon>
+        <ion-icon name="star" class="rating-icon"></ion-icon>
+        <ion-icon name="star" class="rating-icon"></ion-icon>
+        <ion-icon name="star" class="rating-icon"></ion-icon>
+        <ion-icon name="star-outline" class="rating-icon"></ion-icon>
+      </div>
+      <p class="rating-text">{{ post.rating }} ({{ post.reviews }} reseñas)</p>
+    </ion-card-content>
+
+    <!-- Galería de Imágenes -->
+    <ion-card-content class="image-gallery">
+      <div class="gallery">
+        <img src="{{ post.imageUrl }}" alt="Imagen principal" class="main-image">
+        <div class="thumbnail-gallery">
+          <ion-thumbnail *ngFor="let image of post.images">
+            <img [src]="image" alt="Imagen del lugar">
+          </ion-thumbnail>
+        </div>
+      </div>
+    </ion-card-content>
+
+    <!-- Sección de Descripción -->
+    <ion-card-content class="description-container">
+      <h2 class="section-title">Descripción</h2>
+      <div class="description-box">
+        <p class="description-text">{{ post.description }}</p>
+      </div>
+    </ion-card-content>
+
+    <!-- Información del anfitrión -->
+    <ion-card-content class="host-info-container">
+      <div class="host-profile">
+        <img src="{{ post.profileImageUrl }}" alt="Foto de perfil del anfitrión" class="host-profile-image">
+        <div class="host-details">
+          <p class="host-name">Anfitrión: {{ post.author }}</p>
+          <p class="host-contact">Teléfono: {{ post.phone }}</p>
+          <p class="host-role">Publicado por el anfitrión</p>
+        </div>
+      </div>
+    </ion-card-content>
+
+    <!-- Sección de Comentarios -->
+    <ion-card-content class="comments-section">
+      <h2 class="section-title">Comentarios</h2>
+      <div *ngFor="let comment of post.comments" class="comment-item">
+        <p><strong>{{ comment.author }}</strong>: {{ comment.text }}</p>
+        <div class="comment-rating">
+          <ion-icon name="star" *ngFor="let star of [1,2,3,4,5]" [class.filled]="star <= comment.rating"></ion-icon>
+        </div>
+      </div>
+    </ion-card-content>
+
+    <!-- Horarios de Atención -->
+    <ion-card-content class="hours-section">
+      <h2 class="section-title">Horarios de Atención</h2>
+      <p>Días Festivos: 11:30 - 19:00</p>
+      <p>Horario Regular: 12:00 - 20:00</p>
+    </ion-card-content>
+
+    <!-- Mapa de Dirección -->
+    <ion-card-content class="location-section">
+      <h2 class="section-title">Dirección</h2>
+      <div id="map-container">
+        <!-- Aquí se muestra un mapa de ejemplo; reemplaza con una integración real si es necesario -->
+        <img src="path-to-map-image" alt="Ubicación en el mapa">
+      </div>
     </ion-card-content>
 
     <!-- Calendario de reserva -->
     <ion-card-content>
-      <ion-item>
+      <ion-item class="calendar-item">
         <ion-label>Fecha de inicio</ion-label>
         <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="fechaInicio"></ion-datetime>
       </ion-item>
-      <ion-item>
+      <ion-item class="calendar-item">
         <ion-label>Fecha de fin</ion-label>
         <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="fechaFin"></ion-datetime>
       </ion-item>
