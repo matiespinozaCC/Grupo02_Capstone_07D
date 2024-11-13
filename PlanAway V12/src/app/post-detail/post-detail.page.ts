@@ -18,12 +18,14 @@ export class PostDetailPage implements OnInit {
   reservaMensaje: string = '';
   showFullDescription: boolean = false;
   paragraphs: string[] = [];
+  comments: any[] = [];
+  newComment: string = '';
 
   constructor(
     private route: ActivatedRoute,
     private postService: PostService,
     private router: Router,
-    private authService: AuthService,
+    public authService: AuthService,
     private paypalService: PayPalService
   ) { }
 
@@ -33,11 +35,30 @@ export class PostDetailPage implements OnInit {
       try {
         this.post = await this.postService.getPostById(postId);
         this.paragraphs = this.post.description.split('\n');
+        await this.loadComments(postId);
       } catch (error) {
         console.error('Error al obtener el post:', error);
       }
     } else {
       console.error('El postId es null o inválido');
+    }
+  }
+
+  async loadComments(postId: string) {
+    this.comments = await this.postService.getCommentsByPostId(postId);
+    console.log('Comentarios cargados:', this.comments); // Verifica si los comentarios están llegando
+  }
+  
+
+  async addComment() {
+    if (this.newComment.trim() === '') return;
+
+    try {
+      await this.postService.addComment(this.post.id, this.newComment);
+      this.newComment = ''; // Limpiar el campo de texto
+      await this.loadComments(this.post.id); // Recargar los comentarios
+    } catch (error) {
+      console.error('Error al agregar comentario:', error);
     }
   }
 

@@ -91,16 +91,27 @@
       </div>
     </ion-card-content>
 
-    <!-- Sección de Comentarios -->
+    <!--comentarios-->
+
     <ion-card-content class="comments-section">
       <h2 class="section-title">Comentarios</h2>
-      <div *ngFor="let comment of post.comments" class="comment-item">
-        <p><strong>{{ comment.author }}</strong>: {{ comment.text }}</p>
-        <div class="comment-rating">
-          <ion-icon name="star" *ngFor="let star of [1,2,3,4,5]" [class.filled]="star <= comment.rating"></ion-icon>
+    
+      <!-- Contenedor desplazable para la lista de comentarios -->
+      <div class="comments-scroll">
+        <div *ngFor="let comment of comments" class="comment-item">
+          <p><strong>{{ comment.userName }}</strong>: {{ comment.content }}</p>
+          <span class="comment-date">{{ comment.createdAt | date: 'medium' }}</span>
         </div>
       </div>
+    
+      <!-- Formulario para agregar un comentario -->
+      <ion-item *ngIf="authService.isLoggedIn()">
+        <ion-textarea placeholder="Escribe un comentario..." [(ngModel)]="newComment"></ion-textarea>
+      </ion-item>
+      <ion-button expand="full" (click)="addComment()" *ngIf="authService.isLoggedIn()">Enviar comentario</ion-button>
     </ion-card-content>
+    
+    
 
     <!-- Horarios de Atención -->
     <ion-card-content class="hours-section">

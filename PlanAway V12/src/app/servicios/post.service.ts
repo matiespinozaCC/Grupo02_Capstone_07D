@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { collection, addDoc, getDocs, getDoc, getFirestore } from 'firebase/firestore';
+import { collection, addDoc, getDocs, getDoc, getFirestore, orderBy, Timestamp } from 'firebase/firestore';
 import { query, where } from 'firebase/firestore';
 import { app } from '../firebase-config'; // Configuración de Firebase
 import { AuthService } from './auth.service';
@@ -17,6 +17,40 @@ export class PostService {
   private readonly FAVORITES_KEY = 'favorite_posts';
 
   constructor(private authService: AuthService) {}
+
+  // comentarios
+
+  async addComment(postId: string, content: string) {
+    const user = await this.authService.getCurrentUser();
+    if (!user) throw new Error('Usuario no autenticado');
+
+    const comment = {
+      postId: postId,
+      userId: user.uid,
+      userName: user.displayName || user.email,
+      content: content,
+      createdAt: new Date()
+    };
+
+    const commentsCollection = collection(this.db, 'comentarios');
+    await addDoc(commentsCollection, comment);
+  }
+
+  // Función para obtener los comentarios de una publicación específica
+  async getCommentsByPostId(postId: string) {
+    const commentsCollection = collection(this.db, 'comentarios');
+    const q = query(commentsCollection, where('postId', '==', postId), orderBy('createdAt', 'desc'));
+    const snapshot = await getDocs(q);
+
+    return snapshot.docs.map(doc => {
+      const data = doc.data();
+      return {
+        id: doc.id,
+        ...data,
+        createdAt: (data['createdAt'] as Timestamp).toDate() // Convierte `createdAt` a un objeto `Date`
+      };
+    });
+  }
 
   // Alternar el estado de favorito
   toggleFavorite(postId: string): void {

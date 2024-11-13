@@ -33,6 +33,11 @@ export class AuthService {
     });
   }
 
+  // Método para verificar si el usuario está autenticado
+  isLoggedIn(): boolean {
+    return !!this.auth.currentUser;
+  }
+
   async login(email: string, contrasena: string) {
     try {
       // Configura la persistencia de la sesión
@@ -130,5 +135,6 @@ export class AuthService {
   
     return profileImageUrl; // Retorna la URL actualizada de la imagen
   }
+  
   
 }
