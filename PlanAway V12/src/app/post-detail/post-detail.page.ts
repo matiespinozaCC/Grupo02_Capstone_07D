@@ -16,6 +16,8 @@ export class PostDetailPage implements OnInit {
   fechaInicio: string | undefined;
   fechaFin: string | undefined;
   reservaMensaje: string = '';
+  showFullDescription: boolean = false;
+  paragraphs: string[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -30,17 +32,29 @@ export class PostDetailPage implements OnInit {
     if (postId) {
       try {
         this.post = await this.postService.getPostById(postId);
+        this.paragraphs = this.post.description.split('\n');
       } catch (error) {
         console.error('Error al obtener el post:', error);
-        // Aquí podrías mostrar un mensaje al usuario
-      } finally {
-        this.loading = false; // Cambia el estado de carga
       }
     } else {
       console.error('El postId es null o inválido');
-      this.loading = false; // Cambia el estado de carga
     }
   }
+
+  //efecto tonto pero me daba tock verlo tan plano 
+
+  onScroll(event: any) {
+    const element = event.target as HTMLElement;
+    const overlay = document.querySelector('.fade-overlay') as HTMLElement;
+    const isAtBottom = element.scrollHeight - element.scrollTop <= element.clientHeight + 1;
+    
+    if (isAtBottom) {
+      overlay.classList.add('hide-fade');
+    } else {
+      overlay.classList.remove('hide-fade');
+    }
+  }
+
 
   async reservar() {
     if (!this.fechaInicio || !this.fechaFin) {

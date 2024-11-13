@@ -135,17 +135,21 @@ export class PostService {
       const postData = snapshot.data();
       const authorEmail = postData['author']; // El correo del autor
   
-      // Consulta para obtener la imagen de perfil del autor
+      // Consulta para obtener la información del autor en la colección de 'usuarios'
       const userQuery = query(collection(this.db, 'usuarios'), where('email', '==', authorEmail));
       const userSnapshot = await getDocs(userQuery);
       const userData = userSnapshot.docs.length > 0 ? userSnapshot.docs[0].data() : null;
   
-      // Define la URL de la imagen de perfil o usa una predeterminada si no existe
+      // Extrae el número de teléfono si está disponible
+      const telefono = userData ? userData['telefono'] : 'No disponible';
+  
+      // Incluye `telefono` y `profileImageUrl` en el objeto devuelto
       const profileImageUrl = userData ? userData['profileImageUrl'] : 'https://previews.123rf.com/images/lifdiz/lifdiz1206/lifdiz120600157/13946462-3d-persona-pequeña-que-estaba-cerca-de-un-icono-que-no-imagen-en-3d-aislado-fondo-blanco.jpg';
   
       return {
         id: snapshot.id,
         ...postData,
+        telefono, // Agrega el teléfono del autor
         profileImageUrl // Agrega la imagen de perfil al objeto post
       };
     } else {

@@ -99,25 +99,53 @@
   font-size: 1.2rem; /* Ajusta el tamaño según tus preferencias */
 }
 
-//// diseño della descripcion
+//// diseño de la descripcion
 
 .description-container {
-  padding: 0;
   margin-top: 1rem;
 }
 
-.description-box {
-  background-color: #f8f9fa; /* Fondo suave para resaltar */
-  padding: 1rem;
-  border-radius: 8px;
-  border: 1px solid #e0e0e0;
-  font-size: 1rem;
-  color: #555;
+.section-title {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #f5f5f5;
+  margin-bottom: 0.5rem;
+  text-align: left;
+  padding-left: 0.5rem;
+  border-left: 3px solid #ff6b6b;
 }
 
-.description-text {
-  margin: 0;
-  line-height: 1.5;
+.description-wrapper {
+  position: relative;
+  max-height: 150px;
+}
+
+.description-box-scroll {
+  background-color: rgba(33, 37, 41, 0.9);
+  padding: 1rem;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  color: #cdcdcd;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+//difuminacion
+.fade-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background: linear-gradient(to bottom, rgba(33, 37, 41, 0) 0%, rgba(33, 37, 41, 0.7) 60%, rgba(33, 37, 41, 1) 100%);
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.fade-overlay.hide-fade {
+  opacity: 0;
 }
 
 
@@ -126,7 +154,7 @@
 .host-info-container {
   padding: 1rem;
   margin-top: 1rem;
-  border-top: 1px solid #eaeaea;
+  border-top: 1px solid #0d0c0c;
 }
 
 .host-profile {
@@ -150,19 +178,19 @@
 .host-name {
   font-size: 1rem;
   font-weight: bold;
-  color: #333;
+  color: #f8f9fa;
   margin: 0;
 }
 
 .host-contact {
   font-size: 0.9rem;
-  color: #555;
+  color: #f8f9fa;
   margin: 0.2rem 0;
 }
 
 .host-role {
   font-size: 0.85rem;
-  color: #777;
+  color: #f8f9fa;
 }
 
 .ratings-section {

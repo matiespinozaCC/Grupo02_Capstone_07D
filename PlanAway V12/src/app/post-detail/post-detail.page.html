@@ -66,9 +66,17 @@
 
     <!-- Sección de Descripción -->
     <ion-card-content class="description-container">
-      <h2 class="section-title">Descripción</h2>
-      <div class="description-box">
-        <p class="description-text">{{ post.description }}</p>
+      <h2 class="section-title">
+        <ion-icon name="information-circle-outline" style="vertical-align: middle; margin-right: 5px;"></ion-icon>
+        Descripción
+      </h2>
+      <div class="description-wrapper">
+        <div class="description-box-scroll" (scroll)="onScroll($event)">
+          <p class="description-text" *ngFor="let paragraph of post.description.split('\n'); let i = index">
+            {{ paragraph }}
+          </p>
+        </div>
+        <div class="fade-overlay"></div> <!-- Difuminado siempre en la parte inferior -->
       </div>
     </ion-card-content>
 
@@ -78,8 +86,7 @@
         <img src="{{ post.profileImageUrl }}" alt="Foto de perfil del anfitrión" class="host-profile-image">
         <div class="host-details">
           <p class="host-name">Anfitrión: {{ post.author }}</p>
-          <p class="host-contact">Teléfono: {{ post.phone }}</p>
-          <p class="host-role">Publicado por el anfitrión</p>
+          <a [href]="'tel:+56' + post.telefono" class="host-contact">Teléfono: +56{{ post.telefono }}</a>
         </div>
       </div>
     </ion-card-content>
