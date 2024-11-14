@@ -26,6 +26,15 @@
       </ion-select>
     </ion-item>
 
+    <<ion-item>
+      <ion-label position="floating">Dirección</ion-label>
+      <ion-input type="text" [(ngModel)]="address" #addressInput required></ion-input>
+    </ion-item>
+    <div id="map" style="height: 300px; width: 100%;"></div>
+    
+
+    <!-- Contenedor del mapa -->
+    
     <ion-item>
       <ion-label position="floating">Precio</ion-label>
       <ion-input type="number" [(ngModel)]="price" name="price" required></ion-input>
@@ -42,7 +51,7 @@
     </ion-item>
     
 
-    <ion-button expand="full" type="submit">Crear Post</ion-button>
+    <ion-button expand="full" type="submit" [(ngModel)]="onCreatePost">Crear Post</ion-button>
 
     <div *ngIf="errorMessage" class="error-message">
       {{ errorMessage }}

@@ -75,36 +75,38 @@ export class PostService {
 
 
   // Crear un post
-  async createPost(title: string, description: string, category: string, price: number, capacity: number,
-    imageFile: File | null ) {
+  async createPost(title: string, description: string, category: string, price: number, capacity: number, imageFile: File | null, address: string, lat: number, lng: number) {
     const user = this.authService.currentUser;
     if (user) {
-
       let imageUrl = '';
       if (imageFile) {
         const imageRef = ref(this.storage, `publicaciones/${imageFile.name}`);
         const snapshot = await uploadBytes(imageRef, imageFile);
         imageUrl = await getDownloadURL(snapshot.ref);
       }
-
+  
       const post = {
         title,
         description,
-        category, // Agrega la categoría aquí
+        category,
         price,
-        capacity,  // Añade capacidad al post
-        imageUrl,  // Guarda la URL de la imagen en el post
+        capacity,
+        imageUrl,
         author: user.email,
         createdAt: new Date(),
-        aprobacion: 'pendiente'
+        aprobacion: 'pendiente',
+        lat, // Guarda la latitud
+        lng, // Guarda la longitud
+        address, // Guarda la dirección
       };
-
+  
       const postsCollection = collection(this.db, 'publicaciones');
-      return addDoc(postsCollection, post); // Guardar el post en Firestore
+      return addDoc(postsCollection, post);
     } else {
       throw new Error('Usuario no autenticado');
     }
   }
+  
 
   async getPosts() {
     const postsCollection = collection(this.db, 'publicaciones');

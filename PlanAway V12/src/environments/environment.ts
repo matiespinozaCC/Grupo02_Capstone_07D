@@ -3,8 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  googleMapsApiKey: 'AIzaSyCplr-H8wVCG1TlcKN6_3eXyFTI-NzryCk'
 };
+
+
 
 /*
  * For easier debugging in development mode, you can import the following file

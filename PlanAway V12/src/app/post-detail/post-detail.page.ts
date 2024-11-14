@@ -62,7 +62,7 @@ export class PostDetailPage implements OnInit {
     }
   }
 
-  //efecto tonto pero me daba tock verlo tan plano 
+  //efecto de descripcion 
 
   onScroll(event: any) {
     const element = event.target as HTMLElement;
