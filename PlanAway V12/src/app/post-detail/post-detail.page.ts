@@ -46,7 +46,7 @@ export class PostDetailPage implements OnInit {
 
   async loadComments(postId: string) {
     this.comments = await this.postService.getCommentsByPostId(postId);
-    console.log('Comentarios cargados:', this.comments); // Verifica si los comentarios están llegando
+    console.log('Comentarios cargados:', this.comments);
   }
   
 

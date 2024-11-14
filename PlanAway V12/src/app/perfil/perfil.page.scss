@@ -104,6 +104,15 @@
   color: #0edb86; /* Cambia el color al pasar el cursor */
 }
 
+.publicacion-item p {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+}
+
   
 // publicaciones
 
@@ -115,6 +124,7 @@
     border-radius: 12px;
     margin-bottom: 1rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    
   }
   
   ion-thumbnail img {
