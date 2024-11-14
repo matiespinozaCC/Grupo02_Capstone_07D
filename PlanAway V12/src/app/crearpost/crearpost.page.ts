@@ -60,34 +60,25 @@ export class CrearpostPage implements AfterViewInit {
   }
 
   initAutocomplete() {
-    // Inicializa el autocompletado
-    this.autocomplete = new google.maps.places.Autocomplete(this.addressInput.nativeElement, {
-      types: ['address'],
-    });
+    const input = this.addressInput.nativeElement as HTMLInputElement;
+    this.autocomplete = new google.maps.places.Autocomplete(input);
     this.autocomplete.bindTo('bounds', this.map);
-
-    // Actualiza el mapa cada vez que se selecciona una dirección
+  
     this.autocomplete.addListener('place_changed', () => {
       const place = this.autocomplete.getPlace();
       if (!place.geometry) {
         console.log('Error al obtener ubicación');
         return;
       }
-
+  
       // Configurar el mapa para mostrar la ubicación seleccionada
       this.map.setCenter(place.geometry.location);
       this.map.setZoom(15);
-
+  
       // Guardar latitud, longitud y dirección
       this.address = place.formatted_address;
       this.lat = place.geometry.location.lat();
       this.lng = place.geometry.location.lng();
-
-      // Añadir un marcador en la ubicación seleccionada
-      new google.maps.Marker({
-        position: place.geometry.location,
-        map: this.map,
-      });
     });
   }
 
@@ -128,9 +119,9 @@ export class CrearpostPage implements AfterViewInit {
         this.price,
         this.capacity,
         this.imageFile,
-        this.address, // Guardar la dirección (asegurarse de que el tipo coincida en `createPost`)
-        Number(this.lat), // Convertir latitud a número
-        Number(this.lng)  // Convertir longitud a número
+        this.address, // Guardar la dirección
+        this.lat, // Guardar la latitud
+        this.lng  // Guardar la longitud
       );
       this.router.navigate(['/tabs/home']);
     } catch (error: unknown) {
@@ -141,5 +132,6 @@ export class CrearpostPage implements AfterViewInit {
       }
     }
   }
+  
   
 }

@@ -99,17 +99,29 @@
       <!-- Contenedor desplazable para la lista de comentarios -->
       <div class="comments-scroll">
         <div *ngFor="let comment of comments" class="comment-item">
-          <p><strong>{{ comment.userName }}</strong>: {{ comment.content }}</p>
-          <span class="comment-date">{{ comment.createdAt | date: 'medium' }}</span>
+          <ion-avatar class="comment-avatar" slot="start">
+            <img [src]="comment.profileImageUrl || 'default-avatar-url.png'" alt="Avatar del usuario" />
+          </ion-avatar>
+          <div class="comment-main">
+            <div class="comment-info">
+              <p class="user-name">{{ comment.userName }}</p>
+              <span class="comment-date">{{ comment.createdAt | date: 'medium' }}</span>
+            </div>
+            <p class="comment-content">{{ comment.content }}</p>
+          </div>
         </div>
       </div>
+      
     
       <!-- Formulario para agregar un comentario -->
-      <ion-item *ngIf="authService.isLoggedIn()">
+      <div class="comment-input-container">
         <ion-textarea placeholder="Escribe un comentario..." [(ngModel)]="newComment"></ion-textarea>
-      </ion-item>
-      <ion-button expand="full" (click)="addComment()" *ngIf="authService.isLoggedIn()">Enviar comentario</ion-button>
+        <ion-button fill="clear" (click)="addComment()">
+          <ion-icon name="send"></ion-icon>
+        </ion-button>
+      </div>
     </ion-card-content>
+    
     
     
 

@@ -62,7 +62,7 @@ export class PostDetailPage implements OnInit {
     }
   }
 
-  //efecto de descripcion 
+  //efecto de descricion
 
   onScroll(event: any) {
     const element = event.target as HTMLElement;

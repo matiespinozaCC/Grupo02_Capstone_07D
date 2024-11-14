@@ -1,0 +1,35 @@
+ion-content {
+    --background: #f7f8fa;
+    padding: 16px;
+  }
+  
+  .form-card {
+    border-radius: 12px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .map-container {
+    height: 200px;
+    width: 100%;
+    border-radius: 8px;
+    margin-top: 8px;
+    overflow: hidden;
+  }
+  
+  .form-footer {
+    margin-top: 20px;
+  }
+  
+  .create-post-button {
+    --background: linear-gradient(45deg, #ff6f61, #ff946e);
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+  }
+  
+  .error-message {
+    color: red;
+    text-align: center;
+    margin-top: 10px;
+  }
+  
