@@ -1,6 +1,133 @@
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.logo {
+  width: 70px;
+  height: 70px;
+  background-image: url('/assets/IMG_2214.PNG');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
 
+.imagen-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
 
+.imagenhome {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.logo-superpuesto {
+  position: absolute;
+  top: 16%; /* Ajusta según sea necesario */
+  left: 30%; /* Ajusta según sea necesario */
+  width: 200px;
+  height: 200px;
+  background-image: url('/assets/IMG_2214.PNG');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 10; /* Coloca el logo sobre la imagen */
+}
+
+@media (prefers-color-scheme: light) {
+  .logo-superpuesto {
+    background-image: url('/assets/IMG_2215.PNG');
+  }
+
+}
+
+.titulo-encima-imagen {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 24px;
+  color: white;
+  text-align: center;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  white-space: nowrap; /* Mantiene el título en una sola línea */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 426px) {
+  .titulo-encima-imagen {
+    font-size: 20px; /* Ajusta el tamaño de fuente para pantallas pequeñas */
+    top: 45%; /* Baja un poco el título para que sea más visible en pantallas pequeñas */
+  }
+  .logo-superpuesto {
+    position: absolute;
+    top: 16%; /* Ajusta según sea necesario */
+    left: 25%; /* Ajusta según sea necesario */
+    width: 200px;
+    height: 200px;
+  }
+}
+
+@media (min-width: 768px) {
+  .titulo-encima-imagen {
+    font-size: 28px; /* Aumenta el tamaño en pantallas medianas */
+    top: 40%; /* Ajusta la posición para pantallas más grandes */
+  }
+
+  .logo-superpuesto {
+    position: absolute;
+    top: 10%; /* Ajusta según sea necesario */
+    left: 35%; /* Ajusta según sea necesario */
+    width: 200px;
+    height: 200px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .titulo-encima-imagen {
+    font-size: 32px; /* Tamaño de fuente más grande en pantallas grandes */
+    top: 40%; /* Ajusta la posición para pantallas grandes */
+  }
+
+  .logo-superpuesto {
+    position: absolute;
+    top: 10%; /* Ajusta según sea necesario */
+    left: 40%; /* Ajusta según sea necesario */
+    width: 250px;
+    height: 250px;
+  }
+}
+
+/* Ajustes para barra de búsqueda */
+.search-container {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  width: 80%;
+  max-width: 800px;
+  text-align: center;
+  z-index: 10; /* Coloca la búsqueda sobre la imagen */
+}
+
+.search-container ion-item {
+  --background: rgba(34, 33, 33, 0.637);
+  border-radius: 10px;
+}
+
+@media (prefers-color-scheme: light) {
+.search-container ion-item {
+  --background: rgba(255, 255, 255, 0.74);
+  border-radius: 10px;
+  }
+}
 #container {
   text-align: center;
   left: 0;
@@ -51,21 +178,12 @@ ion-card {
   .posts-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  .titulo-encima-imagen {
-    font-size: 80px;
-  }
 }
 
 @media (min-width: 992px) {
   .posts-grid {
     grid-template-columns: repeat(3, 1fr);
   }
-}
-
-.logo {
-  max-width: 70px;
-  height: auto;
-  margin-right: 10px;
 }
 
 .botondetalle {
@@ -76,11 +194,6 @@ ion-card {
 .titulo {
   color: #ffffff;
   font-size: 1.5rem;
-}
-
-.logo-container {
-  display: flex;
-  align-items: center;
 }
 
 .menu {
@@ -122,30 +235,7 @@ ion-card {
   color: #0edb86;
 }
 
-.imagen-container {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.imagenhome {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
 /*barra de búsqueda */
-.search-container {
-  position: absolute;
-  top: 60%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 20px;
-  width: 80%;
-  max-width: 800px;
-  text-align: center;
-}
-
 .search-container input {
   width: 100%;
   padding: 10px;
@@ -182,25 +272,6 @@ ion-card {
   --color: rgb(255, 255, 255);
 }
 
-.titulo-encima-imagen {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 32px;
-  color: white;
-  text-align: center;
-  position: absolute;
-  top: 200px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10;
-}
-
-@media (max-width: 425px) {
-  .titulo-encima-imagen {
-    font-size: 40px;
-    top: 100px;
-  }
-}
-
 .author-image-container {
   position: absolute;
   bottom: 10px;
@@ -215,10 +286,6 @@ ion-card {
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-.agregarpost {
-  --color: rgb(255, 255, 255);
 }
 
 .card-background {
@@ -274,10 +341,6 @@ ion-card {
   border-radius: 0 0 8px 8px;
 }
 
-
-
-
-
 .card-background ion-card-content {
   background-color: rgba(0, 0, 0, 0.5);
   padding: 8px;
@@ -287,28 +350,24 @@ ion-card {
   z-index: 3;
 }
 
-.logo {
-  width: 70px;
-  height: 70px;
-  background-image: url('/assets/IMG_2214.PNG');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  margin-right: 10px;
+.sperfil,
+.slogout,
+.agregarpost {
+  --color: rgb(255, 255, 255);
 }
 
-.sperfil,.slogout,.agregarpost {
-    --color: rgb(255, 255, 255);
+.sperfil:hover,
+.slogout:hover,
+.agregarpost:hover {
+  --background: #067547;
+  color: #ffffff;
+}
 
-    &:hover {
-      --background: #067547;
-      color: #ffffff;
-    }
-
-    &:active {
-      --background: #067547;
-    }
-  }
+.sperfil:active,
+.slogout:active,
+.agregarpost:active {
+  --background: #067547;
+}
 
 @media (prefers-color-scheme: light) {
   .titulo {
@@ -325,22 +384,27 @@ ion-card {
     --color: rgb(0, 0, 0);
   }
 
-  .sperfil,.slogout,.agregarpost {
+  .sperfil,
+  .slogout,
+  .agregarpost {
     --background: #ffffff;
     --color: rgb(0, 0, 0);
-
-    &:hover {
-      --background: #067547;
-      color: #ffffff;
-    }
-
-    &:active {
-      --background: #067547;
-    }
   }
 
-.title-container {
-  color: #ffffff;
-}
+  .sperfil:hover,
+  .slogout:hover,
+  .agregarpost:hover {
+    --background: #067547;
+    color: #ffffff;
+  }
 
+  .sperfil:active,
+  .slogout:active,
+  .agregarpost:active {
+    --background: #067547;
+  }
+
+  .title-container {
+    color: #ffffff;
+  }
 }

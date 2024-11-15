@@ -1,30 +1,24 @@
-<ion-header>
-  <ion-toolbar color="light">
-    <ion-buttons slot="start">
-      <ion-button (click)="onBack()" fill="clear">
-        <ion-icon name="arrow-back"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-    <ion-title>Detalles del lugar</ion-title>
-    <ion-buttons slot="end">
-      <ion-button fill="clear">
-        <ion-icon name="share-social-outline"></ion-icon>
-      </ion-button>
-      <ion-button fill="clear">
-        <ion-icon name="heart-outline"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
   <ion-card *ngIf="post" class="post-card">
+
     <!-- Imagen principal -->
-    <img src="{{ post.imageUrl }}" alt="Imagen de publicación" class="post-image">
+    <div class="main-image-container">
+      <img src="{{ post.imageUrl }}" alt="Imagen de publicación" class="post-image">
+      
+      <!-- Imagen de perfil del anfitrión superpuesta en la esquina inferior izquierda -->
+      <img src="{{ post.profileImageUrl }}" alt="Foto de perfil del anfitrión" class="host-profile-image">
+    </div>
 
     <!-- Información del lugar -->
     <ion-card-content>
       <ion-card-title class="post-title">{{ post.title }}</ion-card-title>
+      
+      <!-- Información del anfitrión -->
+      <div class="host-details">
+        <p class="host-name">Anfitrión: {{ post.author }}</p>
+        <a [href]="'tel:+56' + post.telefono" class="host-contact">Teléfono: +56{{ post.telefono }}</a>
+      </div>
+      
       <p class="post-location">{{ post.location }}</p>
       <p class="post-details">
         {{ post.capacity }}
@@ -80,40 +74,21 @@
       </div>
     </ion-card-content>
 
-    <!-- Información del anfitrión -->
-    <ion-card-content class="host-info-container">
-      <div class="host-profile">
-        <img src="{{ post.profileImageUrl }}" alt="Foto de perfil del anfitrión" class="host-profile-image">
-        <div class="host-details">
-          <p class="host-name">Anfitrión: {{ post.author }}</p>
-          <a [href]="'tel:+56' + post.telefono" class="host-contact">Teléfono: +56{{ post.telefono }}</a>
-        </div>
-      </div>
-    </ion-card-content>
-
-    <!--comentarios-->
-
+    <!-- Sección de Comentarios -->
     <ion-card-content class="comments-section">
       <h2 class="section-title">Comentarios</h2>
-    
-      <!-- Contenedor desplazable para la lista de comentarios -->
-      <div class="comments-scroll">
-        <div *ngFor="let comment of comments" class="comment-item">
-          <ion-avatar class="comment-avatar" slot="start">
-            <img [src]="comment.profileImageUrl || 'default-avatar-url.png'" alt="Avatar del usuario" />
-          </ion-avatar>
-          <div class="comment-main">
-            <div class="comment-info">
-              <p class="user-name">{{ comment.userName }}</p>
-              <span class="comment-date">{{ comment.createdAt | date: 'medium' }}</span>
-            </div>
-            <p class="comment-content">{{ comment.content }}</p>
+      <div *ngFor="let comment of comments" class="comment-item">
+        <ion-avatar class="comment-avatar" slot="start">
+          <img [src]="comment.profileImageUrl" alt="Avatar del usuario" />
+        </ion-avatar>
+        <div class="comment-main">
+          <div class="comment-info">
+            <p class="user-name">{{ comment.userName }}</p>
+            <span class="comment-date">{{ comment.createdAt | date: 'medium' }}</span>
           </div>
+          <p class="comment-content">{{ comment.content }}</p>
         </div>
       </div>
-      
-    
-      <!-- Formulario para agregar un comentario -->
       <div class="comment-input-container">
         <ion-textarea placeholder="Escribe un comentario..." [(ngModel)]="newComment"></ion-textarea>
         <ion-button fill="clear" (click)="addComment()">
@@ -122,21 +97,12 @@
       </div>
     </ion-card-content>
     
-    
-    
-
-    <!-- Horarios de Atención -->
-    <ion-card-content class="hours-section">
-      <h2 class="section-title">Horarios de Atención</h2>
-      <p>Días Festivos: 11:30 - 19:00</p>
-      <p>Horario Regular: 12:00 - 20:00</p>
-    </ion-card-content>
+  
 
     <!-- Mapa de Dirección -->
     <ion-card-content class="location-section">
       <h2 class="section-title">Dirección</h2>
       <div id="map-container">
-        <!-- Aquí se muestra un mapa de ejemplo; reemplaza con una integración real si es necesario -->
         <img src="path-to-map-image" alt="Ubicación en el mapa">
       </div>
     </ion-card-content>

@@ -21,20 +21,28 @@ export class PostService {
   // comentarios
 
   async addComment(postId: string, content: string) {
+    // Obtén el usuario autenticado
     const user = await this.authService.getCurrentUser();
     if (!user) throw new Error('Usuario no autenticado');
-
+  
+   
+    const userProfile = await this.authService.getUserProfile();
+    const profileImageUrl = userProfile?.profileImageUrl || '/assets/default-avatar.png'; // Usa la URL de Firestore o una imagen predeterminada
+  
     const comment = {
       postId: postId,
       userId: user.uid,
-      userName: user.displayName || user.email,
+      userName: userProfile?.nombre || user.email, // Usa el nombre desde Firestore o el email
+      profileImageUrl: profileImageUrl, // URL de la imagen de perfil desde Firestore
       content: content,
       createdAt: new Date()
     };
-
+  
     const commentsCollection = collection(this.db, 'comentarios');
     await addDoc(commentsCollection, comment);
   }
+  
+  
 
   // Función para obtener los comentarios de una publicación específica
   async getCommentsByPostId(postId: string) {

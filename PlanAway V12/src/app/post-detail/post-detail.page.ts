@@ -15,6 +15,7 @@ export class PostDetailPage implements OnInit {
   loading: boolean = true;
   fechaInicio: string | undefined;
   fechaFin: string | undefined;
+  seleccionandoFechaInicio: boolean = true;
   reservaMensaje: string = '';
   showFullDescription: boolean = false;
   paragraphs: string[] = [];
@@ -48,6 +49,7 @@ export class PostDetailPage implements OnInit {
     this.comments = await this.postService.getCommentsByPostId(postId);
     console.log('Comentarios cargados:', this.comments);
   }
+
   
 
   async addComment() {
@@ -77,54 +79,57 @@ export class PostDetailPage implements OnInit {
   }
 
 
+  updateDate(event: any) {
+    const selectedDate = event.detail.value;
+    if (this.seleccionandoFechaInicio) {
+      this.fechaInicio = selectedDate;
+      this.seleccionandoFechaInicio = false; // Cambiar para que la siguiente fecha sea la fecha de fin
+      this.reservaMensaje = 'Selecciona la fecha de fin';
+    } else {
+      this.fechaFin = selectedDate;
+      this.seleccionandoFechaInicio = true; // Resetear para futuras selecciones
+      this.reservaMensaje = 'Fechas seleccionadas correctamente';
+    }
+  }
+
   async reservar() {
     if (!this.fechaInicio || !this.fechaFin) {
       this.reservaMensaje = 'Por favor, selecciona ambas fechas.';
       return;
     }
-  
-    // Convertir las fechas a objetos Date
+
     const fechaInicioDate = new Date(this.fechaInicio);
     const fechaFinDate = new Date(this.fechaFin);
-  
-    // Validar que la fecha de inicio no sea posterior a la fecha de fin
+
     if (fechaInicioDate > fechaFinDate) {
       this.reservaMensaje = 'La fecha de inicio no puede ser posterior a la fecha de fin.';
       return;
     }
-  
-    const usuario = await this.authService.getCurrentUser(); // Obtener usuario actual
+
+    const usuario = await this.authService.getCurrentUser();
     if (!usuario) {
       this.reservaMensaje = 'Usuario no autenticado. Por favor, inicia sesión.';
       return;
     }
-  
+
     const postId = this.post.id;
-  
-    // Verificar disponibilidad
     const disponible = await this.postService.verificarDisponibilidad(postId, fechaInicioDate, fechaFinDate);
     if (!disponible) {
       this.reservaMensaje = 'Las fechas seleccionadas no están disponibles.';
       return;
     }
-  
-    // Calcular el costo y el saldo a debitar
-    const costoPesos = this.post.price; // Asegúrate de que este campo existe en tu post
-    const comision = costoPesos * 0.1; // 10% de comisión
-    const totalPesos = costoPesos; // Total que se pagará (costo completo)
-  
-    // Conversión de pesos a dólares
-    const tasaConversion = 900; // 1 dólar = 900 pesos
-    const totalDolares = totalPesos / tasaConversion; // Convertir a dólares
-  
-    // Iniciar el proceso de pago
-    const pagoExitoso = await this.paypalService.iniciarPago(totalDolares); // Pasar el total en dólares a PayPal
+
+    const costoPesos = this.post.price;
+    const comision = costoPesos * 0.1;
+    const totalPesos = costoPesos;
+    const tasaConversion = 900;
+    const totalDolares = totalPesos / tasaConversion;
+
+    const pagoExitoso = await this.paypalService.iniciarPago(totalDolares);
     if (pagoExitoso) {
       await this.postService.reservarPropiedad(postId, fechaInicioDate, fechaFinDate, usuario.uid);
-      
-      // Actualizar el saldo del dueño de la propiedad (costo menos comisión en pesos)
-      const saldoPropietario = costoPesos - comision; // Saldo que se sumará al dueño de la propiedad
-      await this.authService.actualizarSaldo(this.post.ownerId, saldoPropietario); // Asegúrate de tener el ownerId del post
+      const saldoPropietario = costoPesos - comision;
+      await this.authService.actualizarSaldo(this.post.ownerId, saldoPropietario);
       this.reservaMensaje = 'Reserva realizada con éxito.';
     } else {
       this.reservaMensaje = 'El pago no se pudo completar. Reserva no realizada.';
