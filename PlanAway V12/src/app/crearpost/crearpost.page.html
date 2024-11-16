@@ -38,14 +38,14 @@
   <ion-card class="form-card">
     <ion-card-header>
       <ion-card-title>Ubicación</ion-card-title>
+      <div class="search-container">
+        <input id="pac-input" type="text" placeholder="Buscar ubicación" />
+      </div>
     </ion-card-header>
     <ion-card-content>
-      <ion-item>
-        <ion-label position="floating">Dirección</ion-label>
-        <ion-input type="text" [(ngModel)]="address" #addressInput required></ion-input>
-        <ion-icon name="location-outline" slot="start"></ion-icon>
-      </ion-item>
-      <div id="map" class="map-container"></div>
+      <div>
+        <div #map id="map" style="height: 300px;"></div>
+      </div>
     </ion-card-content>
   </ion-card>
 

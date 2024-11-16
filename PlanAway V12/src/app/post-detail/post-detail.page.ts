@@ -1,16 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PostService } from '../servicios/post.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../servicios/auth.service';
 import { PayPalService } from '../servicios/paypal.service';
 
+declare var google: any;
+
 @Component({
   selector: 'app-post-detail',
   templateUrl: './post-detail.page.html',
   styleUrls: ['./post-detail.page.scss'],
 })
-export class PostDetailPage implements OnInit {
+export class PostDetailPage implements OnInit, AfterViewInit {
   post: any;
   loading: boolean = true;
   fechaInicio: string | undefined;
@@ -21,6 +23,8 @@ export class PostDetailPage implements OnInit {
   paragraphs: string[] = [];
   comments: any[] = [];
   newComment: string = '';
+  map: any;
+  searchBox: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -42,6 +46,54 @@ export class PostDetailPage implements OnInit {
       }
     } else {
       console.error('El postId es null o inválido');
+    }
+  }
+
+  ngAfterViewInit() {
+    this.initMap();
+  }
+
+  initMap() {
+    const mapElement = document.getElementById('map');
+    if (!mapElement) {
+      console.error('Elemento del mapa no encontrado');
+      return;
+    }
+  
+    const defaultLocation = { lat: -33.4489, lng: -70.6693 };
+    this.map = new google.maps.Map(mapElement, {
+      center: defaultLocation,
+      zoom: 12,
+    });
+  
+    const input = document.getElementById('searchBox') as HTMLInputElement;
+    if (input) {
+      this.searchBox = new google.maps.places.SearchBox(input);
+      this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+  
+      this.searchBox.addListener('places_changed', () => {
+        const places = this.searchBox.getPlaces();
+        if (places && places.length > 0) {
+          const place = places[0];
+          if (place.geometry) {
+            this.map.panTo(place.geometry.location);
+            this.map.setZoom(15);
+            this.post.lat = place.geometry.location.lat();
+            this.post.lng = place.geometry.location.lng();
+          }
+        }
+      });
+    } else {
+      console.error('Input de búsqueda no encontrado');
+    }
+  }
+  
+
+  async loadPostData(postId: string) {
+    try {
+      this.post = await this.postService.getPostById(postId);
+    } catch (error) {
+      console.error('Error al obtener el post:', error);
     }
   }
 
@@ -140,3 +192,4 @@ export class PostDetailPage implements OnInit {
     this.router.navigate(['tabs/home']); // Ajusta la ruta según sea necesario
   }
 }
+

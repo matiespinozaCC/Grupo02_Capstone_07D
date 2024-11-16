@@ -101,10 +101,12 @@
 
     <!-- Mapa de Dirección -->
     <ion-card-content class="location-section">
-      <h2 class="section-title">Dirección</h2>
-      <div id="map-container">
-        <img src="path-to-map-image" alt="Ubicación en el mapa">
+      <div style="padding: 10px;">
+        <input id="searchBox" type="text" placeholder="Buscar ubicación..." class="search-box" />
       </div>
+  
+      <!-- Contenedor para el mapa -->
+      <div id="map" style="height: 300px; width: 100%;"></div>
     </ion-card-content>
 
     <!-- Calendario de reserva -->

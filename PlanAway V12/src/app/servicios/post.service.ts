@@ -43,6 +43,11 @@ export class PostService {
   }
   
   
+  async updatePostCoordinates(postId: string, lat: number, lng: number) {
+    const postRef = doc(this.db, 'publicaciones', postId);
+    return updateDoc(postRef, { lat, lng });
+  }
+
 
   // Función para obtener los comentarios de una publicación específica
   async getCommentsByPostId(postId: string) {
@@ -184,23 +189,22 @@ export class PostService {
       const userSnapshot = await getDocs(userQuery);
       const userData = userSnapshot.docs.length > 0 ? userSnapshot.docs[0].data() : null;
   
-      // Extrae el número de teléfono si está disponible
       const telefono = userData ? userData['telefono'] : 'No disponible';
-  
-      // Incluye `telefono` y `profileImageUrl` en el objeto devuelto
       const profileImageUrl = userData ? userData['profileImageUrl'] : 'https://previews.123rf.com/images/lifdiz/lifdiz1206/lifdiz120600157/13946462-3d-persona-pequeña-que-estaba-cerca-de-un-icono-que-no-imagen-en-3d-aislado-fondo-blanco.jpg';
   
       return {
         id: snapshot.id,
         ...postData,
         telefono, // Agrega el teléfono del autor
-        profileImageUrl // Agrega la imagen de perfil al objeto post
+        profileImageUrl, // Agrega la imagen de perfil al objeto post
+        address: postData['address'] // Incluye la dirección completa en el objeto post
       };
     } else {
       console.error(`No se encontró el post con ID: ${postId}`);
       throw new Error('Post no encontrado');
     }
   }
+  
   
 
   // Obtener posts por usuario autenticado
