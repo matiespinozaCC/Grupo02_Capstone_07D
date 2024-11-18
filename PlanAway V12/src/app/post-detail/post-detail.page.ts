@@ -144,6 +144,18 @@ initMap(lat: number, lng: number) {
     }
   }
 
+   // Manejar selección de fecha de inicio
+   onFechaInicioSeleccionada(event: any) {
+    this.fechaInicio = event.detail.value;
+    this.seleccionandoFechaInicio = false; // Ocultar fecha de inicio y mostrar fecha de fin
+  }
+
+  // Manejar selección de fecha de fin
+  onFechaFinSeleccionada(event: any) {
+    this.fechaFin = event.detail.value;
+    this.seleccionandoFechaInicio = true; // Volver a inicio si es necesario
+  }
+
   async reservar() {
     if (!this.fechaInicio || !this.fechaFin) {
       this.reservaMensaje = 'Por favor, selecciona ambas fechas.';

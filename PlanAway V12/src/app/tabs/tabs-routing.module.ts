@@ -16,6 +16,10 @@ const routes: Routes = [
         loadChildren: () => import('../perfil/perfil.module').then(m => m.PerfilPageModule)
       },
       {
+        path: 'map',
+        loadChildren: () => import('../map/map.module').then(m => m.MapPageModule),
+      },
+      {
         path: 'post-detail/:id',
         loadChildren: () => import('../post-detail/post-detail.module').then(m => m.PostDetailPageModule)
       },

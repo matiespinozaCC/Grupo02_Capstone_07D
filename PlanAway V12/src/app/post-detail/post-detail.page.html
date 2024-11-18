@@ -116,13 +116,23 @@
 
     <!-- Calendario de reserva -->
     <ion-card-content>
-      <ion-item class="calendar-item">
+      <ion-item class="calendar-item" *ngIf="seleccionandoFechaInicio">
         <ion-label>Fecha de inicio</ion-label>
-        <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="fechaInicio"></ion-datetime>
+        <ion-datetime 
+          displayFormat="YYYY-MM-DD" 
+          [(ngModel)]="fechaInicio" 
+          (ionChange)="onFechaInicioSeleccionada($event)">
+        </ion-datetime>
       </ion-item>
-      <ion-item class="calendar-item">
+    
+      <!-- Fecha de fin -->
+      <ion-item class="calendar-item" *ngIf="!seleccionandoFechaInicio">
         <ion-label>Fecha de fin</ion-label>
-        <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="fechaFin"></ion-datetime>
+        <ion-datetime 
+          displayFormat="YYYY-MM-DD" 
+          [(ngModel)]="fechaFin" 
+          (ionChange)="onFechaFinSeleccionada($event)">
+        </ion-datetime>
       </ion-item>
       <ion-button expand="full" (click)="reservar()" class="reserve-button">Reservar</ion-button>
       <div id="paypal-button-container"></div>

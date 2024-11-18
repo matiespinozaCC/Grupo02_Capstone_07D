@@ -44,7 +44,13 @@ const routes: Routes = [
     path: 'modificar-publicacion/:id',
     loadChildren: () => import('./modificar-publicacion/modificar-publicacion.module').then(m => m.ModificarPublicacionPageModule),
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'map',
+    loadChildren: () => import('./map/map.module').then( m => m.MapPageModule),
+    canActivate: [AuthGuard]
   }
+
 ];
 
 @NgModule({
