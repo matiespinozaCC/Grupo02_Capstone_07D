@@ -95,18 +95,23 @@
           <ion-icon name="send"></ion-icon>
         </ion-button>
       </div>
-    </ion-card-content>
-    
-  
+      <div class="comment-addres">
+        <h2 class="section-title">Direccion</h2>
+        <p>
+          <strong>Dirección:</strong> 
+          <a 
+  *ngIf="post.lat && post.lng" 
+  [href]="'https://www.google.com/maps?q=' + post.lat + ',' + post.lng" 
+  target="_blank">
+  {{ post.address }}
+</a>
 
-    <!-- Mapa de Dirección -->
-    <ion-card-content class="location-section">
-      <div style="padding: 10px;">
-        <input id="searchBox" type="text" placeholder="Buscar ubicación..." class="search-box" />
+        </p>
+
+        <!-- Mapa -->
+        <h2 class="section-title">Ubicacion</h2>
+        <div id="map" style="height: 300px; width: 100%;"></div>
       </div>
-  
-      <!-- Contenedor para el mapa -->
-      <div id="map" style="height: 300px; width: 100%;"></div>
     </ion-card-content>
 
     <!-- Calendario de reserva -->

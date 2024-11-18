@@ -13,12 +13,14 @@
       <p><strong>Precio:</strong> {{ post.price }}</p>
       <p><strong>Capacidad:</strong> {{ post.capacity }}</p>
       <p><strong>Dirección:</strong> {{ post.address }}</p>
-      <div id="map" style="height: 300px;"></div>
     </ion-card-content>
   </ion-card>
 
   <!-- Contenedor del mapa para mostrar la ubicación -->
-  <div id="map" style="height: 300px; margin: 16px 0;"></div>
+  <p><strong>Dirección:</strong> {{ post.address }}</p>
+
+      <!-- Mapa -->
+  <div id="map" style="height: 300px;"></div>
 
   <!-- Botones de eliminar y modificar -->
   <ion-button expand="block" color="danger" (click)="eliminarPost()">Eliminar</ion-button>

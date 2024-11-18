@@ -4,6 +4,9 @@ import { PostService } from '../servicios/post.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../servicios/auth.service';
 import { PayPalService } from '../servicios/paypal.service';
+import { environment } from 'src/environments/environment';
+
+const apiKey = environment.googleMapsApiKey;
 
 declare var google: any;
 
@@ -50,43 +53,40 @@ export class PostDetailPage implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.initMap();
+    this.route.paramMap.subscribe(async (params) => {
+      const postId = params.get('id');
+      if (postId) {
+        try {
+          this.post = await this.postService.getPostById(postId);
+          if (this.post.lat && this.post.lng) {
+            this.initMap(this.post.lat, this.post.lng);
+          } else {
+            console.warn('Coordenadas no disponibles para el mapa.');
+          }
+        } catch (error) {
+          console.error('Error al obtener el post:', error);
+        }
+      } else {
+        console.error('El postId es nulo o inválido.');
+      }
+    });
   }
 
-  initMap() {
-    const mapElement = document.getElementById('map');
-    if (!mapElement) {
-      console.error('Elemento del mapa no encontrado');
-      return;
-    }
   
-    const defaultLocation = { lat: -33.4489, lng: -70.6693 };
-    this.map = new google.maps.Map(mapElement, {
-      center: defaultLocation,
-      zoom: 12,
-    });
-  
-    const input = document.getElementById('searchBox') as HTMLInputElement;
-    if (input) {
-      this.searchBox = new google.maps.places.SearchBox(input);
-      this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-  
-      this.searchBox.addListener('places_changed', () => {
-        const places = this.searchBox.getPlaces();
-        if (places && places.length > 0) {
-          const place = places[0];
-          if (place.geometry) {
-            this.map.panTo(place.geometry.location);
-            this.map.setZoom(15);
-            this.post.lat = place.geometry.location.lat();
-            this.post.lng = place.geometry.location.lng();
-          }
-        }
-      });
-    } else {
-      console.error('Input de búsqueda no encontrado');
-    }
-  }
+initMap(lat: number, lng: number) {
+  const location = { lat, lng };
+
+  this.map = new google.maps.Map(document.getElementById('map'), {
+    center: location,
+    zoom: 15,
+  });
+
+  new google.maps.Marker({
+    position: location,
+    map: this.map,
+    title: this.post.title || 'Ubicación de la publicación',
+  });
+}
   
 
   async loadPostData(postId: string) {

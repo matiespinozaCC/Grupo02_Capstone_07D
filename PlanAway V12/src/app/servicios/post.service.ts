@@ -108,9 +108,9 @@ export class PostService {
         author: user.email,
         createdAt: new Date(),
         aprobacion: 'pendiente',
-        lat, // Guarda la latitud
-        lng, // Guarda la longitud
-        address, // Guarda la dirección
+        lat,
+        lng,
+        address,
       };
   
       const postsCollection = collection(this.db, 'publicaciones');
@@ -128,7 +128,7 @@ export class PostService {
 
     const posts = await Promise.all(snapshot.docs.map(async (doc) => {
       const postData = doc.data();
-      const authorEmail = postData['author']; // El correo del autor
+      const authorEmail = postData['author'];
 
       // Aquí buscar el ID del usuario basado en el correo
       const userQuery = query(collection(this.db, 'usuarios'), where('email', '==', authorEmail));
@@ -140,7 +140,7 @@ export class PostService {
       return {
         id: doc.id,
         ...postData,
-        profileImageUrl // Agrega la imagen de perfil al post
+        profileImageUrl
       };
     }));
 
@@ -156,8 +156,8 @@ export class PostService {
 
     // Mapeo de documentos para incluir el ID
     const posts = snapshot.docs.map(doc => ({
-      id: doc.id, // Guardar el ID del documento
-      ...doc.data() // Obtener los datos del documento
+      id: doc.id,
+      ...doc.data()
     }));
 
     return posts;
@@ -182,9 +182,9 @@ export class PostService {
   
     if (snapshot.exists()) {
       const postData = snapshot.data();
-      const authorEmail = postData['author']; // El correo del autor
+      const authorEmail = postData['author'];
   
-      // Consulta para obtener la información del autor en la colección de 'usuarios'
+      
       const userQuery = query(collection(this.db, 'usuarios'), where('email', '==', authorEmail));
       const userSnapshot = await getDocs(userQuery);
       const userData = userSnapshot.docs.length > 0 ? userSnapshot.docs[0].data() : null;
@@ -195,9 +195,9 @@ export class PostService {
       return {
         id: snapshot.id,
         ...postData,
-        telefono, // Agrega el teléfono del autor
-        profileImageUrl, // Agrega la imagen de perfil al objeto post
-        address: postData['address'] // Incluye la dirección completa en el objeto post
+        telefono,
+        profileImageUrl,
+        address: postData['address']
       };
     } else {
       console.error(`No se encontró el post con ID: ${postId}`);
@@ -207,16 +207,16 @@ export class PostService {
   
   
 
-  // Obtener posts por usuario autenticado
+  
   async getPostsByUser() {
     try {
-      const user = await this.authService.getCurrentUser(); // Espera a que el usuario esté autenticado
+      const user = await this.authService.getCurrentUser();
       if (!user) {
         throw new Error('Usuario no autenticado');
       }
 
       const postsCollection = collection(this.db, 'publicaciones');
-      const q = query(postsCollection, where('author', '==', user.email)); // Filtrar por el email del usuario
+      const q = query(postsCollection, where('author', '==', user.email));
       const snapshot = await getDocs(q);
 
       const posts = snapshot.docs.map(doc => ({
@@ -246,14 +246,14 @@ export class PostService {
 
     snapshot.docs.forEach(doc => {
       const reserva = doc.data();
-      const inicioReserva = reserva['fechaInicio'].toDate(); // Usar notación de corchetes
-      const finReserva = reserva['fechaFin'].toDate(); // Usar notación de corchetes
+      const inicioReserva = reserva['fechaInicio'].toDate();
+      const finReserva = reserva['fechaFin'].toDate();
 
       // Comprobar si las fechas se superponen
       if ((fechaInicio >= inicioReserva && fechaInicio <= finReserva) ||
         (fechaFin >= inicioReserva && fechaFin <= finReserva) ||
         (fechaInicio <= inicioReserva && fechaFin >= finReserva)) {
-        disponible = false; // Fechas no disponibles
+        disponible = false;
       }
     });
 
@@ -276,7 +276,7 @@ export class PostService {
 
   async getReservasByPostId(postId: string): Promise<any[]> {
     const reservasCollection = collection(this.db, 'reservas');
-    const q = query(reservasCollection, where('postId', '==', postId)); // Filtrar reservas por ID de publicación
+    const q = query(reservasCollection, where('postId', '==', postId));
 
     const snapshot = await getDocs(q);
     return snapshot.docs.map(doc => ({
