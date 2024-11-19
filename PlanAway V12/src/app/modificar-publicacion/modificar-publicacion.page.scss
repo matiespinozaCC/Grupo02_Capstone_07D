@@ -1,0 +1,38 @@
+.modificar-publicacion {
+    padding: 16px;
+  
+    ion-card {
+      --background: #f4f4f4; /* Fondo claro */
+      --color: #333; /* Texto oscuro */
+      border-radius: 12px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+  
+    ion-item {
+      --background: #fff; /* Fondo blanco */
+      --color: #333; /* Texto */
+      border-radius: 8px;
+      margin-bottom: 16px;
+    }
+  
+    ion-label {
+      font-weight: bold;
+      color: #555; /* Color más oscuro para el texto */
+    }
+  
+    ion-input,
+    ion-textarea,
+    ion-select {
+      --background: #fff; /* Fondo blanco */
+      --color: #333; /* Texto oscuro */
+    }
+  
+    /* Botones */
+    .action-buttons ion-button {
+      font-size: 1rem;
+      font-weight: bold;
+      border-radius: 8px;
+    }
+  }
+  

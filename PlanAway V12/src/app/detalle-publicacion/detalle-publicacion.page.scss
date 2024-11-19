@@ -1,0 +1,65 @@
+.detalle-publicacion {
+    padding: 16px;
+  
+    /* Estilo de las tarjetas */
+    .post-card, .map-card, .reservas-card {
+      margin-bottom: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+  
+    /* Imagen del post */
+    .profile-image-container {
+      text-align: center;
+      padding: 16px;
+    }
+  
+    .profile-image {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      object-fit: cover;
+    }
+  
+    /* Título del post */
+    .post-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-align: center;
+      color: #333;
+    }
+  
+    /* Estilo del mapa */
+    .map-container {
+      height: 300px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+    }
+  
+    /* Botones de acción */
+    .action-buttons {
+      display: flex;
+      gap: 10px;
+      flex-direction: column;
+      margin: 16px 0;
+    }
+  
+    ion-button {
+      font-size: 1rem;
+      font-weight: bold;
+      border-radius: 8px;
+    }
+  
+    /* Reservas */
+    .reserva-item {
+      border-bottom: 1px solid #eee;
+      padding: 8px 0;
+    }
+  
+    .no-reservas {
+      text-align: center;
+      font-size: 1rem;
+      color: #888;
+    }
+  }
+  

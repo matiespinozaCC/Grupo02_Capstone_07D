@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { PostService } from '../servicios/post.service';
 
-declare var google: any; // Para evitar errores de typings con la API de Google Maps
+declare var google: any;
 
 @Component({
   selector: 'app-map',
@@ -25,11 +25,10 @@ export class MapPage implements OnInit {
       zoom: 12,
     };
 
-    // Inicializa el mapa
+    
     this.map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
     try {
-      // Obtén las publicaciones desde el servicio
       const posts = await this.postService.getPosts();
       this.addMarkers(posts);
     } catch (error) {
@@ -47,13 +46,12 @@ export class MapPage implements OnInit {
           title: post.title,
           icon: {
             url: post.imageUrl,
-            scaledSize: new google.maps.Size(30, 30),
+            scaledSize: new google.maps.Size(60, 60),
           },
         });
   
-        // Agrega un evento de clic al marcador
+        
         marker.addListener('click', () => {
-          // Redirige al detalle del post con el ID del post
           this.router.navigate(['tabs/post-detail', post.id]);
         });
       }

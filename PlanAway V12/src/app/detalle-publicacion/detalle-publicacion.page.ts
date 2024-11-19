@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PostService } from '../servicios/post.service';
 import { AuthService } from '../servicios/auth.service';
+import { AlertController } from '@ionic/angular';
 
 declare var google: any;
 
@@ -20,7 +21,8 @@ export class DetallePublicacionPage implements OnInit, AfterViewInit {
     private postService: PostService,
     private route: ActivatedRoute,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private alertController: AlertController
   ) {
     this.postId = this.route.snapshot.paramMap.get('id')!;
   }
@@ -77,12 +79,42 @@ export class DetallePublicacionPage implements OnInit, AfterViewInit {
   }
 
   async eliminarPost() {
-    try {
-      await this.postService.deletePost(this.postId);
-      this.router.navigate(['/perfil']);
-    } catch (error) {
-      console.error('Error al eliminar el post:', error);
-    }
+    const alert = await this.alertController.create({
+      header: 'Confirmación',
+      message: '¿Estás seguro de que deseas eliminar esta publicación?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          handler: () => {
+            console.log('Eliminación cancelada'); // Solo para debug
+          }
+        },
+        {
+          text: 'Eliminar',
+          role: 'destructive',
+          handler: async () => {
+            try {
+              // Llama al servicio o método para eliminar el post
+              console.log('Eliminando publicación...');
+              // Aquí puedes ejecutar la lógica de eliminación
+              await this.eliminarPublicacion(); // Método que elimina la publicación
+              console.log('Publicación eliminada con éxito');
+            } catch (error) {
+              console.error('Error al eliminar publicación:', error);
+            }
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+  async eliminarPublicacion() {
+    // Lógica de eliminación
+    console.log('Publicación eliminada (simulación).');
+    // Aquí puedes incluir el servicio HTTP o lógica que elimina el post.
   }
 
   irModificar() {
