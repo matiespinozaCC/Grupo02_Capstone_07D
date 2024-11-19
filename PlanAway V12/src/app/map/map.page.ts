@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import { PostService } from '../servicios/post.service';
 
 declare var google: any; // Para evitar errores de typings con la API de Google Maps
@@ -19,9 +19,9 @@ export class MapPage implements OnInit {
   }
 
   async loadMap() {
-    // Configuración inicial del mapa (puedes ajustar las coordenadas iniciales y el zoom según tu necesidad)
+    
     const mapOptions = {
-      center: { lat: -33.4489, lng: -70.6693 }, // Ejemplo: Santiago, Chile
+      center: { lat: -33.04823, lng: -71.3729 },
       zoom: 12,
     };
 
@@ -46,15 +46,15 @@ export class MapPage implements OnInit {
           map: this.map,
           title: post.title,
           icon: {
-            url: post.imageUrl, // Usa la imagen como ícono
-            scaledSize: new google.maps.Size(50, 50), // Ajustar tamaño del ícono
+            url: post.imageUrl,
+            scaledSize: new google.maps.Size(30, 30),
           },
         });
   
         // Agrega un evento de clic al marcador
         marker.addListener('click', () => {
           // Redirige al detalle del post con el ID del post
-          this.router.navigate(['/post-detail', post.id]);
+          this.router.navigate(['tabs/post-detail', post.id]);
         });
       }
     });

@@ -7,7 +7,7 @@ import { AdminAuthGuard } from './servicios/adminguard.guard';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'tabs',
+    redirectTo: '/tabs/home',
     pathMatch: 'full'
   },
   {

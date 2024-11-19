@@ -1,12 +1,114 @@
 ion-content {
-    --background: #f7f8fa;
-    padding: 16px;
+  --background: rgba(34, 33, 33, 0.637);
+  padding: 16px;
+}
+
+.form-card {
+  border-radius: 12px;
+  background-color: var(--background-light); 
+  transition: box-shadow 0.3s ease, transform 0.3s ease; 
+  box-shadow: 
+    0 4px 6px rgba(#0edb86, 0.2),
+    0 2px 4px rgba(#0edb86, 0.15);
+}
+
+
+.form-card:hover {
+  transform: translateY(-2px); 
+  box-shadow: 
+    0 6px 12px rgba(#44df9e, 0.3),
+    0 4px 8px rgba(#44df9e, 0.25);
+}
+
+
+//header bonito
+
+.toolbar-header {
+  --background: linear-gradient(135deg, #00c853, #008f39);
+  color: white; 
+  animation: slide-down 0.5s ease-out;
+}
+
+//animacion del titulo
+.title-animation {
+  font-size: 1.5rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  animation: fade-in 1s ease-in-out;
+}
+
+
+// volver
+.back-button {
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 12px;
+  border: 2px solid transparent;
+  transition: border-color 0.3s ease, transform 0.3s ease; /* Suave animación de borde */
+}
+
+.back-button:hover {
+  border-color: #0edb86;
+  background-color: transparent;
+  transform: scale(1.05);
+}
+
+.back-icon {
+  margin-right: 8px; 
+  transition: transform 0.3s ease;
+}
+
+.back-button:hover .back-icon {
+  transform: translateX(-5px);
+}
+
+
+// animacion
+@keyframes slide-down {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
   }
-  
-  .form-card {
-    border-radius: 12px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  to {
+    transform: translateY(0);
+    opacity: 1;
   }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.create-post-button {
+  --background: linear-gradient(45deg, #0edb86, #0abf6e); /* Color clásico verde en degradado */
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 1rem;
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Animación suave */
+}
+
+/* Efecto al hacer clic */
+.create-post-button:active {
+  transform: scale(0.95); /* Leve contracción */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra más pequeña */
+}
+
+
+
+
+
+
   
   .map-container {
     height: 200px;
@@ -18,13 +120,6 @@ ion-content {
   
   .form-footer {
     margin-top: 20px;
-  }
-  
-  .create-post-button {
-    --background: linear-gradient(45deg, #ff6f61, #ff946e);
-    color: white;
-    font-weight: bold;
-    border-radius: 8px;
   }
   
   .error-message {

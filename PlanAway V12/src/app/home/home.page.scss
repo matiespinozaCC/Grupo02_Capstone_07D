@@ -20,22 +20,23 @@
 }
 
 .imagenhome {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  width: 100%; /* Asegúrate de que la imagen ocupe todo el contenedor */
+  height: 100%; /* Ajusta la altura */
+  object-fit: cover; /* Para evitar deformaciones */
 }
 
 .logo-superpuesto {
-  position: absolute;
-  top: 16%; /* Ajusta según sea necesario */
-  left: 30%; /* Ajusta según sea necesario */
-  width: 200px;
-  height: 200px;
+  position: absolute; /* Para que se posicione relativo al contenedor padre */
+  top: 50%; /* Centrado verticalmente */
+  left: 50%; /* Centrado horizontalmente */
+  transform: translate(-50%, -50%); /* Ajusta el logo al centro exacto */
+  width: 100px; /* Ajusta el tamaño del logo */
+  height: 100px;
   background-image: url('/assets/IMG_2214.PNG');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  z-index: 10; /* Coloca el logo sobre la imagen */
+  z-index: 10; /* Asegúrate de que esté encima de otros elementos */
 }
 
 @media (prefers-color-scheme: light) {
@@ -62,43 +63,41 @@
 
 @media (max-width: 426px) {
   .titulo-encima-imagen {
-    font-size: 20px; /* Ajusta el tamaño de fuente para pantallas pequeñas */
-    top: 45%; /* Baja un poco el título para que sea más visible en pantallas pequeñas */
+    font-size: 20px;
+    top: 45%;
   }
   .logo-superpuesto {
     position: absolute;
-    top: 16%; /* Ajusta según sea necesario */
-    left: 25%; /* Ajusta según sea necesario */
+    top: 16%;
+    left: 25%;
     width: 200px;
     height: 200px;
   }
 }
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
   .titulo-encima-imagen {
-    font-size: 28px; /* Aumenta el tamaño en pantallas medianas */
-    top: 40%; /* Ajusta la posición para pantallas más grandes */
+    font-size: 28px;
+    top: 40%;
   }
 
   .logo-superpuesto {
-    position: absolute;
-    top: 10%; /* Ajusta según sea necesario */
-    left: 35%; /* Ajusta según sea necesario */
-    width: 200px;
-    height: 200px;
+    width: 280px;
+    height: 280px;
+    top: 20%;
   }
 }
 
 @media (min-width: 1024px) {
   .titulo-encima-imagen {
-    font-size: 32px; /* Tamaño de fuente más grande en pantallas grandes */
-    top: 40%; /* Ajusta la posición para pantallas grandes */
+    font-size: 32px;
+    top: 40%;
   }
 
   .logo-superpuesto {
     position: absolute;
-    top: 10%; /* Ajusta según sea necesario */
-    left: 40%; /* Ajusta según sea necesario */
+    top: 10%;
+    left: 40%;
     width: 250px;
     height: 250px;
   }
@@ -114,7 +113,7 @@
   width: 80%;
   max-width: 800px;
   text-align: center;
-  z-index: 10; /* Coloca la búsqueda sobre la imagen */
+  z-index: 10;
 }
 
 .search-container ion-item {

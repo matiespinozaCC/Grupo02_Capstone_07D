@@ -1,11 +1,15 @@
-<ion-header>
-  <ion-toolbar color="primary">
-    <ion-title>Crea tu Publicación</ion-title>
+<ion-header class="toolbar-header">
+  <ion-toolbar>
+    <ion-title class="title-animation">Crea tu Publicación</ion-title>
     <ion-buttons slot="end">
-      <ion-button (click)="onBack()">Volver</ion-button>
+      <ion-button class="back-button" (click)="onBack()">
+        <ion-icon name="arrow-back" class="back-icon"></ion-icon>
+        Volver
+      </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
+
 
 <ion-content>
 
@@ -82,12 +86,16 @@
 
   <!-- Botón Crear Post -->
   <ion-footer class="form-footer">
-    <ion-button expand="full" color="tertiary" (click)="onCreatePost()" class="create-post-button">
+    <ion-button expand="full" (click)="onCreatePost()" class="create-post-button">
       <ion-icon name="add-circle-outline"></ion-icon> Crear Post
     </ion-button>
   </ion-footer>
 
-  <div *ngIf="errorMessage" class="error-message">
-    {{ errorMessage }}
-  </div>
+  <ion-alert
+  *ngIf="showErrorAlert"
+  header="Error"
+  message="{{ errorMessage }}"
+  buttons="OK">
+</ion-alert>
+
 </ion-content>

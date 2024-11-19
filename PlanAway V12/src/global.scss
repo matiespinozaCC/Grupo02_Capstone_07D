@@ -25,6 +25,62 @@
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
 
+/* Personalización global para alertas en Ionic */
+ion-alert {
+    --background: #ffebee;
+    --color: #b71c1c; 
+    --button-color: #ffffff;
+    --button-background: #d32f2f;
+    --button-hover-background: #b71c1c;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: fade-in 0.4s ease-out;
+  }
+  
+  /* Personalización del encabezado */
+  ion-alert .alert-head {
+    font-size: 1.4rem;
+    font-weight: bold;
+    text-align: center;
+    color: #d32f2f;
+    padding-bottom: 8px;
+  }
+  
+  /* Personalización del mensaje */
+  ion-alert .alert-message {
+    font-size: 1rem;
+    color: #b71c1c;
+    text-align: center;
+    line-height: 1.5;
+  }
+  
+  /* Personalización de botones */
+  ion-alert .alert-button {
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 6px; 
+  }
+  
+  /* Cambios en hover de los botones */
+  ion-alert .alert-button:hover {
+    background-color: var(--button-hover-background);
+    color: var(--button-color);
+  }
+  
+  
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  
+
 /**
  * Ionic Dark Mode
  * -----------------------------------------------------

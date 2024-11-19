@@ -2,6 +2,7 @@ import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { PostService } from '../servicios/post.service';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import { AlertController } from '@ionic/angular';
 
 const apiKey = environment.googleMapsApiKey;
 
@@ -26,22 +27,34 @@ export class CrearpostPage implements AfterViewInit {
   address: string = '';
   lat: number = 0;
   lng: number = 0;
-
   map: any;
   searchBox: any;
 
   allCategories: string[] = ['piscina', 'quincho', 'terraza', 'departamento'];
   filteredCategories: string[] = this.allCategories;
 
-  constructor(private postService: PostService, private router: Router) {}
+  constructor(private postService: PostService, private router: Router, private alertController: AlertController) {}
 
   onBack() {
     this.router.navigate(['tabs/home']);
   }
 
+  async showErrorAlert(message: string) {
+    const alert = await this.alertController.create({
+      header: 'Error',
+      message: message,
+      buttons: ['Okey'],
+      cssClass: 'custom-alert-error'
+    });
+  
+    await alert.present(); // Presenta la alerta
+  }
+  
+
   ngAfterViewInit() {
     this.initMap();
   }
+  
 
   initMap() {
     const defaultLocation = { lat: -33.0433, lng: -71.3735 }; // Villa Alemana
@@ -121,15 +134,15 @@ export class CrearpostPage implements AfterViewInit {
 
   async onCreatePost() {
     if (!this.title || !this.description || !this.category || this.capacity === null || this.imageFile === null) {
-      this.errorMessage = 'Todos los campos son obligatorios';
+      await this.showErrorAlert('Todos los campos son obligatorios');
       return;
     }
-
+  
     if (this.price === null || this.price <= 0) {
-      this.errorMessage = 'El precio debe ser un valor positivo';
+      await this.showErrorAlert('El precio debe ser un valor positivo');
       return;
     }
-
+  
     try {
       await this.postService.createPost(
         this.title,
@@ -145,10 +158,11 @@ export class CrearpostPage implements AfterViewInit {
       this.router.navigate(['/tabs/home']);
     } catch (error: unknown) {
       if (error instanceof Error) {
-        this.errorMessage = 'Error al crear el post: ' + error.message;
+        await this.showErrorAlert('Error al crear el post: ' + error.message);
       } else {
-        this.errorMessage = 'Error desconocido al crear el post';
+        await this.showErrorAlert('Error desconocido al crear el post');
       }
     }
   }
+
 }
