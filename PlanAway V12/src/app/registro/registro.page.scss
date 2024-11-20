@@ -54,7 +54,7 @@
   
   .botonregister {
     display: flex;
-    justify-content: space-between; /* O usa gap para ajustar el espacio entre los botones */
+    justify-content: space-between;
     gap: 10px;
     margin: 0 10%;
     margin-top: 2%;
@@ -97,7 +97,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 50vh; /* Centra el botón verticalmente en la mitad de la pantalla */
+    height: 50vh;
   }
   
   .boton-centro #step4boton {
@@ -225,7 +225,7 @@
   }
   
   .divlogo img {
-    width: 150px; /* Ajusta el tamaño del logo */
+    width: 150px;
     margin-bottom: 20px;
   }
   
@@ -235,71 +235,57 @@
   }
 
   .foto-perfil-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     text-align: center;
+    margin-top: 20px;
+  
+    .foto-circulo {
+      position: relative;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto;
+      border: 4px solid #fff;
+      background-color: #eaeaea;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    .foto-preview {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    
+    .file-input {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: pointer;
+      z-index: 3;
+    }
+    
+    .camera-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 36px;
+      color: #0edb86;
+      background-color: rgba(0, 0, 0, 0);
+      padding: 8px;
+      border-radius: 50%;
+      z-index: 2;
+      pointer-events: none;
+    }
+    
+    
+    
   }
   
-  
-  .foto-circulo {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .foto-preview {
-    width: 150%;
-    height: 110%;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    position: relative;
-  }
-  
-  .upload-icon {
-    position: absolute;
-    bottom: 5px;
-    right: 5px;
-    font-size: 24px;
-    color: #000;
-    background: rgba(255, 255, 255, 0.7);
-    border-radius: 60%;
-  }
-  
-  .file-input {
-    display: none;
-  }
-  
-  
-  .upload-icon {
-    display: inline-block;
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    background-color: #f0f0f0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    border: 2px solid #ccc;
-    position: relative;
-  }
-  
-  .camera-icon {
-    font-size: 36px;
-    color: #555;
-  }
-  
-  input[type="file"] {
-    display: none;
-  }
   
   .botones {
     margin-top: 20px;

@@ -83,14 +83,17 @@
         </div>
         
         <div class="foto-circulo">
-          <!-- Mostrar la imagen seleccionada dentro de un elemento <img> -->
-      
-          <label for="file-upload" class="upload-icon">
-            <input id="file-upload" type="file" (change)="onFileSelected($event)" accept="image/*" class="file-input" />
-            <img *ngIf="profileImage" [src]="profileImage" class="foto-preview" alt="Foto de perfil seleccionada" />
-            <ion-icon name="camera" class="camera-icon"></ion-icon>
-          </label>
+          <!-- Imagen de vista previa -->
+          <img *ngIf="profileImage" [src]="profileImage" class="foto-preview" alt="Foto de perfil seleccionada" />
+        
+          <!-- Input siempre disponible para permitir nuevas selecciones -->
+          <input id="file-upload" type="file" (change)="onFileSelected($event)" accept="image/*" class="file-input" />
+        
+          <!-- Icono visible únicamente cuando no hay imagen -->
+          <ion-icon *ngIf="!profileImage" name="camera" class="camera-icon"></ion-icon>
         </div>
+        
+        
       </div>
       
 

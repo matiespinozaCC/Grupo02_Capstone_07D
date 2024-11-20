@@ -35,11 +35,13 @@ export class RegistroPage{
     if (file) {
       const reader = new FileReader();
       reader.onload = (e: any) => {
-        this.profileImage = e.target.result;
+        this.profileImage = e.target.result; // Asigna la vista previa como base64
+        this.cd.detectChanges(); // Asegura que el cambio sea detectado en la plantilla
       };
-      reader.readAsDataURL(file);
+      reader.readAsDataURL(file); // Lee el archivo como Data URL (base64)
     }
   }
+  
   
   
 
