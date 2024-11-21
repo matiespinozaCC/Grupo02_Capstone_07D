@@ -1,15 +1,9 @@
 <ion-content [fullscreen]="true">
   <!-- Contenedor principal de la imagen y el logo superpuesto -->
   <div class="imagen-container">
-    <!-- Imagen de fondo principal -->
     <img src="/assets/fondologin.jpg" class="imagenhome" alt="Fondo">
-
-    <!-- Logo superpuesto en la imagen principal -->
     <div class="logo-superpuesto"></div>
-
-    <!-- Título y barra de búsqueda -->
     <h2 class="titulo-encima-imagen">¿Qué estás Buscando?</h2>
-
     <div class="search-container">
       <ion-item>
         <ion-label>Buscar categoría:</ion-label>
@@ -18,7 +12,6 @@
     </div>
   </div>
 
-  <!-- Sección de categorías (mismo código que ya tienes) -->
   <div id="categorias-section">
     <div *ngFor="let category of filteredCategories" class="categorias">
       <h2 class="NombreCategoria">{{ category.name }}s disponibles</h2>
@@ -27,15 +20,10 @@
         <div class="posts-grid">
           <div *ngFor="let post of category.posts" class="post-item" [routerLink]="['/tabs/post-detail', post.id]" (click)="goToPostDetail(post.id)">
             <ion-card class="card-background">
-              <!-- Imagen de fondo de la publicación -->
               <img src="{{ post.imageUrl }}" alt="Imagen de fondo" class="post-background">
-              
-              <!-- Imagen de perfil dentro de un círculo -->
               <div class="profile-image-container">
                 <img src="{{ post.profileImageUrl }}" alt="Imagen de perfil" class="profile-image">
               </div>
-          
-              <!-- Título de la publicación (nombre del lugar) -->
               <div class="title-container">
                 <p>{{ post.title }}</p>
               </div>

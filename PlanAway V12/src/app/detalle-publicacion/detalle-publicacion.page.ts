@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit,ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PostService } from '../servicios/post.service';
 import { AuthService } from '../servicios/auth.service';
@@ -23,7 +23,8 @@ export class DetallePublicacionPage implements OnInit, AfterViewInit {
     private route: ActivatedRoute,
     private router: Router,
     private authService: AuthService,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private cd: ChangeDetectorRef
   ) {
     this.postId = this.route.snapshot.paramMap.get('id')!;
   }
@@ -99,7 +100,12 @@ export class DetallePublicacionPage implements OnInit, AfterViewInit {
               console.log('Eliminando publicación...');
               await this.eliminarPublicacion();
               console.log('Publicación eliminada con éxito');
+              
+              // Muestra el toast
               this.showDeleteToast = true;
+              this.cd.detectChanges(); // Forzar detección de cambios
+              
+              // Redirige al perfil después de un retraso
               setTimeout(() => {
                 this.router.navigate(['tabs/perfil']);
               }, 3000);
@@ -117,11 +123,15 @@ export class DetallePublicacionPage implements OnInit, AfterViewInit {
   async eliminarPublicacion() {
     try {
       await this.postService.deletePost(this.postId);
-      this.router.navigate(['tabs/perfil']);
     } catch (error) {
       console.error('Error al eliminar el post:', error);
     }
   }
+
+  onToastDismiss() {
+    this.showDeleteToast = false; // Resetea el estado del toast
+  }
+
 
   irModificar() {
     this.router.navigate(['/modificar-publicacion', this.postId]);
