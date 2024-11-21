@@ -16,16 +16,65 @@
     color: var(--color-selected); /* Color al seleccionar una opción */
   }
 
-@media (prefers-color-scheme: light) {
+
+  .menu-configuracion {
+    position: absolute;
+    bottom: 56px;
+    right: 16px;
+    z-index: 10;
+    background: #333;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  
+    ion-list {
+      margin: 0;
+      padding: 0;
+  
+      ion-item {
+        background: #333;
+        color: #ffffff;
+        --background-focused: rgba(14, 219, 134, 0.1);
+        --color-focused: #0edb86;
+        font-size: 1rem;
+      }
+  
+      ion-item[color="danger"] {
+        --color: #e74c3c;
+        --color-focused: #c0392b;
+      }
+    }
+  }
+  
+
+  @media (prefers-color-scheme: light) {
   .custom-tab-bar {
     --background: #ffffff;
     --color: #000000;
     --color-selected: #0edb86;
   }
 
-  .titulo {
-    color: #000000;
-    font-size: 1.5rem;
+  .menu-configuracion {
+    background: #ffffff;
+    color: #333;
+  }
+
+  .menu-configuracion ion-list ion-item {
+    background: #ffffff; /* Fondo del ítem */
+    color: #333; /* Texto del ítem */
+    --background-focused: rgba(14, 219, 134, 0.1); /* Fondo al enfocar */
+    --color-focused: #0edb86; /* Color del texto al enfocar */
+  }
+
+  .menu-configuracion ion-list ion-item[color="danger"] {
+    --color: #e74c3c;
+    --color-focused: #c0392b;
   }
 }
+
+
+//menu
+
+
+
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { PostService } from '../servicios/post.service';
 
@@ -11,6 +11,7 @@ declare var google: any;
 })
 export class MapPage implements OnInit {
   map: any;
+  mapainicializado: boolean = false;
 
   constructor(private postService: PostService, private router: Router) {}
 
@@ -39,7 +40,6 @@ export class MapPage implements OnInit {
   addMarkers(posts: any[]) {
     posts.forEach((post) => {
       if (post.lat && post.lng) {
-        // Crear el marcador con las coordenadas y la imagen del post
         const marker = new google.maps.Marker({
           position: { lat: post.lat, lng: post.lng },
           map: this.map,
@@ -56,6 +56,37 @@ export class MapPage implements OnInit {
         });
       }
     });
+  }
+
+  destuirmapa() {
+    if (this.map) {
+      const mapContainer = document.getElementById('map');
+      if (mapContainer) {
+        mapContainer.innerHTML = '';
+      }
+      this.mapainicializado = false;
+    }
+  }
+
+  ionViewWillEnter() {
+    const reloaded = localStorage.getItem('mapReloaded');
+  
+    if (!reloaded) {
+      localStorage.setItem('mapReloaded', 'true');
+      location.reload();
+    } else {
+      localStorage.removeItem('mapReloaded');
+      this.loadMap();
+    }
+  }
+  
+
+  ionViewWillLeave() {
+    this.destuirmapa();
+  }
+
+  ngOnDestroy() {
+    this.destuirmapa();
   }
   
 }

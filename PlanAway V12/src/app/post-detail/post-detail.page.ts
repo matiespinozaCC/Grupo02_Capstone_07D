@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PostService } from '../servicios/post.service';
 import { Router } from '@angular/router';
@@ -15,11 +15,11 @@ declare var google: any;
   templateUrl: './post-detail.page.html',
   styleUrls: ['./post-detail.page.scss'],
 })
-export class PostDetailPage implements OnInit, AfterViewInit {
+export class PostDetailPage implements OnInit, AfterViewInit, OnDestroy {
   post: any;
   loading: boolean = true;
-  fechaInicio: string | undefined;
-  fechaFin: string | undefined;
+  fechaInicio: string | null = null;
+  fechaFin: string | null = null;
   seleccionandoFechaInicio: boolean = true;
   reservaMensaje: string = '';
   showFullDescription: boolean = false;
@@ -28,6 +28,7 @@ export class PostDetailPage implements OnInit, AfterViewInit {
   newComment: string = '';
   map: any;
   searchBox: any;
+  mapainicializado: boolean = false
 
   constructor(
     private route: ActivatedRoute,
@@ -51,6 +52,7 @@ export class PostDetailPage implements OnInit, AfterViewInit {
       console.error('El postId es null o inválido');
     }
   }
+  
 
   ngAfterViewInit() {
     this.route.paramMap.subscribe(async (params) => {
@@ -70,6 +72,18 @@ export class PostDetailPage implements OnInit, AfterViewInit {
         console.error('El postId es nulo o inválido.');
       }
     });
+  }
+
+  ionViewWillEnter() {
+    const reloaded = localStorage.getItem('mapReloaded');
+  
+    if (!reloaded) {
+      localStorage.setItem('mapReloaded', 'true');
+      location.reload();
+    } else {
+      localStorage.removeItem('mapReloaded');
+      this.initMap;
+    }
   }
 
   
@@ -144,16 +158,30 @@ initMap(lat: number, lng: number) {
     }
   }
 
-   // Manejar selección de fecha de inicio
-   onFechaInicioSeleccionada(event: any) {
-    this.fechaInicio = event.detail.value;
-    this.seleccionandoFechaInicio = false; // Ocultar fecha de inicio y mostrar fecha de fin
-  }
 
-  // Manejar selección de fecha de fin
-  onFechaFinSeleccionada(event: any) {
-    this.fechaFin = event.detail.value;
-    this.seleccionandoFechaInicio = true; // Volver a inicio si es necesario
+  getFechaFormateada(fechaString: string | null): string {
+    if (!fechaString) return 'No seleccionada'; // Si no hay fecha, retorna este texto
+    const fecha = new Date(fechaString); // Convierte la cadena de texto en objeto Date
+    return new Intl.DateTimeFormat('es-ES', {
+      weekday: 'long', // Día de la semana
+      year: 'numeric', // Año
+      month: 'long', // Mes
+      day: 'numeric', // Día del mes
+    }).format(fecha); // Devuelve la fecha formateada
+  }
+  
+  // Evento para manejar la selección de la fecha de inicio
+  onFechaInicioSeleccionada(evento: any) {
+    this.fechaInicio = evento.detail.value; // Guarda la fecha seleccionada
+    console.log('Fecha de inicio seleccionada:', this.getFechaFormateada(this.fechaInicio));
+    this.seleccionandoFechaInicio = false;
+  }
+  
+  // Evento para manejar la selección de la fecha de fin
+  onFechaFinSeleccionada(evento: any) {
+    this.fechaFin = evento.detail.value; // Guarda la fecha seleccionada
+    this.seleccionandoFechaInicio = true;
+    console.log('Fecha de fin seleccionada:', this.getFechaFormateada(this.fechaFin));
   }
 
   async reservar() {
@@ -202,6 +230,20 @@ initMap(lat: number, lng: number) {
 
   onBack() {
     this.router.navigate(['tabs/home']); // Ajusta la ruta según sea necesario
+  }
+
+  destroyMap() {
+    if (this.map) {
+      const mapContainer = document.getElementById('map');
+      if (mapContainer) {
+        mapContainer.innerHTML = ''; // Limpia el contenedor del mapa
+      }
+      this.mapainicializado = false;
+    }
+  }
+
+  ngOnDestroy() {
+    this.destroyMap();
   }
 }
 
