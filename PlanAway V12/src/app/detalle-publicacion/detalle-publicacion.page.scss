@@ -62,4 +62,19 @@
       color: #888;
     }
   }
+
+  .custom-toast-delete {
+    --background: #f44336; /* Rojo para indicar una acción destructiva */
+    --color: white;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .custom-toast-delete .icon {
+    font-size: 24px;
+    margin-right: 8px;
+  }
+  
   

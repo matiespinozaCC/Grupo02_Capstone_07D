@@ -16,6 +16,7 @@ declare var google: any;
 export class CrearpostPage implements AfterViewInit {
   @ViewChild('map', { static: false }) mapElement!: ElementRef;
   @ViewChild('addressInput', { static: false }) addressInput!: ElementRef;
+  showSuccessToast: boolean = false;
 
   title: string = '';
   description: string = '';
@@ -137,12 +138,12 @@ export class CrearpostPage implements AfterViewInit {
       await this.showErrorAlert('Todos los campos son obligatorios');
       return;
     }
-  
+
     if (this.price === null || this.price <= 0) {
       await this.showErrorAlert('El precio debe ser un valor positivo');
       return;
     }
-  
+
     try {
       await this.postService.createPost(
         this.title,
@@ -155,7 +156,14 @@ export class CrearpostPage implements AfterViewInit {
         this.lat,
         this.lng
       );
-      this.router.navigate(['/tabs/home']);
+
+      // Muestra el toast de éxito
+      this.showSuccessToast = true;
+
+      // Navega al home después de un pequeño retraso
+      setTimeout(() => {
+        this.router.navigate(['/tabs/home']);
+      }, 3000);
     } catch (error: unknown) {
       if (error instanceof Error) {
         await this.showErrorAlert('Error al crear el post: ' + error.message);
@@ -164,5 +172,4 @@ export class CrearpostPage implements AfterViewInit {
       }
     }
   }
-
 }

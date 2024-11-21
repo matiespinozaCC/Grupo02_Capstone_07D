@@ -91,6 +91,17 @@
     </ion-button>
   </ion-footer>
 
+  <ion-toast
+  [isOpen]="showSuccessToast"
+  message="La publicacion se subio correctamente"
+  icon="checkmark-circle-outline"
+  position="top"
+  duration="3000"
+  color="success"
+  cssClass="custom-toast"
+></ion-toast>
+
+
   <ion-alert
   *ngIf="showErrorAlert"
   header="Error"

@@ -41,4 +41,15 @@
       <p>No hay reservas para esta publicación.</p>
     </div>
   </div>
+  <ion-toast
+  [isOpen]="showDeleteToast"
+  message="La publicación ha sido eliminada correctamente"
+  icon="checkmark-circle-outline"
+  position="top"
+  duration="3000"
+  color="success"
+  cssClass="custom-toast-delete"
+></ion-toast>
+
+
 </ion-content>

@@ -16,6 +16,7 @@ export class DetallePublicacionPage implements OnInit, AfterViewInit {
   postId: string;
   reservas: any[] = [];
   map: any;
+  showDeleteToast: boolean = false;
 
   constructor(
     private postService: PostService,
@@ -87,7 +88,7 @@ export class DetallePublicacionPage implements OnInit, AfterViewInit {
           text: 'Cancelar',
           role: 'cancel',
           handler: () => {
-            console.log('Eliminación cancelada'); // Solo para debug
+            console.log('Eliminación cancelada');
           }
         },
         {
@@ -95,11 +96,13 @@ export class DetallePublicacionPage implements OnInit, AfterViewInit {
           role: 'destructive',
           handler: async () => {
             try {
-              // Llama al servicio o método para eliminar el post
               console.log('Eliminando publicación...');
-              // Aquí puedes ejecutar la lógica de eliminación
-              await this.eliminarPublicacion(); // Método que elimina la publicación
+              await this.eliminarPublicacion();
               console.log('Publicación eliminada con éxito');
+              this.showDeleteToast = true;
+              setTimeout(() => {
+                this.router.navigate(['tabs/perfil']);
+              }, 3000);
             } catch (error) {
               console.error('Error al eliminar publicación:', error);
             }
@@ -112,9 +115,12 @@ export class DetallePublicacionPage implements OnInit, AfterViewInit {
   }
 
   async eliminarPublicacion() {
-    // Lógica de eliminación
-    console.log('Publicación eliminada (simulación).');
-    // Aquí puedes incluir el servicio HTTP o lógica que elimina el post.
+    try {
+      await this.postService.deletePost(this.postId);
+      this.router.navigate(['tabs/perfil']);
+    } catch (error) {
+      console.error('Error al eliminar el post:', error);
+    }
   }
 
   irModificar() {

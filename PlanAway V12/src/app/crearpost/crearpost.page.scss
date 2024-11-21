@@ -87,28 +87,22 @@ ion-content {
 }
 
 .create-post-button {
-  --background: linear-gradient(45deg, #0edb86, #0abf6e); /* Color clásico verde en degradado */
+  --background: linear-gradient(45deg, #0edb86, #0abf6e);
   color: white;
   font-weight: bold;
   border-radius: 8px;
   padding: 12px 24px;
   font-size: 1rem;
   border: none;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra ligera */
-  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Animación suave */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 /* Efecto al hacer clic */
 .create-post-button:active {
-  transform: scale(0.95); /* Leve contracción */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra más pequeña */
+  transform: scale(0.95);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
-
-
-
-
-
-
   
   .map-container {
     height: 200px;
@@ -128,6 +122,23 @@ ion-content {
     margin-top: 10px;
   }
 
+//publicacion subida con exito
+
+.custom-toast {
+  --background: #0edb86;
+  --color: white;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.custom-toast .icon {
+  font-size: 24px;
+  margin-right: 8px;
+}
+
+
 //mapa  
   
 .map-container {
@@ -140,8 +151,8 @@ ion-content {
 }
 
 .search-container {
-  position: relative; /* Fijo fuera del mapa */
-  margin: 10px auto; /* Centrado horizontalmente */
+  position: relative;
+  margin: 10px auto;
   width: 90%;
   max-width: 500px;
 }

@@ -26,7 +26,7 @@ export class PerfilPage implements OnInit {
     private postService: PostService,
     private router: Router,
     private authService: AuthService,
-    private modalController: ModalController // Importa el ModalController
+    private modalController: ModalController
   ) {}
 
   ngOnInit() {
@@ -60,7 +60,7 @@ export class PerfilPage implements OnInit {
     const modal = await this.modalController.create({
       component: ImageModalComponent,
       componentProps: {
-        imageSrc: this.profileImage // Pasa la URL de la imagen al modal
+        imageSrc: this.profileImage
       },
       cssClass: 'image-modal'
     });
@@ -68,7 +68,7 @@ export class PerfilPage implements OnInit {
     modal.onDidDismiss().then((data) => {
       const newImageUrl = data.data;
       if (newImageUrl) {
-        this.profileImage = newImageUrl; // Actualiza la imagen de perfil en la vista de perfil
+        this.profileImage = newImageUrl;
       }
     });
   
