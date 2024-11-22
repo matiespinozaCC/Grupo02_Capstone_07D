@@ -55,6 +55,13 @@ export class PerfilPage implements OnInit {
     }
   }
 
+  redcrearpost(){
+    this.router.navigate(['/crearpost'])
+    setTimeout(() => {
+      location.reload();
+    }, 1000);
+  }
+
   // Método para abrir el modal con la imagen ampliada
   async openImageModal() {
     const modal = await this.modalController.create({

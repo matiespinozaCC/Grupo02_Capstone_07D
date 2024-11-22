@@ -46,7 +46,7 @@ export class TabsPage {
 
   ayudaSoporte() {
     this.showMenu = false;
-    console.log('Ayuda y soporte');
+    this.router.navigate(['/ayuda-soporte']);
   }
 
   verAcercaDe() {

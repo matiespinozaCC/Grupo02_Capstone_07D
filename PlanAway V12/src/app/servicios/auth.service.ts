@@ -91,6 +91,26 @@ export class AuthService {
     });
   }
 
+  async updateUserProfile(profile: { name?: string; phone?: string; profileImage?: string }): Promise<void> {
+    if (!this.currentUser) throw new Error('No hay un usuario autenticado');
+  
+    const userId = this.currentUser.uid;
+    const userRef = doc(this.firestore, 'usuarios', userId);
+  
+    const updates: any = {};
+    if (profile.name) updates.nombre = profile.name;
+    if (profile.phone) updates.telefono = profile.phone;
+    if (profile.profileImage) updates.profileImageUrl = profile.profileImage;
+  
+    try {
+      await updateDoc(userRef, updates); // Actualiza los datos en Firestore
+    } catch (error) {
+      console.error('Error al actualizar el perfil:', error);
+      throw error;
+    }
+  }
+  
+
   logout() {
     return this.auth.signOut().then(() => {
       this.currentUser = null; // Limpiar el usuario actual al cerrar sesión

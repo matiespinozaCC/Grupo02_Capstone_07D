@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Editar Perfil</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/perfil"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="edit-profile-container">
+    <!-- Foto de perfil -->
+    <div class="profile-picture-container">
+      <div class="profile-picture">
+        <img [src]="profileImage" alt="Foto de perfil" class="foto-perfil" />
+      </div>
+      <ion-button class="cambiarfoto" expand="block" (click)="changeProfilePicture()">Cambiar Foto</ion-button>
+      <input type="file" #fileInput (change)="onFileSelected($event)" hidden />
+    </div>
+
+    <!-- Formulario de edición -->
+    <ion-list>
+      <ion-item>
+        <ion-label position="floating">Nombre</ion-label>
+        <ion-input [(ngModel)]="name" type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Correo Electrónico</ion-label>
+        <ion-input [(ngModel)]="email" type="email" disabled></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Teléfono</ion-label>
+        <ion-input [(ngModel)]="phone" type="tel"></ion-input>
+      </ion-item>
+    </ion-list>
+
+    <!-- Botones -->
+    <div class="button-container">
+      <ion-button expand="block" class="guardar" (click)="saveProfile()">Guardar Cambios</ion-button>
+      <ion-button expand="block" fill="outline" color="danger" (click)="cancelEdit()">Cancelar</ion-button>
+    </div>
+  </div>
+</ion-content>

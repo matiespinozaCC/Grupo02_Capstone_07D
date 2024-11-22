@@ -49,7 +49,15 @@ const routes: Routes = [
     path: 'map',
     loadChildren: () => import('./map/map.module').then( m => m.MapPageModule),
     canActivate: [AuthGuard]
+  },  {
+    path: 'editar-perfil',
+    loadChildren: () => import('./editar-perfil/editar-perfil.module').then( m => m.EditarPerfilPageModule)
+  },
+  {
+    path: 'ayuda-soporte',
+    loadChildren: () => import('./ayuda-soporte/ayuda-soporte.module').then( m => m.AyudaSoportePageModule)
   }
+
 
 ];
 

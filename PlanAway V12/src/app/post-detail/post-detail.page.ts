@@ -130,7 +130,7 @@ initMap(lat: number, lng: number) {
     }
   }
 
-  //efecto de descricion
+  
 
   onScroll(event: any) {
     const element = event.target as HTMLElement;
@@ -160,26 +160,25 @@ initMap(lat: number, lng: number) {
 
 
   getFechaFormateada(fechaString: string | null): string {
-    if (!fechaString) return 'No seleccionada'; // Si no hay fecha, retorna este texto
-    const fecha = new Date(fechaString); // Convierte la cadena de texto en objeto Date
+    if (!fechaString) return 'No seleccionada';
+    const fecha = new Date(fechaString);
     return new Intl.DateTimeFormat('es-ES', {
-      weekday: 'long', // Día de la semana
-      year: 'numeric', // Año
-      month: 'long', // Mes
-      day: 'numeric', // Día del mes
-    }).format(fecha); // Devuelve la fecha formateada
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long', 
+      day: 'numeric',
+    }).format(fecha);
   }
   
-  // Evento para manejar la selección de la fecha de inicio
   onFechaInicioSeleccionada(evento: any) {
-    this.fechaInicio = evento.detail.value; // Guarda la fecha seleccionada
+    this.fechaInicio = evento.detail.value;
     console.log('Fecha de inicio seleccionada:', this.getFechaFormateada(this.fechaInicio));
     this.seleccionandoFechaInicio = false;
   }
   
-  // Evento para manejar la selección de la fecha de fin
+
   onFechaFinSeleccionada(evento: any) {
-    this.fechaFin = evento.detail.value; // Guarda la fecha seleccionada
+    this.fechaFin = evento.detail.value;
     this.seleccionandoFechaInicio = true;
     console.log('Fecha de fin seleccionada:', this.getFechaFormateada(this.fechaFin));
   }
@@ -189,34 +188,42 @@ initMap(lat: number, lng: number) {
       this.reservaMensaje = 'Por favor, selecciona ambas fechas.';
       return;
     }
-
+  
     const fechaInicioDate = new Date(this.fechaInicio);
     const fechaFinDate = new Date(this.fechaFin);
-
+    const fechaActual = new Date();
+  
+    // Validación de fechas en el pasado
+    if (fechaInicioDate < fechaActual || fechaFinDate < fechaActual) {
+      this.reservaMensaje = 'No puedes seleccionar fechas en el pasado.';
+      return;
+    }
+  
+    // Validación de rango de fechas
     if (fechaInicioDate > fechaFinDate) {
       this.reservaMensaje = 'La fecha de inicio no puede ser posterior a la fecha de fin.';
       return;
     }
-
+  
     const usuario = await this.authService.getCurrentUser();
     if (!usuario) {
       this.reservaMensaje = 'Usuario no autenticado. Por favor, inicia sesión.';
       return;
     }
-
+  
     const postId = this.post.id;
     const disponible = await this.postService.verificarDisponibilidad(postId, fechaInicioDate, fechaFinDate);
     if (!disponible) {
       this.reservaMensaje = 'Las fechas seleccionadas no están disponibles.';
       return;
     }
-
+  
     const costoPesos = this.post.price;
     const comision = costoPesos * 0.1;
     const totalPesos = costoPesos;
     const tasaConversion = 900;
     const totalDolares = totalPesos / tasaConversion;
-
+  
     const pagoExitoso = await this.paypalService.iniciarPago(totalDolares);
     if (pagoExitoso) {
       await this.postService.reservarPropiedad(postId, fechaInicioDate, fechaFinDate, usuario.uid);
@@ -227,6 +234,7 @@ initMap(lat: number, lng: number) {
       this.reservaMensaje = 'El pago no se pudo completar. Reserva no realizada.';
     }
   }
+  
 
   onBack() {
     this.router.navigate(['tabs/home']); // Ajusta la ruta según sea necesario
