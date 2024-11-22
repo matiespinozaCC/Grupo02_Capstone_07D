@@ -41,7 +41,6 @@ export class DetallePublicacionPage implements OnInit, AfterViewInit {
   async cargarPost() {
     try {
       this.post = await this.postService.getPostById(this.postId);
-      location.reload();
       if (this.post.lat && this.post.lng) {
         this.cargarMapa();
       }
