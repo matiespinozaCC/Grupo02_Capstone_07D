@@ -140,26 +140,26 @@
   
   ion-label h3 {
     font-size: 1.1rem;
-    color: #0edb86; /* Color corporativo para el título */
+    color: #0edb86;
     margin: 0;
   }
   
   ion-label p {
     font-size: 0.9rem;
-    color: #666666; /* Gris oscuro para el texto de la descripción */
+    color: #666666;
     margin: 0.2rem 0;
   }
   
   ion-label small {
     font-size: 0.8rem;
-    color: #888888; /* Gris medio para el texto de la categoría */
+    color: #888888;
   }
   
   ion-button {
-    --background: #0edb86; /* Color corporativo en el fondo del botón */
-    --background-hover: #0ccf79; /* Tonalidad ligeramente más oscura para el hover */
+    --background: #0edb86;
+    --background-hover: #0ccf79;
     --border-radius: 8px;
-    color: #ffffff; /* Texto blanco para buen contraste */
+    color: #ffffff;
     font-weight: bold;
   }
   

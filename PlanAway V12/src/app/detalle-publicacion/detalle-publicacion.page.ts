@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { PostService } from '../servicios/post.service';
 import { AuthService } from '../servicios/auth.service';
 import { AlertController } from '@ionic/angular';
+import { NavController } from '@ionic/angular';
 
 declare var google: any;
 
@@ -24,7 +25,8 @@ export class DetallePublicacionPage implements OnInit, AfterViewInit {
     private router: Router,
     private authService: AuthService,
     private alertController: AlertController,
-    private cd: ChangeDetectorRef
+    private cd: ChangeDetectorRef,
+    private navCtrl: NavController
   ) {
     this.postId = this.route.snapshot.paramMap.get('id')!;
   }
@@ -36,6 +38,10 @@ export class DetallePublicacionPage implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.cargarMapa();
+  }
+
+  atras() {
+    this.navCtrl.back();
   }
 
   async cargarPost() {

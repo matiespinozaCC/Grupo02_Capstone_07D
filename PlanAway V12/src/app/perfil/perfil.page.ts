@@ -62,7 +62,7 @@ export class PerfilPage implements OnInit {
     }, 1000);
   }
 
-  // Método para abrir el modal con la imagen ampliada
+  
   async openImageModal() {
     const modal = await this.modalController.create({
       component: ImageModalComponent,

@@ -1,56 +1,76 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="atras()"> 
+        <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Detalle de Publicación</ion-title>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content class="all">
-  <ion-card *ngIf="post">
-    <div class="profile-image-container">
-      <img src="{{ post.imageUrl }}" alt="Imagen de perfil" class="profile-image">
-    </div>
+  <div class="image-container">
+    <img [src]="post.imageUrl" alt="Imagen de publicación" class="main-image">
+  </div>
+  <ion-card class="info-card">
     <ion-card-header>
       <ion-card-title>{{ post.title }}</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      <p><strong>Descripción:</strong> {{ post.description }}</p>
-      <p><strong>Categoría:</strong> {{ post.category }}</p>
-      <p><strong>Autor:</strong> {{ post.author }}</p>
-      <p><strong>Precio:</strong> {{ post.price }}</p>
-      <p><strong>Capacidad:</strong> {{ post.capacity }}</p>
-      <p><strong>Dirección:</strong> {{ post.address }}</p>
+      <div class="details">
+        <p><ion-icon name="information-circle-outline"></ion-icon> <strong>Descripción:</strong></p>
+        <div class="description-scroll">{{ post.description }}</div>
+        <p><ion-icon name="pricetag-outline"></ion-icon> <strong>Categoría:</strong> {{ post.category }}</p>
+        <p><ion-icon name="person-outline"></ion-icon> <strong>Autor:</strong> {{ post.author }}</p>
+        <p><ion-icon name="cash-outline"></ion-icon> <strong>Precio:</strong> ${{ post.price }}</p>
+        <p><ion-icon name="people-outline"></ion-icon> <strong>Capacidad:</strong> {{ post.capacity }} personas</p>
+        <p>
+          <ion-icon name="location-outline"></ion-icon> <strong>Dirección:</strong>
+          <a *ngIf="post.lat && post.lng" [href]="'https://www.google.com/maps?q=' + post.lat + ',' + post.lng" target="_blank">
+            {{ post.address }}
+          </a>
+        </p>
+      </div>
     </ion-card-content>
   </ion-card>
 
-  <!-- Contenedor del mapa para mostrar la ubicación -->
-  <p><strong>Dirección:</strong> {{ post.address }}</p>
+  <!-- Mapa -->
+  <div id="map" class="map-container"></div>
 
-      <!-- Mapa -->
-  <div id="map" style="height: 300px;"></div>
-
-  <!-- Botones de eliminar y modificar -->
-  <ion-button expand="block" color="danger" (click)="eliminarPost()">Eliminar</ion-button>
-  <ion-button expand="block" (click)="irModificar()">Modificar</ion-button>
-
-  <!-- Sección de reservas -->
-  <div class="reservas-section">
-    <h3>Reservas realizadas</h3>
-    <ion-list>
-      <ion-item *ngFor="let reserva of reservas">
-        <ion-label>
-          <h3>Reserva desde {{ reserva.fechaInicio.toDate().toLocaleString() }} hasta {{ reserva.fechaFin.toDate().toLocaleString() }}</h3>
-        </ion-label>
-      </ion-item>
-    </ion-list>
-
-    <div *ngIf="reservas.length === 0" class="no-reservas">
-      <p>No hay reservas para esta publicación.</p>
-    </div>
+  
+  <div class="actions">
+    <ion-button expand="block" color="primary" (click)="irModificar()">Modificar</ion-button>
+    <ion-button expand="block" color="danger" (click)="eliminarPost()">Eliminar</ion-button>
   </div>
+
+  
+  <ion-card class="reservas-card">
+    <ion-card-header>
+      <ion-card-title>Reservas Realizadas</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let reserva of reservas">
+          <ion-label>
+            Desde: {{ reserva.fechaInicio.toDate().toLocaleString() }} <br>
+            Hasta: {{ reserva.fechaFin.toDate().toLocaleString() }}
+          </ion-label>
+        </ion-item>
+      </ion-list>
+      <p *ngIf="reservas.length === 0" class="no-reservas">No hay reservas para esta publicación.</p>
+    </ion-card-content>
+  </ion-card>
+
+  
   <ion-toast
-  [isOpen]="showDeleteToast"
-  message="La publicación ha sido eliminada correctamente"
-  icon="checkmark-circle-outline"
-  position="top"
-  duration="3000"
-  color="success"
-  cssClass="custom-toast-delete"
-  (didDismiss)="onToastDismiss()"
-></ion-toast>
-
-
+    [isOpen]="showDeleteToast"
+    message="La publicación ha sido eliminada correctamente"
+    icon="checkmark-circle-outline"
+    position="top"
+    duration="3000"
+    color="success"
+    cssClass="custom-toast-delete"
+    (didDismiss)="onToastDismiss()">
+  </ion-toast>
 </ion-content>

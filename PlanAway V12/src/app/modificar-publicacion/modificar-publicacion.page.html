@@ -1,40 +1,43 @@
 <ion-content class="modificar-publicacion">
-  <!-- Encabezado del formulario -->
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>Editar Publicación</ion-card-title>
-    </ion-card-header>
-  </ion-card>
+  <form (ngSubmit)="guardarCambios()" #formulario="ngForm">
+    <!-- Campo de título -->
+    <ion-item>
+      <ion-label position="stacked">Título</ion-label>
+      <ion-input [(ngModel)]="post.title" name="title" required></ion-input>
+    </ion-item>
 
-  <!-- Formulario para modificar la publicación -->
-  <form (ngSubmit)="modificarPost()" #formulario="ngForm">
-    <ion-list>
-      <!-- Título -->
-      <ion-item>
-        <ion-label position="stacked">Título</ion-label>
-        <ion-input [(ngModel)]="post.title" name="title" required></ion-input>
-      </ion-item>
+    <!-- Campo de descripción -->
+    <ion-item>
+      <ion-label position="stacked">Descripción</ion-label>
+      <ion-textarea [(ngModel)]="post.description" name="description" required></ion-textarea>
+    </ion-item>
 
-      <!-- Descripción -->
-      <ion-item>
-        <ion-label position="stacked">Descripción</ion-label>
-        <ion-textarea [(ngModel)]="post.description" name="description" required></ion-textarea>
-      </ion-item>
+    <!-- Campo de precio -->
+    <ion-item>
+      <ion-label position="stacked">Precio</ion-label>
+      <ion-input [(ngModel)]="post.price" name="price" type="number" required></ion-input>
+    </ion-item>
 
-      <!-- Categoría -->
-      <ion-item>
-        <ion-label position="stacked">Categoría</ion-label>
-        <ion-select [(ngModel)]="post.category" name="category" required>
-          <ion-select-option *ngFor="let categoria of categorias" [value]="categoria">{{ categoria }}</ion-select-option>
-        </ion-select>
-      </ion-item>
-    </ion-list>
+    <!-- Campo de capacidad -->
+    <ion-item>
+      <ion-label position="stacked">Capacidad</ion-label>
+      <ion-input [(ngModel)]="post.capacity" name="capacity" type="number" required></ion-input>
+    </ion-item>
 
-    <!-- Botón para guardar -->
-    <div class="action-buttons">
-      <ion-button expand="block" type="submit" color="primary" [disabled]="formulario.invalid">
-        Guardar Cambios
-      </ion-button>
-    </div>
+    <!-- Campo de dirección -->
+    <ion-item>
+      <ion-label position="stacked">Dirección</ion-label>
+      <ion-input [(ngModel)]="post.address" name="address" readonly></ion-input>
+    </ion-item>
+
+    <!-- Campo para cambiar imagen -->
+    <ion-item>
+      <ion-label position="stacked">Imagen</ion-label>
+      <img [src]="imagenPrevia || post.imageUrl" alt="Vista previa de la imagen" class="preview-image" />
+      <input type="file" (change)="onImagenSeleccionada($event)" accept="image/*" />
+    </ion-item>
+
+    <!-- Botón para guardar cambios -->
+    <ion-button expand="block" type="submit" [disabled]="formulario.invalid">Guardar Cambios</ion-button>
   </form>
 </ion-content>

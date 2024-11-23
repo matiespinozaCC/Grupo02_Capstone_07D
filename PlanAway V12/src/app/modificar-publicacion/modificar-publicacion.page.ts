@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { PostService } from '../servicios/post.service';
 import { AlertController } from '@ionic/angular';
 
+
 @Component({
   selector: 'app-modificar-publicacion',
   templateUrl: './modificar-publicacion.page.html',
@@ -12,7 +13,10 @@ export class ModificarPublicacionPage implements OnInit {
   post: any = {}; // Información del post cargada
   postId: string; // ID del post a modificar
   isLoading: boolean = false; // Estado de carga
+  imagenPrevia: string | null = null;
   categorias: string[] = ['Piscina', 'Quincho', 'Terraza', 'Departamento']; // Opciones para categoría
+
+
 
   constructor(
     private postService: PostService,
@@ -27,6 +31,7 @@ export class ModificarPublicacionPage implements OnInit {
     this.cargarPost();
   }
 
+
   // Carga los datos de la publicación desde el servicio
   async cargarPost() {
     this.isLoading = true;
@@ -39,6 +44,36 @@ export class ModificarPublicacionPage implements OnInit {
       this.isLoading = false;
     }
   }
+
+  onImagenSeleccionada(event: any) {
+    const archivo = event.target.files[0];
+    if (archivo) {
+      const lector = new FileReader();
+      lector.onload = () => {
+        this.imagenPrevia = lector.result as string;
+      };
+      lector.readAsDataURL(archivo);
+    }
+  }
+
+  async guardarCambios() {
+    try {
+      const datosActualizados = {
+        title: this.post.title,
+        description: this.post.description,
+        price: this.post.price,
+        capacity: this.post.capacity,
+        address: this.post.address,
+        imageUrl: this.imagenPrevia || this.post.imageUrl,
+      };
+
+      await this.postService.updatePost(this.postId, datosActualizados);
+      this.router.navigate(['/tabs/perfil']);
+    } catch (error) {
+      console.error('Error al guardar los cambios:', error);
+    }
+  }
+
 
   // Método para modificar la publicación
   async modificarPost() {
