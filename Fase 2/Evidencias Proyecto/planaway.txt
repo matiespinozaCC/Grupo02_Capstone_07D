@@ -1,0 +1,5 @@
+p.1
+arreglo de login,
+-cambiar el logo del html al css
+-colocar una imagen del fondo para la parte oscura y clara
+-cambiar el logo modo claro y oscuro
